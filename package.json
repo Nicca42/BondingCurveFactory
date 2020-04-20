@@ -1,0 +1,17 @@
+{
+  "name": "BondingCurveFactory",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Nicca42/BondingCurveFactory.git",
+  "author": "Veronica <veronica.21.coutts@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "solc": "0.6.6",
+    "truffle": "5.1.22"
+  },
+  "scripts": {
+    "build": "truffle compile",
+    "run": "truffle test"
+  }
+}
