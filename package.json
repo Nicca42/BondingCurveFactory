@@ -8,10 +8,12 @@
   "private": false,
   "devDependencies": {
     "solc": "0.6.6",
-    "truffle": "5.1.22"
+    "truffle": "5.1.24",
+    "ganache-cli": "6.9.1"
   },
   "scripts": {
     "build": "truffle compile",
+    "start-dev": "ganache-cli",
     "run": "truffle test"
   }
 }
