@@ -8,12 +8,14 @@
   "private": false,
   "devDependencies": {
     "solc": "0.6.6",
-    "truffle": "5.1.24",
-    "ganache-cli": "6.9.1"
+    "etherlime": "2.3.3",
+    "etherlime-lib": "1.2.3",
+    "bignumber.js": "9.0.0",
+    "ethers": "4.0.47"
   },
   "scripts": {
-    "build": "truffle compile",
-    "start-dev": "ganache-cli",
-    "run": "truffle test"
+    "build": "etherlime compile",
+    "test": "etherlime test --output=none --timeout 100000 --gas-report=true --runs=999",
+    "start": "etherlime ganache -q --networkId=1337"
   }
 }
