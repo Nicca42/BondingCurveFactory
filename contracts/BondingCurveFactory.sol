@@ -11,17 +11,17 @@ contract BondingCurveFactory {
     }
 
     function addCurveType(
-        string _curveName,
-        uint256[] _curvParameters,
+        string memory _curveName,
+        uint256[] memory _curvParameters,
         address _curveAddress
     )
         public
         returns(uint8)
     {
-        
+
     }
 
-    function _AddEnsName(string _ensName) internal {
+    function _AddEnsName(string memory _ensName) internal {
 
     }
 

@@ -3,7 +3,7 @@ pragma solidity 0.6.6;
 contract CurveLibraryRegistry {
     address private factory_;
 
-    constructor(address _factory) {
+    constructor(address _factory) public {
         factory_ = _factory;
     }
 
@@ -11,7 +11,8 @@ contract CurveLibraryRegistry {
         require(
             msg.sender == factory_,
             "Only the factory may use this"
-        )
+        );
+        _;
     }
     
     function createCurve(
