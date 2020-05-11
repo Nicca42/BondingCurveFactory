@@ -1,33 +1,53 @@
 {
   "contractName": "I_Curve",
-  "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol\":\"I_Curve\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol\":{\"keccak256\":\"0xc561ed095825244f7d14fa9ec07020ea951133223b42a9d0531569d3c4a70870\",\"urls\":[\"bzz-raw://7a5e32d91e96503de6768c5c97b739d5abc79e6ef32d624fa35152c929b6b48d\",\"dweb:/ipfs/Qmf6S1BsiQ2AzvuFvMBiZsiveUnzxWrbW4DMkvnoCmMGRi\"]}},\"version\":1}",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBuyPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokens\",\"type\":\"uint256\"}],\"name\":\"getBuyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol\":\"I_Curve\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol\":{\"keccak256\":\"0x4dc6d1c82c77af820a02f5b0d50d9653022c3dc5db1aebfbada076922a82832e\",\"urls\":[\"bzz-raw://66994b3624c377c7cb6388f39fefe7f6d2e4b78ae47335e5fb1ec8e10aa1df04\",\"dweb:/ipfs/QmcgnQwMFwuFQs7zAt732m5qAP5xTpWTQyJGpi18SccZoD\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\ninterface I_Curve {\n    // function get\n\n}",
+  "source": "pragma solidity 0.6.6;\n\ninterface I_Curve {\n    function getBuyPrice(\n        uint256 _tokens\n    )\n        external\n        view\n        returns(uint256);\n    \n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol",
     "exportedSymbols": {
       "I_Curve": [
-        73
+        181
       ]
     },
-    "id": 74,
+    "id": 182,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 72,
+        "id": 173,
         "literals": [
           "solidity",
           "0.6",
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:22:2"
+        "src": "0:22:3"
       },
       {
         "abstract": false,
@@ -35,39 +55,127 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": null,
-        "fullyImplemented": true,
-        "id": 73,
+        "fullyImplemented": false,
+        "id": 181,
         "linearizedBaseContracts": [
-          73
+          181
         ],
         "name": "I_Curve",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 74,
-        "src": "24:42:2"
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "08d4db14",
+            "id": 180,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBuyPrice",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 175,
+                  "mutability": "mutable",
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 180,
+                  "src": "78:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 174,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "78:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "68:31:3"
+            },
+            "returnParameters": {
+              "id": 179,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 178,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 180,
+                  "src": "146:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 177,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "146:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "145:9:3"
+            },
+            "scope": 181,
+            "src": "48:107:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 182,
+        "src": "24:138:3"
       }
     ],
-    "src": "0:66:2"
+    "src": "0:162:3"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol",
     "exportedSymbols": {
       "I_Curve": [
-        73
+        181
       ]
     },
-    "id": 74,
+    "id": 182,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 72,
+        "id": 173,
         "literals": [
           "solidity",
           "0.6",
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:22:2"
+        "src": "0:22:3"
       },
       {
         "abstract": false,
@@ -75,19 +183,107 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": null,
-        "fullyImplemented": true,
-        "id": 73,
+        "fullyImplemented": false,
+        "id": 181,
         "linearizedBaseContracts": [
-          73
+          181
         ],
         "name": "I_Curve",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 74,
-        "src": "24:42:2"
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "08d4db14",
+            "id": 180,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBuyPrice",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 175,
+                  "mutability": "mutable",
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 180,
+                  "src": "78:15:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 174,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "78:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "68:31:3"
+            },
+            "returnParameters": {
+              "id": 179,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 178,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 180,
+                  "src": "146:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 177,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "146:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "145:9:3"
+            },
+            "scope": 181,
+            "src": "48:107:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 182,
+        "src": "24:138:3"
       }
     ],
-    "src": "0:66:2"
+    "src": "0:162:3"
   },
   "compiler": {
     "name": "solc",
@@ -95,7 +291,7 @@
   },
   "networks": {},
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-11T10:12:34.030Z",
+  "updatedAt": "2020-05-11T12:37:58.384Z",
   "devdoc": {
     "methods": {}
   },

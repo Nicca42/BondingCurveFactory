@@ -1,8 +1,9 @@
 pragma solidity 0.6.6;
 
+import "./I_Curve.sol";
 import "./I_Token.sol";
 
-contract LinearCurve {
+contract Curve is I_Curve {
     /**
       * Linear curve: y = mx + c
       * Linear curve: price = gradient*supply + startingPrice
@@ -11,6 +12,7 @@ contract LinearCurve {
     function getBuyPrice(
         uint256 _tokens
     )
+        override(I_Curve)
         public
         view
         returns(uint256)
