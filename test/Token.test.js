@@ -36,9 +36,7 @@ describe("💪 Token Tests", async () => {
             false,
             curveInstance.contract.address,
             initSettings.tokenInit.maxSupply,
-            initSettings.tokenInit.a,
-            initSettings.tokenInit.b,
-            initSettings.tokenInit.c,
+            initSettings.tokenInit.curveParameters,
             initSettings.tokenInit.name,
             initSettings.tokenInit.symbol,
             collateralInstance.contract.address

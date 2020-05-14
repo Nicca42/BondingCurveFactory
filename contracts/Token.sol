@@ -16,9 +16,7 @@ contract Token is ERC20 {
     constructor(
         address _curveInstance,
         uint256 _maxSupply,
-        uint256 _a,
-        uint256 _b,
-        uint256 _c,
+        uint256[3] memory _curveParameters,
         string memory _name,
         string memory _sybol,
         address _underlyingCollateral
@@ -31,9 +29,9 @@ contract Token is ERC20 {
     {
         curveInstance = I_Curve(_curveInstance);
         maxSupply = _maxSupply;
-        a = _a;
-        b = _b;
-        c = _c;
+        a = _curveParameters[0];
+        b = _curveParameters[1];
+        c = _curveParameters[2];
         collateralInstance = IERC20(_underlyingCollateral);
     }
 

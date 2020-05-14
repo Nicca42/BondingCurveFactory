@@ -13,9 +13,11 @@ const defaultTokenVolume = ethers.utils.parseUnits("320000", 18);
 const initSettings = {
     tokenInit: {
         maxSupply: ethers.utils.parseUnits("5000000", 18),
-        a: ethers.utils.parseUnits("2", 4),
-        b: ethers.utils.parseUnits("3", 4),
-        c: ethers.utils.parseUnits("1", 4),
+        curveParameters: [
+            ethers.utils.parseUnits("2", 4),
+            ethers.utils.parseUnits("3", 4),
+            ethers.utils.parseUnits("1", 4)
+        ],
         name: "Coolest Project Ever",
         symbol: "CPE"
     },
