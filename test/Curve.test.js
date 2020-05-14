@@ -37,8 +37,8 @@ describe("💰 Curve Tests", async () => {
     });
 
     it("💰 Get token price", async () => {
-        let buyPrice = await tokenInstance.getBuyCost('12340000000000000000');
-        console.log(buyPrice);
+        let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+
         assert.equal(
             buyPrice.toString(),
             testSettings.buy.mintedTokens,

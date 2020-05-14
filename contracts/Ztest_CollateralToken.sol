@@ -1,9 +1,9 @@
 pragma solidity 0.6.6;
 
-import "../../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "../../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
-contract Token is ERC20 {
+contract Ztest_CollateralToken is ERC20 {
 
     constructor(
         string memory _name,

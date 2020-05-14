@@ -5,7 +5,7 @@ const BigNumber = require('bignumber.js');
 let TokenAbi = require('../build/Token.json');
 let CurveAbi = require('../build/Curve.json');
 let Erc20Abi = require('../build/ERC20.json');
-let CollateralTokenAbi = require('../build/CollateralToken.json');
+let CollateralTokenAbi = require('../build/Ztest_CollateralToken.json');
 
 const defaultDaiPurchase = ethers.utils.parseUnits("5000000", 18);
 const defaultTokenVolume = ethers.utils.parseUnits("320000", 18);
@@ -13,9 +13,9 @@ const defaultTokenVolume = ethers.utils.parseUnits("320000", 18);
 const initSettings = {
     tokenInit: {
         maxSupply: ethers.utils.parseUnits("5000000", 18),
-        a: ethers.utils.parseUnits("2", 9),
-        b: ethers.utils.parseUnits("3", 8),
-        c: ethers.utils.parseUnits("1", 10),
+        a: ethers.utils.parseUnits("2", 4),
+        b: ethers.utils.parseUnits("3", 4),
+        c: ethers.utils.parseUnits("1", 4),
         name: "Coolest Project Ever",
         symbol: "CPE"
     },
@@ -28,7 +28,7 @@ const initSettings = {
 const testSettings = {
     buy: {
         mintAmount: ethers.utils.parseUnits("10", 18),
-        mintedTokens: "1252720601413946064022841340000000000123400000000000000000000000000",
+        mintedTokens: "6666000000000000001500000000000000000100000000000000000000000",
 
     }
 }

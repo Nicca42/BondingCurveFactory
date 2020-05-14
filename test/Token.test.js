@@ -8,8 +8,9 @@ const {
     testSettings
 } = require("./test.settings.js");
 
-describe("💰 Curve Tests", async () => {
+describe("💪 Token Tests", async () => {
     let insecureDeployer = accounts[0];
+    let user = accounts[1];
     
     let tokenInstance;
     let curveInstance;
@@ -44,9 +45,9 @@ describe("💰 Curve Tests", async () => {
         );
     });
 
-    it("🤑 Buy Tokens", async () => {
-        let buyPrice = await tokenInstance.getBuyCost('12340000000000000000');
-        console.log(buyPrice);
+    it("💰 Get token price", async () => {
+        let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+
         assert.equal(
             buyPrice.toString(),
             testSettings.buy.mintedTokens,
@@ -54,7 +55,27 @@ describe("💰 Curve Tests", async () => {
         );
     });
 
-    it("💰 Get token price", async () => {
-        
+    it("🤑 Buy Tokens", async () => {
+        let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+
+        await collateralInstance.from(user).buy(buyPrice);
+        await collateralInstance.from(user).approve(
+            tokenInstance.contract.address,
+            buyPrice
+        );
+
+        await tokenInstance.from(user).buy(
+            testSettings.buy.mintAmount
+        );
+
+        let userBalance = await tokenInstance.balanceOf(user.signer.address);
+
+        assert.equal(
+            userBalance.toString(),
+            testSettings.buy.mintAmount,
+            "User balance incorrect"
+        );
     });
+
+    
 });

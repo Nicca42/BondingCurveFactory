@@ -473,10 +473,10 @@
   "compiler": {
     "name": "solc",
     "version": "0.6.6+commit.6c089d02.Emscripten.clang",
-    "optimizer": true,
-    "runs": 999
+    "optimizer": false,
+    "runs": 200
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-14T09:53:36.006Z"
+  "updatedAt": "2020-05-14T10:22:14.556Z"
 }

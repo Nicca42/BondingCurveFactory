@@ -11,7 +11,7 @@ contract Token is ERC20 {
     uint256 public b;
     uint256 public c;
     I_Curve public curveInstance;
-    IERC20 public collateral;
+    IERC20 public collateralInstance;
 
     constructor(
         address _curveInstance,
@@ -34,7 +34,7 @@ contract Token is ERC20 {
         a = _a;
         b = _b;
         c = _c;
-        collateral = IERC20(_underlyingCollateral);
+        collateralInstance = IERC20(_underlyingCollateral);
     }
 
     function getBuyCost(uint256 _tokens) public view returns(uint256) {
@@ -52,8 +52,40 @@ contract Token is ERC20 {
     function buy(uint256 _tokens) external {
         uint256 cost = getBuyCost(_tokens);
 
-        
+        require(
+            collateralInstance.allowance(msg.sender, address(this)) >= cost,
+            "User has not approved contract for token cost amount"
+        );
+
+        require(
+            collateralInstance.transferFrom(
+                msg.sender,
+                address(this),
+                cost
+            ),
+            "Transfering of collateral failed"
+        );
 
         _mint(msg.sender, _tokens);
-    } 
+    }
+
+    function sell(uint256 _tokens) external {
+        uint256 cost = getBuyCost(_tokens);
+
+        require(
+            collateralInstance.allowance(msg.sender, address(this)) >= cost,
+            "User has not approved contract for token cost amount"
+        );
+
+        require(
+            collateralInstance.transferFrom(
+                msg.sender,
+                address(this),
+                cost
+            ),
+            "Transfering of collateral failed"
+        );
+
+        _mint(msg.sender, _tokens);
+    }
 }
