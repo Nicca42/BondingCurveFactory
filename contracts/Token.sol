@@ -40,6 +40,10 @@ contract Token is ERC20 {
     function getBuyCost(uint256 _tokens) public view returns(uint256) {
         return curveInstance.getBuyPrice(_tokens);
     } 
+
+    function getSellAmount(uint256 _tokens) public view returns(uint256) {
+        return curveInstance.getSellAmount(_tokens);
+    } 
     
     function getCurve() external view returns (
         uint256,
@@ -70,22 +74,21 @@ contract Token is ERC20 {
     }
 
     function sell(uint256 _tokens) external {
-        uint256 cost = getBuyCost(_tokens);
+        uint256 reward = getSellAmount(_tokens);
 
         require(
-            collateralInstance.allowance(msg.sender, address(this)) >= cost,
-            "User has not approved contract for token cost amount"
+            this.balanceOf(msg.sender) >= _tokens,
+            "Cannot sell more tokens than owned"
         );
 
         require(
-            collateralInstance.transferFrom(
+            collateralInstance.transfer(
                 msg.sender,
-                address(this),
-                cost
+                reward
             ),
             "Transfering of collateral failed"
         );
 
-        _mint(msg.sender, _tokens);
+        _burn(msg.sender, _tokens);
     }
 }

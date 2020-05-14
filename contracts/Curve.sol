@@ -30,13 +30,24 @@ contract Curve is I_Curve {
         return price;
     }
 
-    function getTokensForPrice(
-        uint256 _price
+    function getSellAmount(
+        uint256 _tokens
     )
+        override(I_Curve)
         public
-        pure
-        returns(uint256)
+        view
+        returns(uint256) 
     {
+        uint256 supply = I_Token(msg.sender).totalSupply();
+        uint256 newSupply = supply - _tokens;
 
+        uint256 a;
+        uint256 b;
+        uint256 c;
+        (a, b, c) = I_Token(msg.sender).getCurve();
+        
+        uint256 price = (a/3)*(supply**3 - newSupply**3) + (b/2)*(supply**2 - newSupply**2) + c*(supply - newSupply);
+
+        return price;
     }
 }

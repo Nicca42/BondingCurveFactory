@@ -8,4 +8,10 @@ interface I_Curve {
         view
         returns(uint256);
     
+    function getSellAmount(
+        uint256 _tokens
+    )
+        external
+        view
+        returns(uint256);
 }
