@@ -3,7 +3,7 @@ const {
     etherlime,
     TokenAbi,
     CurveAbi,
-    Erc20Abi,
+    CollateralTokenAbi,
     initSettings,
     testSettings
 } = require("./test.settings.js");
@@ -13,6 +13,7 @@ describe("💰 Curve Tests", async () => {
     
     let tokenInstance;
     let curveInstance;
+    let collateralInstance;
 
     beforeEach('', async () => {
         let deployer = new etherlime.EtherlimeGanacheDeployer(insecureDeployer.secretKey);
@@ -20,6 +21,13 @@ describe("💰 Curve Tests", async () => {
         curveInstance = await deployer.deploy(
             CurveAbi,
             false
+        );
+
+        collateralInstance = await deployer.deploy(
+            CollateralTokenAbi,
+            false,
+            initSettings.tokenInit.name,
+            initSettings.tokenInit.symbol
         );
 
         tokenInstance = await deployer.deploy(
@@ -32,11 +40,11 @@ describe("💰 Curve Tests", async () => {
             initSettings.tokenInit.c,
             initSettings.tokenInit.name,
             initSettings.tokenInit.symbol,
-            curveInstance.contract.address
+            collateralInstance.contract.address
         );
     });
 
-    it("💰 Get token price", async () => {
+    it("🤑 Buy Tokens", async () => {
         let buyPrice = await tokenInstance.getBuyCost('12340000000000000000');
         console.log(buyPrice);
         assert.equal(

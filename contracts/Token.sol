@@ -48,4 +48,12 @@ contract Token is ERC20 {
     ) {
         return (a, b, c);
     }
+
+    function buy(uint256 _tokens) external {
+        uint256 cost = getBuyCost(_tokens);
+
+        
+
+        _mint(msg.sender, _tokens);
+    } 
 }
