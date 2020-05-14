@@ -45,7 +45,7 @@ describe("💪 Token Tests", async () => {
         );
     });
 
-    it("💰 Get buy token price", async () => {
+    it("📈 Get buy token price", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
 
         assert.equal(
@@ -198,7 +198,7 @@ describe("💪 Token Tests", async () => {
         );
     });
 
-    it("💰 Get sell token price", async () => {
+    it("📉 Get sell token price", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
 
         await collateralInstance.from(user).buy(buyPrice);

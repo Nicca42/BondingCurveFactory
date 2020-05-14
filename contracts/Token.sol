@@ -42,7 +42,11 @@ contract Token is ERC20 {
     } 
 
     function getSellAmount(uint256 _tokens) public view returns(uint256) {
-        return curveInstance.getSellAmount(_tokens);
+        if(this.totalSupply() == 0) {
+            return 0;
+        } else {
+            return curveInstance.getSellAmount(_tokens);
+        }
     } 
     
     function getCurve() external view returns (

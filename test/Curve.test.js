@@ -8,7 +8,7 @@ const {
     testSettings
 } = require("./test.settings.js");
 
-describe("💰 Curve Tests", async () => {
+describe("📈 Curve Tests", async () => {
     let insecureDeployer = accounts[0];
     let user = accounts[1];
     
@@ -45,7 +45,7 @@ describe("💰 Curve Tests", async () => {
         );
     });
 
-    it("💰 Get buy token price", async () => {
+    it("📈 Get buy token price", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
 
         assert.equal(
@@ -55,7 +55,7 @@ describe("💰 Curve Tests", async () => {
         );
     });
 
-    it("💰 Get sell token price", async () => {
+    it("📉 Get sell token price", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
 
         await collateralInstance.from(user).buy(buyPrice);
@@ -83,5 +83,15 @@ describe("💰 Curve Tests", async () => {
             testSettings.buy.mintedTokenCost,
             "Unexpected amount of minted tokens"
         );
+    });
+
+    it("🚫📉 Negative Get sell token price", async () => {
+        let sellReward = await tokenInstance.getSellAmount(testSettings.buy.mintAmount);
+
+        assert.equal(
+            sellReward.toString(),
+            0,
+            "There is a sell reward without tokens"
+        )
     });
 });
