@@ -50,13 +50,20 @@ describe("💪 Token Tests", async () => {
 
         assert.equal(
             buyPrice.toString(),
-            testSettings.buy.mintedTokens,
+            testSettings.buy.mintedTokenCost,
             "Unexpected amount of minted tokens"
         );
     });
 
     it("🤑 Buy Tokens", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+        let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalance.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         await collateralInstance.from(user).buy(buyPrice);
         await collateralInstance.from(user).approve(
@@ -69,7 +76,13 @@ describe("💪 Token Tests", async () => {
         );
 
         let userBalance = await tokenInstance.balanceOf(user.signer.address);
+        let tokenContractBalanceAfter = await collateralInstance.balanceOf(tokenInstance.contract.address)
 
+        assert.equal(
+            tokenContractBalanceAfter.toString(),
+            testSettings.buy.mintedTokenCost,
+            "Token contract did not start with 0 balance"
+        );
         assert.equal(
             userBalance.toString(),
             testSettings.buy.mintAmount.toString(),
@@ -79,6 +92,13 @@ describe("💪 Token Tests", async () => {
 
     it("🏔 Max Buy Tokens", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+        let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalance.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         await collateralInstance.from(user).buy(buyPrice);
         await collateralInstance.from(user).approve(
@@ -91,6 +111,13 @@ describe("💪 Token Tests", async () => {
         );
 
         let userBalance = await tokenInstance.balanceOf(user.signer.address);
+        let tokenContractBalanceAfter = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalanceAfter.toString(),
+            testSettings.buy.mintedTokenCost,
+            "Token contract did not start with 0 balance"
+        );
 
         assert.equal(
             userBalance.toString(),
@@ -101,6 +128,13 @@ describe("💪 Token Tests", async () => {
 
     it("🚫🤑 Negative Buy Tokens", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+        let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalance.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         await collateralInstance.from(user).buy(buyPrice);
 
@@ -111,6 +145,13 @@ describe("💪 Token Tests", async () => {
         );
 
         let userBalance = await tokenInstance.balanceOf(user.signer.address);
+        let tokenContractBalanceAfter = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalanceAfter.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         assert.equal(
             userBalance.toString(),
@@ -121,6 +162,13 @@ describe("💪 Token Tests", async () => {
 
     it("🚫🏔 Max Negative Buy Tokens", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+        let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalance.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         await collateralInstance.from(user).buy(buyPrice);
         await collateralInstance.from(user).approve(
@@ -135,6 +183,13 @@ describe("💪 Token Tests", async () => {
         );
 
         let userBalance = await tokenInstance.balanceOf(user.signer.address);
+        let tokenContractBalanceAfter = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalanceAfter.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         assert.equal(
             userBalance.toString(),
@@ -168,13 +223,20 @@ describe("💪 Token Tests", async () => {
 
         assert.equal(
             sellReward.toString(),
-            testSettings.buy.mintedTokens,
+            testSettings.buy.mintedTokenCost,
             "Unexpected amount of minted tokens"
         );
     });
 
     it("📤 Sell Tokens", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
+        let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalance.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         await collateralInstance.from(user).buy(buyPrice);
         await collateralInstance.from(user).approve(
@@ -187,6 +249,13 @@ describe("💪 Token Tests", async () => {
         );
 
         let userBalance = await tokenInstance.balanceOf(user.signer.address);
+        let tokenContractBalanceAfter = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalanceAfter.toString(),
+            testSettings.buy.mintedTokenCost,
+            "Token contract did not start with 0 balance"
+        );
 
         assert.equal(
             userBalance.toString(),
@@ -199,6 +268,13 @@ describe("💪 Token Tests", async () => {
         );
 
         let userSellBalance = await tokenInstance.balanceOf(user.signer.address);
+        let tokenContractBalanceEnd = await collateralInstance.balanceOf(tokenInstance.contract.address)
+
+        assert.equal(
+            tokenContractBalanceEnd.toString(),
+            0,
+            "Token contract did not start with 0 balance"
+        );
 
         assert.equal(
             userSellBalance.toString(),

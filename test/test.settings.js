@@ -30,7 +30,7 @@ const testSettings = {
         mintAmount: ethers.utils.parseUnits("10", 18),
         moreThanMintAmount: ethers.utils.parseUnits("11", 18),
         lessThanMintAmount: ethers.utils.parseUnits("9", 18),
-        mintedTokens: "6666000000000000001500000000000000000100000000000000000000000",
+        mintedTokenCost: "6666000000000000001500000000000000000100000000000000000000000",
     },
     sell: {
         sellPartial: ethers.utils.parseUnits("1", 18),

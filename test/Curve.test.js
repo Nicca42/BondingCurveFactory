@@ -41,7 +41,7 @@ describe("💰 Curve Tests", async () => {
 
         assert.equal(
             buyPrice.toString(),
-            testSettings.buy.mintedTokens,
+            testSettings.buy.mintedTokenCost,
             "Unexpected amount of minted tokens"
         );
     });
