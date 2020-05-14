@@ -13,7 +13,7 @@ describe("💰 Curve Tests", async () => {
     let curveInstance;
 
     beforeEach('', async () => {
-        deployer = new etherlime.EtherlimeGanacheDeployer(insecureDeployer.secretKey);
+        let deployer = new etherlime.EtherlimeGanacheDeployer(insecureDeployer.secretKey);
         
         curveInstance = await deployer.deploy(
             CurveAbi,
@@ -32,8 +32,8 @@ describe("💰 Curve Tests", async () => {
     });
 
     it("💰 Get token price", async () => {
-        let buyPrice = await tokenInstance.getBuyCost(10);
-        console.log(buyPrice.toString())
+        let buyPrice = await tokenInstance.getBuyCost('12340000000000000000');
+        console.log(buyPrice.toString());
     });
 
     it("💰 Get token price", async () => {

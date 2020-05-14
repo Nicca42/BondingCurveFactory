@@ -3,7 +3,7 @@
   "abi": [
     {
       "inputs": [],
-      "name": "getSupply",
+      "name": "totalSupply",
       "outputs": [
         {
           "internalType": "uint256",
@@ -42,7 +42,7 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\ninterface I_Token {\n    function getSupply() external view returns(uint256);\n    \n    function getCurve() external view returns (\n        uint256,\n        uint256,\n        uint256\n    );\n}",
+  "source": "pragma solidity 0.6.6;\n\ninterface I_Token {\n    function totalSupply() external view returns (uint256);\n    \n    function getCurve() external view returns (\n        uint256,\n        uint256,\n        uint256\n    );\n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
@@ -81,19 +81,19 @@
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "6c9c2faf",
+            "functionSelector": "18160ddd",
             "id": 188,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "getSupply",
+            "name": "totalSupply",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
               "id": 184,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "66:2:4"
+              "src": "68:2:4"
             },
             "returnParameters": {
               "id": 187,
@@ -107,7 +107,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 188,
-                  "src": "91:7:4",
+                  "src": "94:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -118,7 +118,7 @@
                     "id": 185,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "91:7:4",
+                    "src": "94:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -128,10 +128,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "90:9:4"
+              "src": "93:9:4"
             },
             "scope": 198,
-            "src": "48:52:4",
+            "src": "48:55:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -151,7 +151,7 @@
               "id": 189,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "127:2:4"
+              "src": "130:2:4"
             },
             "returnParameters": {
               "id": 196,
@@ -165,7 +165,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 197,
-                  "src": "162:7:4",
+                  "src": "165:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -176,7 +176,7 @@
                     "id": 190,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "162:7:4",
+                    "src": "165:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -193,7 +193,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 197,
-                  "src": "179:7:4",
+                  "src": "182:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -204,7 +204,7 @@
                     "id": 192,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "179:7:4",
+                    "src": "182:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -221,7 +221,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 197,
-                  "src": "196:7:4",
+                  "src": "199:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -232,7 +232,7 @@
                     "id": 194,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "196:7:4",
+                    "src": "199:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -242,20 +242,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "152:57:4"
+              "src": "155:57:4"
             },
             "scope": 198,
-            "src": "110:100:4",
+            "src": "113:100:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 199,
-        "src": "24:188:4"
+        "src": "24:191:4"
       }
     ],
-    "src": "0:212:4"
+    "src": "0:215:4"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
@@ -294,19 +294,19 @@
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "6c9c2faf",
+            "functionSelector": "18160ddd",
             "id": 188,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "getSupply",
+            "name": "totalSupply",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
               "id": 184,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "66:2:4"
+              "src": "68:2:4"
             },
             "returnParameters": {
               "id": 187,
@@ -320,7 +320,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 188,
-                  "src": "91:7:4",
+                  "src": "94:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -331,7 +331,7 @@
                     "id": 185,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "91:7:4",
+                    "src": "94:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -341,10 +341,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "90:9:4"
+              "src": "93:9:4"
             },
             "scope": 198,
-            "src": "48:52:4",
+            "src": "48:55:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -364,7 +364,7 @@
               "id": 189,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "127:2:4"
+              "src": "130:2:4"
             },
             "returnParameters": {
               "id": 196,
@@ -378,7 +378,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 197,
-                  "src": "162:7:4",
+                  "src": "165:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -389,7 +389,7 @@
                     "id": 190,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "162:7:4",
+                    "src": "165:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -406,7 +406,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 197,
-                  "src": "179:7:4",
+                  "src": "182:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -417,7 +417,7 @@
                     "id": 192,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "179:7:4",
+                    "src": "182:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -434,7 +434,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 197,
-                  "src": "196:7:4",
+                  "src": "199:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -445,7 +445,7 @@
                     "id": 194,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "196:7:4",
+                    "src": "199:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -455,20 +455,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "152:57:4"
+              "src": "155:57:4"
             },
             "scope": 198,
-            "src": "110:100:4",
+            "src": "113:100:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 199,
-        "src": "24:188:4"
+        "src": "24:191:4"
       }
     ],
-    "src": "0:212:4"
+    "src": "0:215:4"
   },
   "compiler": {
     "name": "solc",
@@ -478,5 +478,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-11T14:06:56.057Z"
+  "updatedAt": "2020-05-14T09:20:19.213Z"
 }

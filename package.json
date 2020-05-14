@@ -11,7 +11,8 @@
     "etherlime": "2.3.3",
     "etherlime-lib": "1.2.3",
     "bignumber.js": "9.0.0",
-    "ethers": "4.0.47"
+    "ethers": "4.0.47",
+    "openzeppelin-solidity": "3.0.1"
   },
   "scripts": {
     "build": "etherlime compile",

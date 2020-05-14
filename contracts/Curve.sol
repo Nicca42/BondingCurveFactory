@@ -17,7 +17,7 @@ contract Curve is I_Curve {
         view
         returns(uint256)
     {
-        uint256 supply = I_Token(msg.sender).getSupply();
+        uint256 supply = I_Token(msg.sender).totalSupply();
         uint256 newSupply = supply + _tokens;
 
         uint256 a;
