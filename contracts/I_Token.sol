@@ -1,11 +1,17 @@
 pragma solidity 0.6.6;
 
-interface I_Token {
-    function totalSupply() external view returns (uint256);
-    
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+
+interface I_Token is IERC20 {
     function getCurve() external view returns (
         uint256,
         uint256,
         uint256
     );
+
+    function getBuyCost(uint256 _tokens) external view returns(uint256);
+    function getSellAmount(uint256 _tokens) external view returns(uint256);
+    function buy(uint256 _tokens) external;
+    function sell(uint256 _tokens) external;
+
 }
