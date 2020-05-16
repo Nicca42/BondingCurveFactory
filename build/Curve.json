@@ -40,8 +40,8 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b506103e1806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806308d4db141461003b578063768713f51461007d575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100bf565b6040518082815260200191505060405180910390f35b6100a96004803603602081101561009357600080fd5b8101908080359060200190929190505050610235565b6040518082815260200191505060405180910390f35b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561010857600080fd5b505afa15801561011c573d6000803e3d6000fd5b505050506040513d602081101561013257600080fd5b810190808051906020019092919050505090506000838201905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561019757600080fd5b505afa1580156101ab573d6000803e3d6000fd5b505050506040513d60608110156101c157600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600085850382026002870a6002870a036002858161020c57fe5b04026003880a6003880a036003878161022157fe5b040201019050809650505050505050919050565b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561027e57600080fd5b505afa158015610292573d6000803e3d6000fd5b505050506040513d60208110156102a857600080fd5b810190808051906020019092919050505090506000838203905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561030d57600080fd5b505afa158015610321573d6000803e3d6000fd5b505050506040513d606081101561033757600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600084860382026002860a6002880a036002858161038257fe5b04026003870a6003890a036003878161039757fe5b04020101905080965050505050505091905056fea2646970667358221220acc9889b0ba3788cd945878463737f9a16c077201d4b96a6f34c4608c5ccaf3764736f6c63430006060033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806308d4db141461003b578063768713f51461007d575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100bf565b6040518082815260200191505060405180910390f35b6100a96004803603602081101561009357600080fd5b8101908080359060200190929190505050610235565b6040518082815260200191505060405180910390f35b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561010857600080fd5b505afa15801561011c573d6000803e3d6000fd5b505050506040513d602081101561013257600080fd5b810190808051906020019092919050505090506000838201905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561019757600080fd5b505afa1580156101ab573d6000803e3d6000fd5b505050506040513d60608110156101c157600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600085850382026002870a6002870a036002858161020c57fe5b04026003880a6003880a036003878161022157fe5b040201019050809650505050505050919050565b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561027e57600080fd5b505afa158015610292573d6000803e3d6000fd5b505050506040513d60208110156102a857600080fd5b810190808051906020019092919050505090506000838203905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561030d57600080fd5b505afa158015610321573d6000803e3d6000fd5b505050506040513d606081101561033757600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600084860382026002860a6002880a036002858161038257fe5b04026003870a6003890a036003878161039757fe5b04020101905080965050505050505091905056fea2646970667358221220acc9889b0ba3788cd945878463737f9a16c077201d4b96a6f34c4608c5ccaf3764736f6c63430006060033",
+  "bytecode": "0x608060405234801561001057600080fd5b506103e1806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806308d4db141461003b578063768713f51461007d575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100bf565b6040518082815260200191505060405180910390f35b6100a96004803603602081101561009357600080fd5b8101908080359060200190929190505050610235565b6040518082815260200191505060405180910390f35b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561010857600080fd5b505afa15801561011c573d6000803e3d6000fd5b505050506040513d602081101561013257600080fd5b810190808051906020019092919050505090506000838201905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561019757600080fd5b505afa1580156101ab573d6000803e3d6000fd5b505050506040513d60608110156101c157600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600085850382026002870a6002870a036002858161020c57fe5b04026003880a6003880a036003878161022157fe5b040201019050809650505050505050919050565b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561027e57600080fd5b505afa158015610292573d6000803e3d6000fd5b505050506040513d60208110156102a857600080fd5b810190808051906020019092919050505090506000838203905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561030d57600080fd5b505afa158015610321573d6000803e3d6000fd5b505050506040513d606081101561033757600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600084860382026002860a6002880a036002858161038257fe5b04026003870a6003890a036003878161039757fe5b04020101905080965050505050505091905056fea26469706673582212204eda371b01814e785c1c25629af0f4b7fd6dc4e9d79ce6e16d5e7b0ed5f6326364736f6c63430006060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806308d4db141461003b578063768713f51461007d575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100bf565b6040518082815260200191505060405180910390f35b6100a96004803603602081101561009357600080fd5b8101908080359060200190929190505050610235565b6040518082815260200191505060405180910390f35b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561010857600080fd5b505afa15801561011c573d6000803e3d6000fd5b505050506040513d602081101561013257600080fd5b810190808051906020019092919050505090506000838201905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561019757600080fd5b505afa1580156101ab573d6000803e3d6000fd5b505050506040513d60608110156101c157600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600085850382026002870a6002870a036002858161020c57fe5b04026003880a6003880a036003878161022157fe5b040201019050809650505050505050919050565b6000803373ffffffffffffffffffffffffffffffffffffffff166318160ddd6040518163ffffffff1660e01b815260040160206040518083038186803b15801561027e57600080fd5b505afa158015610292573d6000803e3d6000fd5b505050506040513d60208110156102a857600080fd5b810190808051906020019092919050505090506000838203905060008060003373ffffffffffffffffffffffffffffffffffffffff1663d73e8d426040518163ffffffff1660e01b815260040160606040518083038186803b15801561030d57600080fd5b505afa158015610321573d6000803e3d6000fd5b505050506040513d606081101561033757600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050809350819450829550505050600084860382026002860a6002880a036002858161038257fe5b04026003870a6003890a036003878161039757fe5b04020101905080965050505050505091905056fea26469706673582212204eda371b01814e785c1c25629af0f4b7fd6dc4e9d79ce6e16d5e7b0ed5f6326364736f6c63430006060033",
   "sourceMap": "73:1172:1:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;73:1172:1;;;;;;;",
   "deployedSourceMap": "73:1172:1:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;73:1172:1;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;218:508:1;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;218:508:1;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;732:511;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;732:511:1;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;218:508;340:7;363:14;388:10;380:31;;;:33;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;380:33:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;380:33:1;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;380:33:1;;;;;;;;;;;;;;;;363:50;;423:17;452:7;443:6;:16;423:36;;470:9;489;508;547:10;539:28;;;:30;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;539:30:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;539:30:1;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;539:30:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;527:42;;;;;;;;;;;;588:13;689:6;677:9;:18;674:1;:22;669:1;661:6;:9;657:1;646:9;:12;:24;642:1;640;:3;;;;;;639:32;634:1;626:6;:9;622:1;611:9;:12;:24;607:1;605;:3;;;;;;604:32;:67;:92;588:108;;714:5;707:12;;;;;;;;218:508;;;:::o;732:511::-;856:7;880:14;905:10;897:31;;;:33;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;897:33:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;897:33:1;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;897:33:1;;;;;;;;;;;;;;;;880:50;;940:17;969:7;960:6;:16;940:36;;987:9;1006;1025;1064:10;1056:28;;;:30;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;1056:30:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1056:30:1;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;1056:30:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1044:42;;;;;;;;;;;;1105:13;1203:9;1194:6;:18;1191:1;:22;1186:1;1175:9;:12;1171:1;1163:6;:9;:24;1159:1;1157;:3;;;;;;1156:32;1151:1;1140:9;:12;1136:1;1128:6;:9;:24;1124:1;1122;:3;;;;;;1121:32;:67;:92;1105:108;;1231:5;1224:12;;;;;;;;732:511;;;:::o",
   "source": "pragma solidity 0.6.6;\n\nimport \"./I_Curve.sol\";\nimport \"./I_Token.sol\";\n\ncontract Curve is I_Curve {\n    /**\n      * Linear curve: y = mx + c\n      * Linear curve: price = gradient*supply + startingPrice\n      */\n\n    function getBuyPrice(\n        uint256 _tokens\n    )\n        override(I_Curve)\n        public\n        view\n        returns(uint256)\n    {\n        uint256 supply = I_Token(msg.sender).totalSupply();\n        uint256 newSupply = supply + _tokens;\n\n        uint256 a;\n        uint256 b;\n        uint256 c;\n        (a, b, c) = I_Token(msg.sender).getCurve();\n        \n        uint256 price = (a/3)*(newSupply**3 - supply**3) + (b/2)*(newSupply**2 - supply**2) + c*(newSupply - supply);\n\n        return price;\n    }\n\n    function getSellAmount(\n        uint256 _tokens\n    )\n        override(I_Curve)\n        public\n        view\n        returns(uint256) \n    {\n        uint256 supply = I_Token(msg.sender).totalSupply();\n        uint256 newSupply = supply - _tokens;\n\n        uint256 a;\n        uint256 b;\n        uint256 c;\n        (a, b, c) = I_Token(msg.sender).getCurve();\n        \n        uint256 price = (a/3)*(supply**3 - newSupply**3) + (b/2)*(supply**2 - newSupply**2) + c*(supply - newSupply);\n\n        return price;\n    }\n}",
@@ -72,7 +72,7 @@
         "id": 36,
         "nodeType": "ImportDirective",
         "scope": 212,
-        "sourceUnit": 266,
+        "sourceUnit": 574,
         "src": "24:23:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -83,7 +83,7 @@
         "id": 37,
         "nodeType": "ImportDirective",
         "scope": 212,
-        "sourceUnit": 283,
+        "sourceUnit": 621,
         "src": "48:23:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -98,10 +98,10 @@
               "id": 38,
               "name": "I_Curve",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 265,
+              "referencedDeclaration": 573,
               "src": "91:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_I_Curve_$265",
+                "typeIdentifier": "t_contract$_I_Curve_$573",
                 "typeString": "contract I_Curve"
               }
             },
@@ -111,7 +111,7 @@
           }
         ],
         "contractDependencies": [
-          265
+          573
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -119,14 +119,14 @@
         "id": 211,
         "linearizedBaseContracts": [
           211,
-          265
+          573
         ],
         "name": "Curve",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              257
+              565
             ],
             "body": {
               "id": 124,
@@ -217,10 +217,10 @@
                           "name": "I_Token",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 282,
+                          "referencedDeclaration": 620,
                           "src": "380:7:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                            "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                             "typeString": "type(contract I_Token)"
                           }
                         },
@@ -235,7 +235,7 @@
                         "src": "380:19:1",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_I_Token_$282",
+                          "typeIdentifier": "t_contract$_I_Token_$620",
                           "typeString": "contract I_Token"
                         }
                       },
@@ -246,7 +246,7 @@
                       "lValueRequested": false,
                       "memberName": "totalSupply",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 272,
+                      "referencedDeclaration": 1740,
                       "src": "380:31:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -586,10 +586,10 @@
                             "name": "I_Token",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 282,
+                            "referencedDeclaration": 620,
                             "src": "539:7:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                              "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                               "typeString": "type(contract I_Token)"
                             }
                           },
@@ -604,7 +604,7 @@
                           "src": "539:19:1",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_I_Token_$282",
+                            "typeIdentifier": "t_contract$_I_Token_$620",
                             "typeString": "contract I_Token"
                           }
                         },
@@ -615,7 +615,7 @@
                         "lValueRequested": false,
                         "memberName": "getCurve",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 281,
+                        "referencedDeclaration": 595,
                         "src": "539:28:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$_t_uint256_$_t_uint256_$",
@@ -1304,10 +1304,10 @@
                   "id": 44,
                   "name": "I_Curve",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 265,
+                  "referencedDeclaration": 573,
                   "src": "287:7:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_I_Curve_$265",
+                    "typeIdentifier": "t_contract$_I_Curve_$573",
                     "typeString": "contract I_Curve"
                   }
                 }
@@ -1392,7 +1392,7 @@
           },
           {
             "baseFunctions": [
-              264
+              572
             ],
             "body": {
               "id": 209,
@@ -1483,10 +1483,10 @@
                           "name": "I_Token",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 282,
+                          "referencedDeclaration": 620,
                           "src": "897:7:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                            "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                             "typeString": "type(contract I_Token)"
                           }
                         },
@@ -1501,7 +1501,7 @@
                         "src": "897:19:1",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_I_Token_$282",
+                          "typeIdentifier": "t_contract$_I_Token_$620",
                           "typeString": "contract I_Token"
                         }
                       },
@@ -1512,7 +1512,7 @@
                       "lValueRequested": false,
                       "memberName": "totalSupply",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 272,
+                      "referencedDeclaration": 1740,
                       "src": "897:31:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -1852,10 +1852,10 @@
                             "name": "I_Token",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 282,
+                            "referencedDeclaration": 620,
                             "src": "1056:7:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                              "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                               "typeString": "type(contract I_Token)"
                             }
                           },
@@ -1870,7 +1870,7 @@
                           "src": "1056:19:1",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_I_Token_$282",
+                            "typeIdentifier": "t_contract$_I_Token_$620",
                             "typeString": "contract I_Token"
                           }
                         },
@@ -1881,7 +1881,7 @@
                         "lValueRequested": false,
                         "memberName": "getCurve",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 281,
+                        "referencedDeclaration": 595,
                         "src": "1056:28:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$_t_uint256_$_t_uint256_$",
@@ -2565,10 +2565,10 @@
                   "id": 129,
                   "name": "I_Curve",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 265,
+                  "referencedDeclaration": 573,
                   "src": "803:7:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_I_Curve_$265",
+                    "typeIdentifier": "t_contract$_I_Curve_$573",
                     "typeString": "contract I_Curve"
                   }
                 }
@@ -2684,7 +2684,7 @@
         "id": 36,
         "nodeType": "ImportDirective",
         "scope": 212,
-        "sourceUnit": 266,
+        "sourceUnit": 574,
         "src": "24:23:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2695,7 +2695,7 @@
         "id": 37,
         "nodeType": "ImportDirective",
         "scope": 212,
-        "sourceUnit": 283,
+        "sourceUnit": 621,
         "src": "48:23:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2710,10 +2710,10 @@
               "id": 38,
               "name": "I_Curve",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 265,
+              "referencedDeclaration": 573,
               "src": "91:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_I_Curve_$265",
+                "typeIdentifier": "t_contract$_I_Curve_$573",
                 "typeString": "contract I_Curve"
               }
             },
@@ -2723,7 +2723,7 @@
           }
         ],
         "contractDependencies": [
-          265
+          573
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -2731,14 +2731,14 @@
         "id": 211,
         "linearizedBaseContracts": [
           211,
-          265
+          573
         ],
         "name": "Curve",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              257
+              565
             ],
             "body": {
               "id": 124,
@@ -2829,10 +2829,10 @@
                           "name": "I_Token",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 282,
+                          "referencedDeclaration": 620,
                           "src": "380:7:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                            "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                             "typeString": "type(contract I_Token)"
                           }
                         },
@@ -2847,7 +2847,7 @@
                         "src": "380:19:1",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_I_Token_$282",
+                          "typeIdentifier": "t_contract$_I_Token_$620",
                           "typeString": "contract I_Token"
                         }
                       },
@@ -2858,7 +2858,7 @@
                       "lValueRequested": false,
                       "memberName": "totalSupply",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 272,
+                      "referencedDeclaration": 1740,
                       "src": "380:31:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -3198,10 +3198,10 @@
                             "name": "I_Token",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 282,
+                            "referencedDeclaration": 620,
                             "src": "539:7:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                              "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                               "typeString": "type(contract I_Token)"
                             }
                           },
@@ -3216,7 +3216,7 @@
                           "src": "539:19:1",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_I_Token_$282",
+                            "typeIdentifier": "t_contract$_I_Token_$620",
                             "typeString": "contract I_Token"
                           }
                         },
@@ -3227,7 +3227,7 @@
                         "lValueRequested": false,
                         "memberName": "getCurve",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 281,
+                        "referencedDeclaration": 595,
                         "src": "539:28:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$_t_uint256_$_t_uint256_$",
@@ -3916,10 +3916,10 @@
                   "id": 44,
                   "name": "I_Curve",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 265,
+                  "referencedDeclaration": 573,
                   "src": "287:7:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_I_Curve_$265",
+                    "typeIdentifier": "t_contract$_I_Curve_$573",
                     "typeString": "contract I_Curve"
                   }
                 }
@@ -4004,7 +4004,7 @@
           },
           {
             "baseFunctions": [
-              264
+              572
             ],
             "body": {
               "id": 209,
@@ -4095,10 +4095,10 @@
                           "name": "I_Token",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 282,
+                          "referencedDeclaration": 620,
                           "src": "897:7:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                            "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                             "typeString": "type(contract I_Token)"
                           }
                         },
@@ -4113,7 +4113,7 @@
                         "src": "897:19:1",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_I_Token_$282",
+                          "typeIdentifier": "t_contract$_I_Token_$620",
                           "typeString": "contract I_Token"
                         }
                       },
@@ -4124,7 +4124,7 @@
                       "lValueRequested": false,
                       "memberName": "totalSupply",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 272,
+                      "referencedDeclaration": 1740,
                       "src": "897:31:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -4464,10 +4464,10 @@
                             "name": "I_Token",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 282,
+                            "referencedDeclaration": 620,
                             "src": "1056:7:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_I_Token_$282_$",
+                              "typeIdentifier": "t_type$_t_contract$_I_Token_$620_$",
                               "typeString": "type(contract I_Token)"
                             }
                           },
@@ -4482,7 +4482,7 @@
                           "src": "1056:19:1",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_I_Token_$282",
+                            "typeIdentifier": "t_contract$_I_Token_$620",
                             "typeString": "contract I_Token"
                           }
                         },
@@ -4493,7 +4493,7 @@
                         "lValueRequested": false,
                         "memberName": "getCurve",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 281,
+                        "referencedDeclaration": 595,
                         "src": "1056:28:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$_t_uint256_$_t_uint256_$",
@@ -5177,10 +5177,10 @@
                   "id": 129,
                   "name": "I_Curve",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 265,
+                  "referencedDeclaration": 573,
                   "src": "803:7:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_I_Curve_$265",
+                    "typeIdentifier": "t_contract$_I_Curve_$573",
                     "typeString": "contract I_Curve"
                   }
                 }
@@ -5278,5 +5278,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-14T12:13:28.982Z"
+  "updatedAt": "2020-05-16T14:27:25.639Z"
 }

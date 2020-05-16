@@ -2,6 +2,7 @@ pragma solidity 0.6.6;
 
 import "./I_Token.sol";
 import "./I_Curve.sol";
+import "./I_MarketTransition.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
@@ -12,14 +13,21 @@ contract Token is ERC20 {
     uint256 public c;
     I_Curve public curveInstance;
     IERC20 public collateralInstance;
+    address public transfter;
+
+    bool public openMarket;
+    // Threshold collateral amount for open market transition
+    uint256 public collateralThreshold;
 
     constructor(
         address _curveInstance,
+        address _transiton,
         uint256 _maxSupply,
         uint256[3] memory _curveParameters,
         string memory _name,
         string memory _sybol,
-        address _underlyingCollateral
+        address _underlyingCollateral,
+        uint256 _collateralThreshold
     )
         ERC20(
             _name,
@@ -28,11 +36,14 @@ contract Token is ERC20 {
         public 
     {
         curveInstance = I_Curve(_curveInstance);
+        transfter = _transiton;
         maxSupply = _maxSupply;
         a = _curveParameters[0];
         b = _curveParameters[1];
         c = _curveParameters[2];
         collateralInstance = IERC20(_underlyingCollateral);
+
+        collateralThreshold = _collateralThreshold;
     }
 
     function getBuyCost(uint256 _tokens) public view returns(uint256) {
@@ -73,6 +84,8 @@ contract Token is ERC20 {
         );
 
         _mint(msg.sender, _tokens);
+        // Checks if the market should transition to open market
+        _transitionCheck();
     }
 
     function sell(uint256 _tokens) external {
@@ -92,5 +105,21 @@ contract Token is ERC20 {
         );
 
         _burn(msg.sender, _tokens);
+    }
+
+    function _transitionCheck() public {
+        if(
+            collateralThreshold <= 
+            this.totalSupply()
+        ) {
+            openMarket = true;
+            
+                transfter.delegatecall(
+                    abi.encode(
+                        "transition(address)",
+                        address(this)
+                    )
+                );
+        }
     }
 }

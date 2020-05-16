@@ -7,6 +7,11 @@
         "type": "address"
       },
       {
+        "internalType": "address",
+        "name": "_transiton",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_maxSupply",
         "type": "uint256"
@@ -30,6 +35,11 @@
         "internalType": "address",
         "name": "_underlyingCollateral",
         "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_collateralThreshold",
+        "type": "uint256"
       }
     ],
     "stateMutability": "nonpayable",
@@ -206,6 +216,19 @@
   },
   {
     "inputs": [],
+    "name": "collateralThreshold",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "curveInstance",
     "outputs": [
       {
@@ -306,6 +329,19 @@
   },
   {
     "inputs": [],
+    "name": "openMarket",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "symbol",
     "outputs": [
       {
@@ -381,6 +417,19 @@
       }
     ],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "transfter",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -466,6 +515,13 @@
       }
     ],
     "name": "sell",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "_transitionCheck",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

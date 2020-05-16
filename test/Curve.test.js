@@ -4,6 +4,7 @@ const {
     TokenAbi,
     CurveAbi,
     CollateralTokenAbi,
+    MarketTransitionAbi,
     initSettings,
     testSettings
 } = require("./test.settings.js");
@@ -11,10 +12,13 @@ const {
 describe("📈 Curve Tests", async () => {
     let insecureDeployer = accounts[0];
     let user = accounts[1];
+    let uniswapRouter = accounts[2];
+    //TODO make a mock for uniswap router
     
     let tokenInstance;
     let curveInstance;
     let collateralInstance;
+    let transerInstance;
 
     beforeEach('', async () => {
         let deployer = new etherlime.EtherlimeGanacheDeployer(insecureDeployer.secretKey);
@@ -31,15 +35,23 @@ describe("📈 Curve Tests", async () => {
             initSettings.tokenInit.symbol
         );
 
+        transerInstance = await deployer.deploy(
+            MarketTransitionAbi,
+            false,
+            uniswapRouter.signer.address,
+        );
+
         tokenInstance = await deployer.deploy(
             TokenAbi,
             false,
             curveInstance.contract.address,
+            transerInstance.contract.address,
             initSettings.tokenInit.maxSupply,
             initSettings.tokenInit.curveParameters,
             initSettings.tokenInit.name,
             initSettings.tokenInit.symbol,
-            collateralInstance.contract.address
+            collateralInstance.contract.address,
+            initSettings.tokenInit.transitionThreshold
         );
     });
 
