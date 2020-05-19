@@ -20,30 +20,30 @@ contract MarketTransition is ERC20 {
 
     function transition(address _token) public {
         I_Token tokenInstance = I_Token(_token);
-
         // // This gets the price of the next token in collateral
         uint256 currentPrice = tokenInstance.getBuyCost(1);
 
         IERC20 collateral = IERC20(tokenInstance.getCollateralInstance());
-
         uint256 collateralInToken = collateral.balanceOf(_token);
 
         uint256 tokensToMint = collateralInToken/currentPrice;
 
-        //TODO Checks if a pair is already created 
-        // TODO if there is then the min A & B need to be sliders not set
-        {
-            (uint amountA, uint amountB, uint liquidity) = routerInstance.addLiquidity(
-                address(tokenInstance),
-                address(collateral),
-                tokensToMint,
-                collateralInToken,
-                tokensToMint,
-                collateralInToken,
-                address(tokenInstance),
-                (now + 1000)
-            );
-        }
+        // //TODO Checks if a pair is already created 
+        // // TODO if there is then the min A & B need to be sliders not set
+        // {
+        //     (uint amountA, uint amountB, uint liquidity) = routerInstance.addLiquidity(
+        //         address(tokenInstance),
+        //         address(collateral),
+        //         tokensToMint,
+        //         collateralInToken,
+        //         tokensToMint,
+        //         collateralInToken,
+        //         address(tokenInstance),
+        //         (now + 1000)
+        //     );
+        // }
+
+        emit transfering("log 1");
     }
 
     function getTokensToMint() public view returns(uint256 tokensToMint) {

@@ -13,7 +13,7 @@ contract Token is ERC20 {
     uint256 public c;
     I_Curve public curveInstance;
     IERC20 public collateralInstance;
-    address public transfter;
+    I_MarketTransition public transfter;
 
     bool public openMarket;
     // Threshold collateral amount for open market transition
@@ -38,7 +38,7 @@ contract Token is ERC20 {
         public 
     {
         curveInstance = I_Curve(_curveInstance);
-        transfter = _transiton;
+        transfter = I_MarketTransition(_transiton);
         maxSupply = _maxSupply;
         a = _curveParameters[0];
         b = _curveParameters[1];
@@ -114,20 +114,22 @@ contract Token is ERC20 {
     }
 
     function _transitionCheck() public returns(bool){
-        bool success;
-        address _target = transfter;
-
         if(
             collateralThreshold <= 
             this.totalSupply()
         ) {
+            require(
+                collateralInstance.approve(
+                    address(transfter),
+                    collateralInstance.balanceOf(address(this))
+                ),
+                "Approval of collateral failed"
+            );
 
+            uint256 tokensToMint = transfter.getTokensToMint();
+            _mint(address(transfter), tokensToMint);
 
-            // collateralInstance.approve(
-
-            // );
-
-            I_MarketTransition(transfter).transition(address(this));
+            transfter.transition(address(this));
             emit transfering("test 2");
         }
         return true;

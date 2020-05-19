@@ -85,8 +85,6 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             console.log("token contract collateral balance:")
             console.log(tokenContractBalance.toString());
 
-            
-
             let check = await(await tokenInstance.from(tester)._transitionCheck()).wait();
             console.log(check.events);
         });
