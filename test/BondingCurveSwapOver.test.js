@@ -14,11 +14,12 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
     let user = accounts[1];
     let uniswapRouter = accounts[2];
     //TODO make a mock for uniswap router
+    let tester = accounts[3];
     
     let tokenInstance;
     let curveInstance;
     let collateralInstance;
-    let transerInstance;
+    let transferInstance;
 
     beforeEach('', async () => {
         let deployer = new etherlime.EtherlimeGanacheDeployer(insecureDeployer.secretKey);
@@ -35,7 +36,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             initSettings.tokenInit.symbol
         );
 
-        transerInstance = await deployer.deploy(
+        transferInstance = await deployer.deploy(
             MarketTransitionAbi,
             false,
             uniswapRouter.signer.address,
@@ -45,7 +46,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             TokenAbi,
             false,
             curveInstance.contract.address,
-            transerInstance.contract.address,
+            transferInstance.contract.address,
             initSettings.tokenInit.maxSupply,
             initSettings.tokenInit.curveParameters,
             initSettings.tokenInit.name,
@@ -57,7 +58,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
 
     describe("📈 Buy tests", async () => {
         it("🤑 Buy Tokens", async () => {
-            let buyPrice = await tokenInstance.getBuyCost(100);
+            let buyPrice = await tokenInstance.getBuyCost(initSettings.tokenInit.transitionThreshold);
             let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
     
             console.log(buyPrice.toString())
@@ -74,7 +75,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             );
     
             await tokenInstance.from(user).buy(
-                100
+                initSettings.tokenInit.transitionThreshold
             );
 
             buyPrice = await tokenInstance.getBuyCost(1);
@@ -82,7 +83,12 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
 
             tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
             console.log("token contract collateral balance:")
-            console.log(tokenContractBalance.toString())
+            console.log(tokenContractBalance.toString());
+
+            
+
+            let check = await(await tokenInstance.from(tester)._transitionCheck()).wait();
+            console.log(check.events);
         });
     });
 });

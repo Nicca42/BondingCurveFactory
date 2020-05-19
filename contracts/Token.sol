@@ -19,6 +19,8 @@ contract Token is ERC20 {
     // Threshold collateral amount for open market transition
     uint256 public collateralThreshold;
 
+    event transfering(string log);
+
     constructor(
         address _curveInstance,
         address _transiton,
@@ -107,19 +109,27 @@ contract Token is ERC20 {
         _burn(msg.sender, _tokens);
     }
 
-    function _transitionCheck() public {
+    function getCollateralInstance() external view returns(address) {
+        return address(collateralInstance);
+    }
+
+    function _transitionCheck() public returns(bool){
+        bool success;
+        address _target = transfter;
+
         if(
             collateralThreshold <= 
             this.totalSupply()
         ) {
-            openMarket = true;
-            
-                transfter.delegatecall(
-                    abi.encode(
-                        "transition(address)",
-                        address(this)
-                    )
-                );
+
+
+            // collateralInstance.approve(
+
+            // );
+
+            I_MarketTransition(transfter).transition(address(this));
+            emit transfering("test 2");
         }
+        return true;
     }
 }

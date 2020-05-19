@@ -246,6 +246,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "getCollateralInstance",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -276,16 +289,16 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\nimport \"../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\ninterface I_Token is IERC20 {\n    function getCurve() external view returns (\n        uint256,\n        uint256,\n        uint256\n    );\n\n    function getBuyCost(uint256 _tokens) external view returns(uint256);\n    function getSellAmount(uint256 _tokens) external view returns(uint256);\n    function buy(uint256 _tokens) external;\n    function sell(uint256 _tokens) external;\n\n}",
+  "source": "pragma solidity 0.6.6;\n\nimport \"../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\ninterface I_Token is IERC20 {\n    function getCurve() external view returns (\n        uint256,\n        uint256,\n        uint256\n    );\n\n    function getBuyCost(uint256 _tokens) external view returns(uint256);\n    function getSellAmount(uint256 _tokens) external view returns(uint256);\n    function getCollateralInstance() external view returns(address);\n    function buy(uint256 _tokens) external;\n    function sell(uint256 _tokens) external;\n\n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
     "exportedSymbols": {
       "I_Token": [
-        620
+        625
       ]
     },
-    "id": 621,
+    "id": 626,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -303,8 +316,8 @@
         "file": "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol",
         "id": 584,
         "nodeType": "ImportDirective",
-        "scope": 621,
-        "sourceUnit": 1810,
+        "scope": 626,
+        "sourceUnit": 1935,
         "src": "24:80:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -319,10 +332,10 @@
               "id": 585,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1809,
+              "referencedDeclaration": 1934,
               "src": "127:6:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$1809",
+                "typeIdentifier": "t_contract$_IERC20_$1934",
                 "typeString": "contract IERC20"
               }
             },
@@ -332,15 +345,15 @@
           }
         ],
         "contractDependencies": [
-          1809
+          1934
         ],
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 620,
+        "id": 625,
         "linearizedBaseContracts": [
-          620,
-          1809
+          625,
+          1934
         ],
         "name": "I_Token",
         "nodeType": "ContractDefinition",
@@ -453,7 +466,7 @@
               ],
               "src": "182:57:6"
             },
-            "scope": 620,
+            "scope": 625,
             "src": "140:100:6",
             "stateMutability": "view",
             "virtual": false,
@@ -540,7 +553,7 @@
               ],
               "src": "304:9:6"
             },
-            "scope": 620,
+            "scope": 625,
             "src": "246:68:6",
             "stateMutability": "view",
             "virtual": false,
@@ -627,7 +640,7 @@
               ],
               "src": "380:9:6"
             },
-            "scope": 620,
+            "scope": 625,
             "src": "319:71:6",
             "stateMutability": "view",
             "virtual": false,
@@ -636,70 +649,71 @@
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "d96a094a",
+            "functionSelector": "a1b2ab28",
             "id": 614,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "buy",
+            "name": "getCollateralInstance",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 612,
+              "id": 610,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "425:2:6"
+            },
+            "returnParameters": {
+              "id": 613,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 611,
+                  "id": 612,
                   "mutability": "mutable",
-                  "name": "_tokens",
+                  "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 614,
-                  "src": "408:15:6",
+                  "src": "450:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
                   },
                   "typeName": {
-                    "id": 610,
-                    "name": "uint256",
+                    "id": 611,
+                    "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "408:7:6",
+                    "src": "450:7:6",
+                    "stateMutability": "nonpayable",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "407:17:6"
+              "src": "449:9:6"
             },
-            "returnParameters": {
-              "id": 613,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "433:0:6"
-            },
-            "scope": 620,
-            "src": "395:39:6",
-            "stateMutability": "nonpayable",
+            "scope": 625,
+            "src": "395:64:6",
+            "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "e4849b32",
+            "functionSelector": "d96a094a",
             "id": 619,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "sell",
+            "name": "buy",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
@@ -714,7 +728,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 619,
-                  "src": "453:15:6",
+                  "src": "477:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -725,7 +739,7 @@
                     "id": 615,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "453:7:6",
+                    "src": "477:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -735,35 +749,93 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "452:17:6"
+              "src": "476:17:6"
             },
             "returnParameters": {
               "id": 618,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "478:0:6"
+              "src": "502:0:6"
             },
-            "scope": 620,
-            "src": "439:40:6",
+            "scope": 625,
+            "src": "464:39:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "e4849b32",
+            "id": 624,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sell",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 622,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 621,
+                  "mutability": "mutable",
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 624,
+                  "src": "522:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 620,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "522:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "521:17:6"
+            },
+            "returnParameters": {
+              "id": 623,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "547:0:6"
+            },
+            "scope": 625,
+            "src": "508:40:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 621,
-        "src": "106:376:6"
+        "scope": 626,
+        "src": "106:445:6"
       }
     ],
-    "src": "0:482:6"
+    "src": "0:551:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
     "exportedSymbols": {
       "I_Token": [
-        620
+        625
       ]
     },
-    "id": 621,
+    "id": 626,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -781,8 +853,8 @@
         "file": "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol",
         "id": 584,
         "nodeType": "ImportDirective",
-        "scope": 621,
-        "sourceUnit": 1810,
+        "scope": 626,
+        "sourceUnit": 1935,
         "src": "24:80:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -797,10 +869,10 @@
               "id": 585,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1809,
+              "referencedDeclaration": 1934,
               "src": "127:6:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$1809",
+                "typeIdentifier": "t_contract$_IERC20_$1934",
                 "typeString": "contract IERC20"
               }
             },
@@ -810,15 +882,15 @@
           }
         ],
         "contractDependencies": [
-          1809
+          1934
         ],
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 620,
+        "id": 625,
         "linearizedBaseContracts": [
-          620,
-          1809
+          625,
+          1934
         ],
         "name": "I_Token",
         "nodeType": "ContractDefinition",
@@ -931,7 +1003,7 @@
               ],
               "src": "182:57:6"
             },
-            "scope": 620,
+            "scope": 625,
             "src": "140:100:6",
             "stateMutability": "view",
             "virtual": false,
@@ -1018,7 +1090,7 @@
               ],
               "src": "304:9:6"
             },
-            "scope": 620,
+            "scope": 625,
             "src": "246:68:6",
             "stateMutability": "view",
             "virtual": false,
@@ -1105,7 +1177,7 @@
               ],
               "src": "380:9:6"
             },
-            "scope": 620,
+            "scope": 625,
             "src": "319:71:6",
             "stateMutability": "view",
             "virtual": false,
@@ -1114,70 +1186,71 @@
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "d96a094a",
+            "functionSelector": "a1b2ab28",
             "id": 614,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "buy",
+            "name": "getCollateralInstance",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 612,
+              "id": 610,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "425:2:6"
+            },
+            "returnParameters": {
+              "id": 613,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 611,
+                  "id": 612,
                   "mutability": "mutable",
-                  "name": "_tokens",
+                  "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 614,
-                  "src": "408:15:6",
+                  "src": "450:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
                   },
                   "typeName": {
-                    "id": 610,
-                    "name": "uint256",
+                    "id": 611,
+                    "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "408:7:6",
+                    "src": "450:7:6",
+                    "stateMutability": "nonpayable",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "407:17:6"
+              "src": "449:9:6"
             },
-            "returnParameters": {
-              "id": 613,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "433:0:6"
-            },
-            "scope": 620,
-            "src": "395:39:6",
-            "stateMutability": "nonpayable",
+            "scope": 625,
+            "src": "395:64:6",
+            "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "e4849b32",
+            "functionSelector": "d96a094a",
             "id": 619,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "sell",
+            "name": "buy",
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
@@ -1192,7 +1265,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 619,
-                  "src": "453:15:6",
+                  "src": "477:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1203,7 +1276,7 @@
                     "id": 615,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "453:7:6",
+                    "src": "477:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1213,26 +1286,84 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "452:17:6"
+              "src": "476:17:6"
             },
             "returnParameters": {
               "id": 618,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "478:0:6"
+              "src": "502:0:6"
             },
-            "scope": 620,
-            "src": "439:40:6",
+            "scope": 625,
+            "src": "464:39:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "e4849b32",
+            "id": 624,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sell",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 622,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 621,
+                  "mutability": "mutable",
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 624,
+                  "src": "522:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 620,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "522:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "521:17:6"
+            },
+            "returnParameters": {
+              "id": 623,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "547:0:6"
+            },
+            "scope": 625,
+            "src": "508:40:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 621,
-        "src": "106:376:6"
+        "scope": 626,
+        "src": "106:445:6"
       }
     ],
-    "src": "0:482:6"
+    "src": "0:551:6"
   },
   "compiler": {
     "name": "solc",
@@ -1242,5 +1373,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-16T14:27:25.630Z"
+  "updatedAt": "2020-05-19T10:33:01.065Z"
 }

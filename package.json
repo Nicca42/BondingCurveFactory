@@ -15,8 +15,9 @@
     "openzeppelin-solidity": "3.0.1"
   },
   "scripts": {
-    "build": "etherlime compile  --exportAbi",
+    "build": "etherlime compile",
     "test": "etherlime test --output=none --timeout 100000 --gas-report=true",
-    "start": "etherlime ganache -q --networkId=1337"
+    "start": "etherlime ganache -q --networkId=1337",
+    "retest": "remixd"
   }
 }
