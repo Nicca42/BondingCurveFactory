@@ -169,8 +169,8 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             let txVerbose = await tokenInstance.verboseWaitForTransaction(results)
             let txVerboseMT = await transferInstance.verboseWaitForTransaction(results)
 
+            // TODO 0. Error: VM Exception while processing transaction: revert ERC20: transfer amount exceeds balance
             /**
-             * TODO 0. Error: VM Exception while processing transaction: revert ERC20: transfer amount exceeds balance
              *  Figure out how to make this readable, check the tokens to mint and collateral in token against what is being aproved, and figure out why these amounts are not the same.
              * Possible things:
                 * Is the approval wrong?
