@@ -38,21 +38,21 @@
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        586
+        606
       ]
     },
-    "id": 587,
+    "id": 607,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 575,
+        "id": 595,
         "literals": [
           "solidity",
           "0.6",
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:22:5"
+        "src": "0:22:6"
       },
       {
         "abstract": false,
@@ -61,9 +61,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 586,
+        "id": 606,
         "linearizedBaseContracts": [
-          586
+          606
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -72,7 +72,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "a4356b9c",
-            "id": 580,
+            "id": 600,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -80,18 +80,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 578,
+              "id": 598,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 577,
+                  "id": 597,
                   "mutability": "mutable",
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 580,
-                  "src": "80:14:5",
+                  "scope": 600,
+                  "src": "80:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -99,10 +99,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 576,
+                    "id": 596,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "80:7:5",
+                    "src": "80:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -113,16 +113,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "79:16:5"
+              "src": "79:16:6"
             },
             "returnParameters": {
-              "id": 579,
+              "id": 599,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "104:0:5"
+              "src": "104:0:6"
             },
-            "scope": 586,
-            "src": "60:45:5",
+            "scope": 606,
+            "src": "60:45:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -131,7 +131,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "bd16a507",
-            "id": 585,
+            "id": 605,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -139,24 +139,24 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 581,
+              "id": 601,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "134:2:5"
+              "src": "134:2:6"
             },
             "returnParameters": {
-              "id": 584,
+              "id": 604,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 583,
+                  "id": 603,
                   "mutability": "mutable",
                   "name": "tokensToMint",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 585,
-                  "src": "159:20:5",
+                  "scope": 605,
+                  "src": "159:20:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -164,10 +164,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 582,
+                    "id": 602,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "159:7:5",
+                    "src": "159:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -177,40 +177,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "158:22:5"
+              "src": "158:22:6"
             },
-            "scope": 586,
-            "src": "110:71:5",
+            "scope": 606,
+            "src": "110:71:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 587,
-        "src": "24:159:5"
+        "scope": 607,
+        "src": "24:159:6"
       }
     ],
-    "src": "0:183:5"
+    "src": "0:183:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        586
+        606
       ]
     },
-    "id": 587,
+    "id": 607,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 575,
+        "id": 595,
         "literals": [
           "solidity",
           "0.6",
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:22:5"
+        "src": "0:22:6"
       },
       {
         "abstract": false,
@@ -219,9 +219,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 586,
+        "id": 606,
         "linearizedBaseContracts": [
-          586
+          606
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -230,7 +230,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "a4356b9c",
-            "id": 580,
+            "id": 600,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -238,18 +238,18 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 578,
+              "id": 598,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 577,
+                  "id": 597,
                   "mutability": "mutable",
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 580,
-                  "src": "80:14:5",
+                  "scope": 600,
+                  "src": "80:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -257,10 +257,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 576,
+                    "id": 596,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "80:7:5",
+                    "src": "80:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -271,16 +271,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "79:16:5"
+              "src": "79:16:6"
             },
             "returnParameters": {
-              "id": 579,
+              "id": 599,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "104:0:5"
+              "src": "104:0:6"
             },
-            "scope": 586,
-            "src": "60:45:5",
+            "scope": 606,
+            "src": "60:45:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -289,7 +289,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "bd16a507",
-            "id": 585,
+            "id": 605,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -297,24 +297,24 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 581,
+              "id": 601,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "134:2:5"
+              "src": "134:2:6"
             },
             "returnParameters": {
-              "id": 584,
+              "id": 604,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 583,
+                  "id": 603,
                   "mutability": "mutable",
                   "name": "tokensToMint",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 585,
-                  "src": "159:20:5",
+                  "scope": 605,
+                  "src": "159:20:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -322,10 +322,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 582,
+                    "id": 602,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "159:7:5",
+                    "src": "159:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -335,20 +335,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "158:22:5"
+              "src": "158:22:6"
             },
-            "scope": 586,
-            "src": "110:71:5",
+            "scope": 606,
+            "src": "110:71:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 587,
-        "src": "24:159:5"
+        "scope": 607,
+        "src": "24:159:6"
       }
     ],
-    "src": "0:183:5"
+    "src": "0:183:6"
   },
   "compiler": {
     "name": "solc",
@@ -358,5 +358,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-19T11:36:58.806Z"
+  "updatedAt": "2020-05-20T08:54:14.857Z"
 }

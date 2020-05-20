@@ -127,7 +127,15 @@ contract Token is ERC20 {
             );
 
             uint256 tokensToMint = transfter.getTokensToMint();
-            _mint(address(transfter), tokensToMint);
+            _mint(address(this), tokensToMint);
+
+            require(
+                this.approve(
+                    address(transfter),
+                    tokensToMint
+                ),
+                "Approval of minted tokens failed"
+            );
 
             transfter.transition(address(this));
             emit transfering("test 2");

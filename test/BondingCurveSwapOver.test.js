@@ -36,6 +36,8 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             initSettings.tokenInit.symbol
         );
 
+        
+
         transferInstance = await deployer.deploy(
             MarketTransitionAbi,
             false,

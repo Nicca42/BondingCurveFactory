@@ -28,20 +28,20 @@ contract MarketTransition is ERC20 {
 
         uint256 tokensToMint = collateralInToken/currentPrice;
 
-        // //TODO Checks if a pair is already created 
-        // // TODO if there is then the min A & B need to be sliders not set
-        // {
-        //     (uint amountA, uint amountB, uint liquidity) = routerInstance.addLiquidity(
-        //         address(tokenInstance),
-        //         address(collateral),
-        //         tokensToMint,
-        //         collateralInToken,
-        //         tokensToMint,
-        //         collateralInToken,
-        //         address(tokenInstance),
-        //         (now + 1000)
-        //     );
-        // }
+        //TODO Checks if a pair is already created 
+        // TODO if there is then the min A & B need to be sliders not set
+        {
+            (uint amountA, uint amountB, uint liquidity) = routerInstance.addLiquidity(
+                address(tokenInstance),
+                address(collateral),
+                tokensToMint,
+                collateralInToken,
+                tokensToMint,
+                collateralInToken,
+                address(tokenInstance),
+                (now + 1000)
+            );
+        }
 
         emit transfering("log 1");
     }

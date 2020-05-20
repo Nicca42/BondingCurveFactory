@@ -1,12 +1,12 @@
-pragma solidity =0.6.6;
+pragma solidity 0.6.6;
 
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
 import '@uniswap/lib/contracts/libraries/TransferHelper.sol';
 
-import '@uniswap/v2-core/contracts/libraries/UniswapV2Library.sol';
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Router01.sol';
+import './IUniswapV2Router01.sol';
+import './UniswapV2Library.sol';
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-import '@uniswap/v2-core/contracts/interfaces/IWETH.sol';
+import './IWETH.sol';
 
 contract UniswapRouter is IUniswapV2Router01 {
     address public immutable override factory;
@@ -278,4 +278,3 @@ contract UniswapRouter is IUniswapV2Router01 {
         return UniswapV2Library.getAmountsIn(factory, amountOut, path);
     }
 }
-© 2020 GitHub, Inc.
