@@ -54,6 +54,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             wethInstance.contract.address
         )
 
+        // TODO rename to market transition (MT)
         transferInstance = await deployer.deploy(
             MarketTransitionAbi,
             false,
@@ -161,20 +162,50 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             console.log("transitionConditionsMet:")
             console.log(transitionConditionsMet)
 
-            let results = await(await tokenInstance.from(user).buy(
+            let results =await tokenInstance.from(user).buy(
                 initSettings.tokenInit.transitionThreshold
-            )).wait();
+            );
+
+            let txVerbose = await tokenInstance.verboseWaitForTransaction(results)
+            let txVerboseMT = await transferInstance.verboseWaitForTransaction(results)
+
+            /**
+             * TODO 0. Error: VM Exception while processing transaction: revert ERC20: transfer amount exceeds balance
+             *  Figure out how to make this readable, check the tokens to mint and collateral in token against what is being aproved, and figure out why these amounts are not the same.
+             * Possible things:
+                * Is the approval wrong?
+                *       could be that the approvals are not going to address
+                *       but I think they are because the addresses say they 
+                *       are approved, but I could be calling it wrong on that
+                *       side
+                * Are the calculations different?
+                *       could be a possibility that they are working out the 
+                *       numbers to be different (or someone pulling outdated
+                *       numbers) and that is why the error being thrown is 
+                *       a insufficient approval.  
+            */
+            console.log(txVerboseMT.logs);
 
             transitionConditionsMet = await tokenInstance.getTokenStatus();
             console.log("transitionConditionsMet:")
             console.log(transitionConditionsMet)
-            console.log(results)
+            // console.log(results.events[0].args)
+            // console.log(results.events[1].args)
+            // console.log(results.events[2].args)
+            // console.log(results.events[3])
+            // console.log(results.events[4])
+            // console.log(results.events[5])
+            // console.log(results.events[6])
+            // console.log(results.events[7])
+            // console.log(results.events[8])
+            // console.log(results.events[9])
             // console.log("Vaule of approve\n" + results.events[0].args.value.toString());
             // console.log(results.events[1].args);
             // console.log("Vaule of approve\n" + results.events[2].args.value.toString());
-            // // console.log(results.events[3].args);
+            // // // console.log(results.events[3].args);
             // console.log("Tokens to mint:\n" + results.events[3].args.tokensToMint.toString());
             // console.log("Colalteral of market\n" + results.events[3].args.collateral.toString());
+
 
             // console.log(results.events[4]);
             // console.log(results.events[5]);

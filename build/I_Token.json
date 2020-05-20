@@ -283,22 +283,29 @@
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "setTransition",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\nimport \"../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\ninterface I_Token is IERC20 {\n    function getCurve() external view returns (\n        uint256,\n        uint256,\n        uint256\n    );\n\n    function getBuyCost(uint256 _tokens) external view returns(uint256);\n    function getSellAmount(uint256 _tokens) external view returns(uint256);\n    function getCollateralInstance() external view returns(address);\n    function buy(uint256 _tokens) external;\n    function sell(uint256 _tokens) external;\n\n}",
+  "source": "pragma solidity 0.6.6;\n\nimport \"../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\ninterface I_Token is IERC20 {\n    function getCurve() external view returns (\n        uint256,\n        uint256,\n        uint256\n    );\n\n    function getBuyCost(uint256 _tokens) external view returns(uint256);\n    function getSellAmount(uint256 _tokens) external view returns(uint256);\n    function getCollateralInstance() external view returns(address);\n    function buy(uint256 _tokens) external;\n    function sell(uint256 _tokens) external;\n    function setTransition() external;\n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
     "exportedSymbols": {
       "I_Token": [
-        655
+        658
       ]
     },
-    "id": 656,
+    "id": 659,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -316,8 +323,8 @@
         "file": "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol",
         "id": 614,
         "nodeType": "ImportDirective",
-        "scope": 656,
-        "sourceUnit": 3035,
+        "scope": 659,
+        "sourceUnit": 3098,
         "src": "24:80:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -332,10 +339,10 @@
               "id": 615,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3034,
+              "referencedDeclaration": 3097,
               "src": "127:6:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$3034",
+                "typeIdentifier": "t_contract$_IERC20_$3097",
                 "typeString": "contract IERC20"
               }
             },
@@ -345,15 +352,15 @@
           }
         ],
         "contractDependencies": [
-          3034
+          3097
         ],
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 655,
+        "id": 658,
         "linearizedBaseContracts": [
-          655,
-          3034
+          658,
+          3097
         ],
         "name": "I_Token",
         "nodeType": "ContractDefinition",
@@ -466,7 +473,7 @@
               ],
               "src": "182:57:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "140:100:7",
             "stateMutability": "view",
             "virtual": false,
@@ -553,7 +560,7 @@
               ],
               "src": "304:9:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "246:68:7",
             "stateMutability": "view",
             "virtual": false,
@@ -640,7 +647,7 @@
               ],
               "src": "380:9:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "319:71:7",
             "stateMutability": "view",
             "virtual": false,
@@ -699,7 +706,7 @@
               ],
               "src": "449:9:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "395:64:7",
             "stateMutability": "view",
             "virtual": false,
@@ -757,7 +764,7 @@
               "parameters": [],
               "src": "502:0:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "464:39:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -815,27 +822,56 @@
               "parameters": [],
               "src": "547:0:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "508:40:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "4f921cf1",
+            "id": 657,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTransition",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 655,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "575:2:7"
+            },
+            "returnParameters": {
+              "id": 656,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "586:0:7"
+            },
+            "scope": 658,
+            "src": "553:34:7",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 656,
-        "src": "106:445:7"
+        "scope": 659,
+        "src": "106:483:7"
       }
     ],
-    "src": "0:551:7"
+    "src": "0:589:7"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Token.sol",
     "exportedSymbols": {
       "I_Token": [
-        655
+        658
       ]
     },
-    "id": 656,
+    "id": 659,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -853,8 +889,8 @@
         "file": "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol",
         "id": 614,
         "nodeType": "ImportDirective",
-        "scope": 656,
-        "sourceUnit": 3035,
+        "scope": 659,
+        "sourceUnit": 3098,
         "src": "24:80:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -869,10 +905,10 @@
               "id": 615,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3034,
+              "referencedDeclaration": 3097,
               "src": "127:6:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$3034",
+                "typeIdentifier": "t_contract$_IERC20_$3097",
                 "typeString": "contract IERC20"
               }
             },
@@ -882,15 +918,15 @@
           }
         ],
         "contractDependencies": [
-          3034
+          3097
         ],
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 655,
+        "id": 658,
         "linearizedBaseContracts": [
-          655,
-          3034
+          658,
+          3097
         ],
         "name": "I_Token",
         "nodeType": "ContractDefinition",
@@ -1003,7 +1039,7 @@
               ],
               "src": "182:57:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "140:100:7",
             "stateMutability": "view",
             "virtual": false,
@@ -1090,7 +1126,7 @@
               ],
               "src": "304:9:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "246:68:7",
             "stateMutability": "view",
             "virtual": false,
@@ -1177,7 +1213,7 @@
               ],
               "src": "380:9:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "319:71:7",
             "stateMutability": "view",
             "virtual": false,
@@ -1236,7 +1272,7 @@
               ],
               "src": "449:9:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "395:64:7",
             "stateMutability": "view",
             "virtual": false,
@@ -1294,7 +1330,7 @@
               "parameters": [],
               "src": "502:0:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "464:39:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1352,18 +1388,47 @@
               "parameters": [],
               "src": "547:0:7"
             },
-            "scope": 655,
+            "scope": 658,
             "src": "508:40:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "4f921cf1",
+            "id": 657,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTransition",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 655,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "575:2:7"
+            },
+            "returnParameters": {
+              "id": 656,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "586:0:7"
+            },
+            "scope": 658,
+            "src": "553:34:7",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 656,
-        "src": "106:445:7"
+        "scope": 659,
+        "src": "106:483:7"
       }
     ],
-    "src": "0:551:7"
+    "src": "0:589:7"
   },
   "compiler": {
     "name": "solc",
@@ -1373,5 +1438,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-20T21:31:50.716Z"
+  "updatedAt": "2020-05-20T22:04:01.470Z"
 }

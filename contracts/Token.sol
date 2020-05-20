@@ -141,11 +141,19 @@ contract Token is ERC20 {
             "Approval of minted tokens failed"
         );
 
+        //TODO make mt 
         transfterInstance.transition(address(this));
 
         emit transfering(
             collateralInstance.balanceOf(address(this)), 
             tokensToMint
+        );
+    }
+
+    function setTransition() external {
+        require(
+            msg.sender == address(transfterInstance),
+            "Only transitioning contract may mark transition compleate"
         );
 
         transitionCompleated = true;

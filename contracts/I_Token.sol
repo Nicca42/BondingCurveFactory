@@ -14,5 +14,5 @@ interface I_Token is IERC20 {
     function getCollateralInstance() external view returns(address);
     function buy(uint256 _tokens) external;
     function sell(uint256 _tokens) external;
-
+    function setTransition() external;
 }
