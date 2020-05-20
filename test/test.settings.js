@@ -7,6 +7,7 @@ let CurveAbi = require('../build/Curve.json');
 let MarketTransitionAbi = require('../build/MarketTransition.json');
 let Erc20Abi = require('../build/ERC20.json');
 let CollateralTokenAbi = require('../build/Ztest_CollateralToken.json');
+let UniswapRouterAbi = require('../build/UniswapRouter.json');
 
 const defaultDaiPurchase = ethers.utils.parseUnits("5000000", 18);
 const defaultTokenVolume = ethers.utils.parseUnits("320000", 18);
@@ -51,8 +52,10 @@ module.exports = {
     etherlime,
     TokenAbi,
     CurveAbi,
+    Erc20Abi,
     CollateralTokenAbi,
     MarketTransitionAbi,
+    UniswapRouterAbi,
     initSettings,
     testSettings
 }

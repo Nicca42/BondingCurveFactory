@@ -10,7 +10,8 @@ contract MarketTransition is ERC20 {
     IUniswapV2Router01 public routerInstance;
     bool public check;
 
-    event transfering(string log);
+    event transitionToFreeMarket(uint amountA, uint amountB, uint liquidity);
+    event wtf(uint tokens, uint collateral);
 
     constructor(address _uniswapRouter)
     ERC20("test", "TST")
@@ -28,22 +29,24 @@ contract MarketTransition is ERC20 {
 
         uint256 tokensToMint = collateralInToken/currentPrice;
 
+        emit wtf(tokensToMint, collateralInToken);
+
         //TODO Checks if a pair is already created 
         // TODO if there is then the min A & B need to be sliders not set
         {
-            (uint amountA, uint amountB, uint liquidity) = routerInstance.addLiquidity(
-                address(tokenInstance),
-                address(collateral),
-                tokensToMint,
-                collateralInToken,
-                tokensToMint,
-                collateralInToken,
-                address(tokenInstance),
-                (now + 1000)
-            );
-        }
+            // (uint amountA, uint amountB, uint liquidity) = routerInstance.addLiquidity(
+            //     address(tokenInstance),
+            //     address(collateral),
+            //     tokensToMint,
+            //     collateralInToken,
+            //     tokensToMint,
+            //     collateralInToken,
+            //     address(tokenInstance),
+            //     (now + 1000)
+            // );
 
-        emit transfering("log 1");
+            // emit transitionToFreeMarket(amountA, amountB, liquidity);
+        }
     }
 
     function getTokensToMint() public view returns(uint256 tokensToMint) {
@@ -54,5 +57,9 @@ contract MarketTransition is ERC20 {
         uint256 collateralInToken = collateral.balanceOf(msg.sender);
 
         tokensToMint = collateralInToken/currentPrice;
+    }
+
+    function getRouterAddress() public view returns(address) {
+        return address(routerInstance);
     }
 }

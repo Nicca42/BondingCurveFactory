@@ -26,22 +26,35 @@
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRouterAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\ninterface I_MarketTransition {\n\n    function transition(address _token) external;\n    function getTokensToMint() external view returns(uint256 tokensToMint);\n}",
+  "source": "pragma solidity 0.6.6;\n\ninterface I_MarketTransition {\n\n    function transition(address _token) external;\n    function getTokensToMint() external view returns(uint256 tokensToMint);\n    function getRouterAddress() external view returns(address);\n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        606
+        611
       ]
     },
-    "id": 607,
+    "id": 612,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -61,9 +74,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 606,
+        "id": 611,
         "linearizedBaseContracts": [
-          606
+          611
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -121,7 +134,7 @@
               "parameters": [],
               "src": "104:0:6"
             },
-            "scope": 606,
+            "scope": 611,
             "src": "60:45:6",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -179,27 +192,86 @@
               ],
               "src": "158:22:6"
             },
-            "scope": 606,
+            "scope": 611,
             "src": "110:71:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "d54f7d5e",
+            "id": 610,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRouterAddress",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 606,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "211:2:6"
+            },
+            "returnParameters": {
+              "id": 609,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 608,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 610,
+                  "src": "236:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 607,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "236:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "235:9:6"
+            },
+            "scope": 611,
+            "src": "186:59:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 607,
-        "src": "24:159:6"
+        "scope": 612,
+        "src": "24:223:6"
       }
     ],
-    "src": "0:183:6"
+    "src": "0:247:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        606
+        611
       ]
     },
-    "id": 607,
+    "id": 612,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -219,9 +291,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 606,
+        "id": 611,
         "linearizedBaseContracts": [
-          606
+          611
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -279,7 +351,7 @@
               "parameters": [],
               "src": "104:0:6"
             },
-            "scope": 606,
+            "scope": 611,
             "src": "60:45:6",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -337,18 +409,77 @@
               ],
               "src": "158:22:6"
             },
-            "scope": 606,
+            "scope": 611,
             "src": "110:71:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "d54f7d5e",
+            "id": 610,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRouterAddress",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 606,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "211:2:6"
+            },
+            "returnParameters": {
+              "id": 609,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 608,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 610,
+                  "src": "236:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 607,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "236:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "235:9:6"
+            },
+            "scope": 611,
+            "src": "186:59:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 607,
-        "src": "24:159:6"
+        "scope": 612,
+        "src": "24:223:6"
       }
     ],
-    "src": "0:183:6"
+    "src": "0:247:6"
   },
   "compiler": {
     "name": "solc",
@@ -358,5 +489,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-20T08:54:14.857Z"
+  "updatedAt": "2020-05-20T21:31:50.711Z"
 }

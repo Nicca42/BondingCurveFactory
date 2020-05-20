@@ -14,12 +14,13 @@
     "etherlime-lib": "1.2.3",
     "ethers": "4.0.47",
     "openzeppelin-solidity": "3.0.1",
-    "solc": "0.6.6"
+	"solc": "0.6.6",
+	"remixd": "0.8.1-alpha.16"
   },
   "scripts": {
     "build": "etherlime compile",
     "test": "etherlime test --output=none --timeout 100000 --gas-report=true",
-    "start": "etherlime ganache -q --networkId=1337",
-    "retest": "remixd"
+	"start": "etherlime ganache -q --networkId=1337",
+	"remixd": "remixd -s ./contracts --remix-ide https://remix.ethereum.org"
   }
 }
