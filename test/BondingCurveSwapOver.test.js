@@ -101,14 +101,14 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             )).wait();
         });
 
-        it("✅ Threshold is reached with threshold amount", async () => {
-            //TODO move test out of buy tokens
-            assert.equal(
-                true,
-                false,
-                "Check not added well in contracts"
-            );
-        });
+        // it("✅ Threshold is reached with threshold amount", async () => {
+        //     //TODO move test out of buy tokens
+        //     assert.equal(
+        //         true,
+        //         false,
+        //         "Check not added well in contracts"
+        //     );
+        // });
 
         it("💥 Token does not transfer after timeout when below min threshould", async () => {
             assert.equal(
@@ -126,7 +126,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             );
         });
 
-        it("🤑 Buy Tokens", async () => {
+        it("✅ Threshold is reached with threshold amount", async () => {
             let buyPrice = await tokenInstance.getBuyCost(initSettings.tokenInit.transitionThreshold);
             let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
     
@@ -155,57 +155,53 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             );
 
             tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address);
-
-            console.log("tok bal:\t" + tokenContractBalance.toString());
-
             let transitionConditionsMet = await tokenInstance.getTokenStatus();
-            console.log("transitionConditionsMet:")
-            console.log(transitionConditionsMet)
 
-            let userAddress = await transferInstance.getTransitionInfo(tokenInstance.contract.address);
-            console.log(userAddress[0].toString());
-            console.log(userAddress[1].toString());
-            console.log(userAddress[2].toString());
+            let transferInformation = await transferInstance.getTransitionInfo(tokenInstance.contract.address);
+
+            assert.equal(
+                tokenContractBalance.toString(),
+                testSettings.endBondingCurve.collateralBalance,
+                "Balance of token in collateral is incorrect"
+            );
+
+            assert.equal(
+                transitionConditionsMet[0],
+                transitionConditionsMet[1],
+                "Transition state incorrect before buy"
+            );
+
+            assert.equal(
+                transferInformation[0].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformation[1].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformation[2].toString(),
+                0,
+                "Transition information prematurly set"
+            );
 
             let results = await(await tokenInstance.from(user).buy(
                 initSettings.tokenInit.transitionThreshold
             )).wait();
 
-            userAddress = await transferInstance.getTransitionInfo(tokenInstance.contract.address);
-            console.log(userAddress[0].toString());
-            console.log(userAddress[1].toString());
-            console.log(userAddress[2].toString());
-
-            // console.log(results.events[0])
-            // console.log(results.events[1])
-            // console.log(results.events[2])
-            // console.log(results.events[3].args.tokens.toString())
-            // console.log(results.events[3].args.collateral.toString())
-            // console.log(results.events[4])
-            // console.log(results.events[5])
-            // console.log(results.events[6])
-            // console.log(results.events[7])
-            // console.log(results.events[8])
-
-            console.log("\n\n<<<\t>>>")
-
-            console.log("token\t" + tokenInstance.contract.address);
-            console.log("user\t" + user.signer.address);
-            console.log("trans\t" + transferInstance.contract.address);
-            console.log("colla\t" + collateralInstance.contract.address);
-            console.log("router\t" + routerInstance.contract.address);
-
+            let transferInformationAfter = await transferInstance.getTransitionInfo(
+                tokenInstance.contract.address
+            );
             let mtCollateralBalance = await collateralInstance.balanceOf(
                 transferInstance.contract.address
             );
             let mtTokenBalance = await tokenInstance.balanceOf(
                 transferInstance.contract.address
             );
-
-            console.log("\nMT balance colalteral:\t" + mtCollateralBalance.toString());
-            // MT has correct collateral balance
-            console.log("MT balance token:\t" + mtTokenBalance.toString());
-
             let mtCollateral = await collateralInstance.allowance(
                 transferInstance.contract.address,
                 routerInstance.contract.address
@@ -214,24 +210,79 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 transferInstance.contract.address,
                 routerInstance.contract.address
             );
-
-            console.log("router MT allowance colalteral:\t" + mtCollateral.toString());
-            console.log("router MT allowance token:\t" + mtToken.toString());
-
             let routerAfterCollateral = await collateralInstance.balanceOf(
                 routerInstance.contract.address
             );
             let routerAfterToken = await tokenInstance.balanceOf(
                 routerInstance.contract.address
             );
+            let transitionConditionsMetAfter = await tokenInstance.getTokenStatus();
 
-            console.log("router balance colalteral:\t" + routerAfterCollateral.toString());
-            console.log("router balance token:\t\t" + routerAfterToken.toString());
+            assert.equal(
+                transferInformationAfter[0].toString(),
+                testSettings.endBondingCurve.finalBuyCost,
+                "Transition information prematurly set"
+            );
 
-            transitionConditionsMet = await tokenInstance.getTokenStatus();
-            console.log("transitionConditionsMet:")
-            console.log(transitionConditionsMet)
+            assert.equal(
+                transferInformationAfter[1].toString(),
+                testSettings.endBondingCurve.mintedTokenAmount,
+                "Transition information prematurly set"
+            );
 
+            assert.equal(
+                transferInformationAfter[2].toString(),
+                testSettings.endBondingCurve.collateralBalance,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                mtCollateralBalance.toString(),
+                0,
+                "Market Transition balance in collateral inccorect"
+            );
+
+            assert.equal(
+                mtTokenBalance.toString(),
+                0,
+                "Market Transition balance in token inccorect"
+            );
+
+            assert.equal(
+                mtCollateral.toString(),
+                0,
+                "Market Transition balance in collateral inccorect"
+            );
+
+            assert.equal(
+                mtToken.toString(),
+                0,
+                "Market Transition balance in token inccorect"
+            );
+
+            assert.equal(
+                routerAfterCollateral.toString(),
+                testSettings.endBondingCurve.collateralBalance,
+                "router token balance incorect after transition"
+            );
+
+            assert.equal(
+                routerAfterToken.toString(),
+                testSettings.endBondingCurve.mintedTokenAmount,
+                "router token balance incorect after transition"
+            );
+
+            assert.equal(
+                transitionConditionsMetAfter[0],
+                true,
+                "Transition state incorectly set after transition"
+            );
+
+            assert.equal(
+                transitionConditionsMetAfter[1],
+                true,
+                "Transition state incorectly set after transition"
+            );
         });
     });
 });
