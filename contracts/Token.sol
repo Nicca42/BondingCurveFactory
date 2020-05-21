@@ -74,12 +74,14 @@ contract Token is ERC20 {
         // and possibly removes exes approval (just to set a good stanard)
         // if(supply+_tokens => transitionCheck == true) {then buy till limit}
         if(transitionConditionsMet) {
-            transition();
+            _transition();
         } else {
             uint256 cost = getBuyCost(_tokens);
 
             require(
-                collateralInstance.allowance(msg.sender, address(this)) >= cost,
+                collateralInstance.allowance(
+                    msg.sender, address(this)
+                ) >= cost,
                 "User has not approved contract for token cost amount"
             );
 
@@ -99,7 +101,7 @@ contract Token is ERC20 {
     function sell(uint256 _tokens) external freeMarket() {
         _transitionCheck(); 
         if(transitionConditionsMet) {
-            transition();
+            _transition();
         } else {
             uint256 reward = getSellAmount(_tokens);
 
@@ -118,51 +120,6 @@ contract Token is ERC20 {
 
             _burn(msg.sender, _tokens);
         }
-    }
-
-    function transition() internal {
-        require(
-            transitionConditionsMet,
-            "Token has not met requirements for free market transition"
-        );
-
-        address router = transfterInstance.getRouterAddress();
-        // Approves 
-        require(
-            collateralInstance.transfer(
-                address(transfterInstance),
-                collateralInstance.balanceOf(address(this))
-            ),
-            "Transfer of collateral failed"
-        );
-
-        uint256 tokensToMint = transfterInstance.getTokensToMint();
-        _mint(address(transfterInstance), tokensToMint);
-
-        // require(
-        //     this.transfer(
-        //         address(transfterInstance),
-        //         tokensToMint
-        //     ),
-        //     "Transfer of minted tokens failed"
-        // );
-
-        //TODO make mt
-        transfterInstance.transition(address(this), router);
-        // address(transfterInstance).delegatecall(
-        //     abi.encodeWithSignature(
-        //         "transition(address,address)", 
-        //         address(this),
-        //         router
-        //     )
-        // );
-
-        // emit transfering(
-        //     collateralInstance.balanceOf(address(this)), 
-        //     tokensToMint
-        // );
-
-        // transitionCompleated = true;
     }
 
     function setTransition() external {
@@ -198,6 +155,21 @@ contract Token is ERC20 {
         return address(collateralInstance);
     }
 
+    function getTokenStatus() 
+        external 
+        view 
+        returns(
+            bool,
+            bool
+        )   
+    {
+        //TODO also return additional checks
+        return (
+            transitionConditionsMet,
+            transitionCompleated
+        );
+    }
+
     function _transitionCheck() internal {
         if(
             collateralThreshold <= 
@@ -214,20 +186,26 @@ contract Token is ERC20 {
           */
     }
 
-    function getTokenStatus() 
-        external 
-        view 
-        returns(
-            bool,
-            bool
-        )   
-    {
-        //TODO also return additional checks
-        return (
+    function _transition() internal {
+        require(
             transitionConditionsMet,
-            transitionCompleated
+            "Token has not met requirements for free market transition"
         );
-    }
 
+        address router = transfterInstance.getRouterAddress();
+        uint256 tokensToMint = transfterInstance.getTokensToMint();
+        _mint(address(transfterInstance), tokensToMint);
+        // Approves 
+        require(
+            collateralInstance.transfer(
+                address(transfterInstance),
+                collateralInstance.balanceOf(address(this))
+            ),
+            "Transfer of collateral failed"
+        );
+
+        //TODO make mt
+        transfterInstance.transition();
+    }
     //TODO update interface with all functions
 }

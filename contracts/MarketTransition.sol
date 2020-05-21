@@ -26,25 +26,19 @@ contract MarketTransition is ERC20 {
         routerInstance = IUniswapV2Router01(_uniswapRouter);
     }
 
-    address public msgSenderOnTransition;
+    function transition() public {
+        // TODO MAYBE Address passed in so that this can be implemented 
+        // as a delegate call in future improvment 
 
-    function getMsgSenderOnTransition() public view returns(address) {
-        return msgSenderOnTransition;
-    }
-
-    // TODO MAYBE Address passed in so that this can be implemented 
-    // as a delegate call in future improvment 
-    function transition(address _token, address _router) public {
         // TODO add require for permissioning on this function
-        I_Token tokenInstance = I_Token(_token);
+        I_Token tokenInstance = I_Token(msg.sender);
         IERC20 collateralInstance = IERC20(tokenInstance.getCollateralInstance());
         // // This gets the price of the next token in collateral
-        uint256 currentPrice = transitionInfo[_token][0];
-        uint256 tokensToMint = transitionInfo[_token][1];
-        uint256 collateralInToken = transitionInfo[_token][2];
+        uint256 currentPrice = transitionInfo[msg.sender][0];
+        uint256 tokensToMint = transitionInfo[msg.sender][1];
+        uint256 collateralInToken = transitionInfo[msg.sender][2];
 
         emit wtf(tokensToMint, collateralInToken, msg.sender);
-        msgSenderOnTransition = msg.sender;
 
         //TODO Checks if a pair is already created 
         // TODO if there is then the min A & B need to be sliders not set
@@ -79,7 +73,7 @@ contract MarketTransition is ERC20 {
             emit transitionToFreeMarket(amountA, amountB, liquidity);
         }
 
-        I_Token(_token).setTransition();
+        I_Token(msg.sender).setTransition();
     }
 
     function getTokensToMint() public returns(uint256 tokensToMint) {
@@ -87,7 +81,7 @@ contract MarketTransition is ERC20 {
         uint256 currentPrice = tokenInstance.getBuyCost(1);
 
         IERC20 collateralInstance = IERC20(tokenInstance.getCollateralInstance());
-        uint256 collateralInToken = collateralInstance.balanceOf(address(this));
+        uint256 collateralInToken = collateralInstance.balanceOf(msg.sender);
 
         tokensToMint = collateralInToken/currentPrice;
 
