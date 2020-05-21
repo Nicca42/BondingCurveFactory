@@ -3,6 +3,7 @@ pragma solidity 0.6.6;
 import "./I_Token.sol";
 import "./I_Curve.sol";
 import "./I_MarketTransition.sol";
+import "./IUniswapV2Router01.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
@@ -21,6 +22,8 @@ contract Token is ERC20 {
     uint256 public collateralThreshold;
 
     event transfering(uint collateral, uint tokensToMint);
+    event transitionToFreeMarket(uint amountA, uint amountB, uint liquidity);
+    event wtf(uint tokens, uint collateral, address sender);
 
     modifier freeMarket() {
         require(
@@ -28,6 +31,12 @@ contract Token is ERC20 {
             "Market has transitioned to uniswap"
         );
         _;
+    }
+
+    address public msgSenderOnTransition;
+
+    function getMsgSenderOnTransition() public view returns(address) {
+        return msgSenderOnTransition;
     }
 
     constructor(
@@ -111,10 +120,7 @@ contract Token is ERC20 {
         }
     }
 
-    function transition() public {
-        // Calls transiton check to update state
-        _transitionCheck();
-
+    function transition() internal {
         require(
             transitionConditionsMet,
             "Token has not met requirements for free market transition"
@@ -123,31 +129,40 @@ contract Token is ERC20 {
         address router = transfterInstance.getRouterAddress();
         // Approves 
         require(
-            collateralInstance.approve(
-                router,
+            collateralInstance.transfer(
+                address(transfterInstance),
                 collateralInstance.balanceOf(address(this))
             ),
-            "Approval of collateral failed"
+            "Transfer of collateral failed"
         );
 
         uint256 tokensToMint = transfterInstance.getTokensToMint();
-        _mint(address(this), tokensToMint);
+        _mint(address(transfterInstance), tokensToMint);
 
-        require(
-            this.approve(
-                router,
-                tokensToMint
-            ),
-            "Approval of minted tokens failed"
-        );
+        // require(
+        //     this.transfer(
+        //         address(transfterInstance),
+        //         tokensToMint
+        //     ),
+        //     "Transfer of minted tokens failed"
+        // );
 
-        //TODO make mt 
-        transfterInstance.transition(address(this));
+        //TODO make mt
+        transfterInstance.transition(address(this), router);
+        // address(transfterInstance).delegatecall(
+        //     abi.encodeWithSignature(
+        //         "transition(address,address)", 
+        //         address(this),
+        //         router
+        //     )
+        // );
 
-        emit transfering(
-            collateralInstance.balanceOf(address(this)), 
-            tokensToMint
-        );
+        // emit transfering(
+        //     collateralInstance.balanceOf(address(this)), 
+        //     tokensToMint
+        // );
+
+        // transitionCompleated = true;
     }
 
     function setTransition() external {

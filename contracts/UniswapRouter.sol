@@ -46,6 +46,8 @@ contract UniswapRouter {
         address pair = tokenA;
         IERC20(tokenA).transferFrom(msg.sender, address(this), amountADesired);
         IERC20(tokenB).transferFrom(msg.sender, address(this), amountBDesired);
+        amountA = amountADesired;
+        amountB = amountBDesired;
         liquidity = 100; //IUniswapV2Pair(pair).mint(to);
     }
 }

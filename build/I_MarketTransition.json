@@ -7,6 +7,11 @@
           "internalType": "address",
           "name": "_token",
           "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_router",
+          "type": "address"
         }
       ],
       "name": "transition",
@@ -24,7 +29,7 @@
           "type": "uint256"
         }
       ],
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -45,16 +50,16 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\ninterface I_MarketTransition {\n\n    function transition(address _token) external;\n    function getTokensToMint() external view returns(uint256 tokensToMint);\n    function getRouterAddress() external view returns(address);\n}",
+  "source": "pragma solidity 0.6.6;\n\ninterface I_MarketTransition {\n\n    function transition(address _token, address _router) external;\n    function getTokensToMint() external returns(uint256 tokensToMint);\n    function getRouterAddress() external view returns(address);\n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        611
+        613
       ]
     },
-    "id": 612,
+    "id": 614,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -74,9 +79,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 611,
+        "id": 613,
         "linearizedBaseContracts": [
-          611
+          613
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -84,8 +89,8 @@
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "a4356b9c",
-            "id": 600,
+            "functionSelector": "13a8df15",
+            "id": 602,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -93,7 +98,7 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 598,
+              "id": 600,
               "nodeType": "ParameterList",
               "parameters": [
                 {
@@ -103,7 +108,7 @@
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 600,
+                  "scope": 602,
                   "src": "80:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -124,110 +129,16 @@
                   },
                   "value": null,
                   "visibility": "internal"
-                }
-              ],
-              "src": "79:16:6"
-            },
-            "returnParameters": {
-              "id": 599,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "104:0:6"
-            },
-            "scope": 611,
-            "src": "60:45:6",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "bd16a507",
-            "id": 605,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getTokensToMint",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 601,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "134:2:6"
-            },
-            "returnParameters": {
-              "id": 604,
-              "nodeType": "ParameterList",
-              "parameters": [
+                },
                 {
                   "constant": false,
-                  "id": 603,
+                  "id": 599,
                   "mutability": "mutable",
-                  "name": "tokensToMint",
+                  "name": "_router",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 605,
-                  "src": "159:20:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 602,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "159:7:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "158:22:6"
-            },
-            "scope": 611,
-            "src": "110:71:6",
-            "stateMutability": "view",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "d54f7d5e",
-            "id": 610,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getRouterAddress",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 606,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "211:2:6"
-            },
-            "returnParameters": {
-              "id": 609,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 608,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 610,
-                  "src": "236:7:6",
+                  "scope": 602,
+                  "src": "96:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -235,10 +146,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 607,
+                    "id": 598,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "236:7:6",
+                    "src": "96:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -249,29 +160,152 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "235:9:6"
+              "src": "79:33:6"
             },
-            "scope": 611,
-            "src": "186:59:6",
+            "returnParameters": {
+              "id": 601,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:0:6"
+            },
+            "scope": 613,
+            "src": "60:62:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "bd16a507",
+            "id": 607,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokensToMint",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 603,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "151:2:6"
+            },
+            "returnParameters": {
+              "id": 606,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 605,
+                  "mutability": "mutable",
+                  "name": "tokensToMint",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 607,
+                  "src": "171:20:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 604,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "171:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "170:22:6"
+            },
+            "scope": 613,
+            "src": "127:66:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "d54f7d5e",
+            "id": 612,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRouterAddress",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 608,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "223:2:6"
+            },
+            "returnParameters": {
+              "id": 611,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 610,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 612,
+                  "src": "248:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 609,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "248:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "247:9:6"
+            },
+            "scope": 613,
+            "src": "198:59:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 612,
-        "src": "24:223:6"
+        "scope": 614,
+        "src": "24:235:6"
       }
     ],
-    "src": "0:247:6"
+    "src": "0:259:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        611
+        613
       ]
     },
-    "id": 612,
+    "id": 614,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -291,9 +325,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 611,
+        "id": 613,
         "linearizedBaseContracts": [
-          611
+          613
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -301,8 +335,8 @@
           {
             "body": null,
             "documentation": null,
-            "functionSelector": "a4356b9c",
-            "id": 600,
+            "functionSelector": "13a8df15",
+            "id": 602,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -310,7 +344,7 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 598,
+              "id": 600,
               "nodeType": "ParameterList",
               "parameters": [
                 {
@@ -320,7 +354,7 @@
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 600,
+                  "scope": 602,
                   "src": "80:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -341,110 +375,16 @@
                   },
                   "value": null,
                   "visibility": "internal"
-                }
-              ],
-              "src": "79:16:6"
-            },
-            "returnParameters": {
-              "id": 599,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "104:0:6"
-            },
-            "scope": 611,
-            "src": "60:45:6",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "bd16a507",
-            "id": 605,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getTokensToMint",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 601,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "134:2:6"
-            },
-            "returnParameters": {
-              "id": 604,
-              "nodeType": "ParameterList",
-              "parameters": [
+                },
                 {
                   "constant": false,
-                  "id": 603,
+                  "id": 599,
                   "mutability": "mutable",
-                  "name": "tokensToMint",
+                  "name": "_router",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 605,
-                  "src": "159:20:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 602,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "159:7:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "158:22:6"
-            },
-            "scope": 611,
-            "src": "110:71:6",
-            "stateMutability": "view",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "functionSelector": "d54f7d5e",
-            "id": 610,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getRouterAddress",
-            "nodeType": "FunctionDefinition",
-            "overrides": null,
-            "parameters": {
-              "id": 606,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "211:2:6"
-            },
-            "returnParameters": {
-              "id": 609,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 608,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "overrides": null,
-                  "scope": 610,
-                  "src": "236:7:6",
+                  "scope": 602,
+                  "src": "96:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -452,10 +392,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 607,
+                    "id": 598,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "236:7:6",
+                    "src": "96:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -466,20 +406,143 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "235:9:6"
+              "src": "79:33:6"
             },
-            "scope": 611,
-            "src": "186:59:6",
+            "returnParameters": {
+              "id": 601,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:0:6"
+            },
+            "scope": 613,
+            "src": "60:62:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "bd16a507",
+            "id": 607,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokensToMint",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 603,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "151:2:6"
+            },
+            "returnParameters": {
+              "id": 606,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 605,
+                  "mutability": "mutable",
+                  "name": "tokensToMint",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 607,
+                  "src": "171:20:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 604,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "171:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "170:22:6"
+            },
+            "scope": 613,
+            "src": "127:66:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "d54f7d5e",
+            "id": 612,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRouterAddress",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 608,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "223:2:6"
+            },
+            "returnParameters": {
+              "id": 611,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 610,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 612,
+                  "src": "248:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 609,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "248:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "247:9:6"
+            },
+            "scope": 613,
+            "src": "198:59:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 612,
-        "src": "24:223:6"
+        "scope": 614,
+        "src": "24:235:6"
       }
     ],
-    "src": "0:247:6"
+    "src": "0:259:6"
   },
   "compiler": {
     "name": "solc",
@@ -489,5 +552,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-20T22:04:01.466Z"
+  "updatedAt": "2020-05-21T11:13:06.507Z"
 }
