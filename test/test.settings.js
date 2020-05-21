@@ -43,6 +43,7 @@ const testSettings = {
     },
     endBondingCurve: {
         buy: ethers.utils.parseUnits("500", 18),
+        justUnderThreshold: ethers.utils.parseUnits("499", 18),
         buyCost: "833250000000000000003750000000000000000005000000000000000000000000",
         finalBuyCost: "24750000000000000015049500000000000000015043",
         mintedTokenAmount: "166666666666666666716",

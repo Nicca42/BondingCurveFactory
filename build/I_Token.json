@@ -342,7 +342,7 @@
         "id": 623,
         "nodeType": "ImportDirective",
         "scope": 675,
-        "sourceUnit": 3219,
+        "sourceUnit": 3279,
         "src": "24:80:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -357,10 +357,10 @@
               "id": 624,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3218,
+              "referencedDeclaration": 3278,
               "src": "127:6:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$3218",
+                "typeIdentifier": "t_contract$_IERC20_$3278",
                 "typeString": "contract IERC20"
               }
             },
@@ -370,7 +370,7 @@
           }
         ],
         "contractDependencies": [
-          3218
+          3278
         ],
         "contractKind": "interface",
         "documentation": null,
@@ -378,7 +378,7 @@
         "id": 674,
         "linearizedBaseContracts": [
           674,
-          3218
+          3278
         ],
         "name": "I_Token",
         "nodeType": "ContractDefinition",
@@ -994,7 +994,7 @@
         "id": 623,
         "nodeType": "ImportDirective",
         "scope": 675,
-        "sourceUnit": 3219,
+        "sourceUnit": 3279,
         "src": "24:80:7",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1009,10 +1009,10 @@
               "id": 624,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3218,
+              "referencedDeclaration": 3278,
               "src": "127:6:7",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$3218",
+                "typeIdentifier": "t_contract$_IERC20_$3278",
                 "typeString": "contract IERC20"
               }
             },
@@ -1022,7 +1022,7 @@
           }
         ],
         "contractDependencies": [
-          3218
+          3278
         ],
         "contractKind": "interface",
         "documentation": null,
@@ -1030,7 +1030,7 @@
         "id": 674,
         "linearizedBaseContracts": [
           674,
-          3218
+          3278
         ],
         "name": "I_Token",
         "nodeType": "ContractDefinition",
@@ -1628,5 +1628,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-21T11:35:52.900Z"
+  "updatedAt": "2020-05-21T11:57:08.551Z"
 }

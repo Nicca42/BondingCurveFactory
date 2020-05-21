@@ -101,74 +101,19 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             )).wait();
         });
 
-        // it("✅ Threshold is reached with threshold amount", async () => {
-        //     //TODO move test out of buy tokens
-        //     assert.equal(
-        //         true,
-        //         false,
-        //         "Check not added well in contracts"
-        //     );
-        // });
-
-        it("💥 Token does not transfer after timeout when below min threshould", async () => {
-            assert.equal(
-                true,
-                false,
-                "Check not added in contracts"
-            );
-        });
-
-        it("✅ Token does transfer after timeout when above min threshould", async () => {
-            assert.equal(
-                true,
-                false,
-                "Check not added in contracts"
-            );
-        });
-
-        it("✅ Threshold is reached with threshold amount", async () => {
+        it("✅ Threshold is reached with threshold amount (exact limit reached)", async () => {
             let buyPrice = await tokenInstance.getBuyCost(initSettings.tokenInit.transitionThreshold);
-            let tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address)
+            let tokenContractBalance = await collateralInstance.balanceOf(
+                tokenInstance.contract.address
+            );
+            let transferInformation = await transferInstance.getTransitionInfo(
+                tokenInstance.contract.address
+            );
     
             assert.equal(
                 tokenContractBalance.toString(),
                 0,
                 "Token contract did not start with 0 balance"
-            );
-    
-            await collateralInstance.from(user).buy(buyPrice);
-            await collateralInstance.from(user).approve(
-                tokenInstance.contract.address,
-                buyPrice
-            );
-    
-            await tokenInstance.from(user).buy(
-                initSettings.tokenInit.transitionThreshold
-            );
-
-            buyPrice = await tokenInstance.getBuyCost(initSettings.tokenInit.transitionThreshold);
-            
-            await collateralInstance.from(user).buy(buyPrice);
-            await collateralInstance.from(user).approve(
-                tokenInstance.contract.address,
-                buyPrice
-            );
-
-            tokenContractBalance = await collateralInstance.balanceOf(tokenInstance.contract.address);
-            let transitionConditionsMet = await tokenInstance.getTokenStatus();
-
-            let transferInformation = await transferInstance.getTransitionInfo(tokenInstance.contract.address);
-
-            assert.equal(
-                tokenContractBalance.toString(),
-                testSettings.endBondingCurve.collateralBalance,
-                "Balance of token in collateral is incorrect"
-            );
-
-            assert.equal(
-                transitionConditionsMet[0],
-                transitionConditionsMet[1],
-                "Transition state incorrect before buy"
             );
 
             assert.equal(
@@ -188,10 +133,30 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 0,
                 "Transition information prematurly set"
             );
-
-            let results = await(await tokenInstance.from(user).buy(
+            
+            await collateralInstance.from(user).buy(buyPrice);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                buyPrice
+            );
+    
+            await tokenInstance.from(user).buy(
                 initSettings.tokenInit.transitionThreshold
-            )).wait();
+            );
+
+            let transitionConditionsMet = await tokenInstance.getTokenStatus();
+
+            assert.equal(
+                transitionConditionsMet[0],
+                transitionConditionsMet[1],
+                "Transition state incorrect before buy"
+            );
+
+            await assert.revert(
+                tokenInstance.from(user).buy(
+                    initSettings.tokenInit.transitionThreshold
+                )
+            );
 
             let transferInformationAfter = await transferInstance.getTransitionInfo(
                 tokenInstance.contract.address
@@ -282,6 +247,185 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 transitionConditionsMetAfter[1],
                 true,
                 "Transition state incorectly set after transition"
+            );
+        });
+
+        it("✅ Threshold is reached with threshold amount (excess of limit reached)", async () => {
+            let buyPrice = await tokenInstance.getBuyCost(
+                testSettings.endBondingCurve.justUnderThreshold
+            );
+            let tokenContractBalance = await collateralInstance.balanceOf(
+                tokenInstance.contract.address
+            );
+            let transferInformation = await transferInstance.getTransitionInfo(
+                tokenInstance.contract.address
+            );
+    
+            assert.equal(
+                tokenContractBalance.toString(),
+                0,
+                "Token contract did not start with 0 balance"
+            );
+
+            assert.equal(
+                transferInformation[0].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformation[1].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformation[2].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+            
+            await collateralInstance.from(user).buy(buyPrice);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                buyPrice
+            );
+    
+            await tokenInstance.from(user).buy(
+                testSettings.endBondingCurve.justUnderThreshold
+            );
+
+            let transitionConditionsMet = await tokenInstance.getTokenStatus();
+
+            assert.equal(
+                transitionConditionsMet[0],
+                transitionConditionsMet[1],
+                "Transition state incorrect before buy"
+            );
+
+            // >>> Buy that pushes token into transition
+
+            buyPrice = await tokenInstance.getBuyCost(
+                testSettings.buy.mintAmount
+            );
+
+            await collateralInstance.from(user).buy(buyPrice);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                buyPrice
+            );
+
+            await tokenInstance.from(user).buy(
+                testSettings.buy.mintAmount
+            );
+
+            // TODO add checks that user was only able to buy the difference
+
+            let transferInformationAfter = await transferInstance.getTransitionInfo(
+                tokenInstance.contract.address
+            );
+            let mtCollateralBalance = await collateralInstance.balanceOf(
+                transferInstance.contract.address
+            );
+            let mtTokenBalance = await tokenInstance.balanceOf(
+                transferInstance.contract.address
+            );
+            let mtCollateral = await collateralInstance.allowance(
+                transferInstance.contract.address,
+                routerInstance.contract.address
+            );
+            let mtToken = await tokenInstance.allowance(
+                transferInstance.contract.address,
+                routerInstance.contract.address
+            );
+            let routerAfterCollateral = await collateralInstance.balanceOf(
+                routerInstance.contract.address
+            );
+            let routerAfterToken = await tokenInstance.balanceOf(
+                routerInstance.contract.address
+            );
+            let transitionConditionsMetAfter = await tokenInstance.getTokenStatus();
+
+            assert.equal(
+                transferInformationAfter[0].toString(),
+                testSettings.endBondingCurve.finalBuyCost,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformationAfter[1].toString(),
+                testSettings.endBondingCurve.mintedTokenAmount,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformationAfter[2].toString(),
+                testSettings.endBondingCurve.collateralBalance,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                mtCollateralBalance.toString(),
+                0,
+                "Market Transition balance in collateral inccorect"
+            );
+
+            assert.equal(
+                mtTokenBalance.toString(),
+                0,
+                "Market Transition balance in token inccorect"
+            );
+
+            assert.equal(
+                mtCollateral.toString(),
+                0,
+                "Market Transition balance in collateral inccorect"
+            );
+
+            assert.equal(
+                mtToken.toString(),
+                0,
+                "Market Transition balance in token inccorect"
+            );
+
+            assert.equal(
+                routerAfterCollateral.toString(),
+                testSettings.endBondingCurve.collateralBalance,
+                "router token balance incorect after transition"
+            );
+
+            assert.equal(
+                routerAfterToken.toString(),
+                testSettings.endBondingCurve.mintedTokenAmount,
+                "router token balance incorect after transition"
+            );
+
+            assert.equal(
+                transitionConditionsMetAfter[0],
+                true,
+                "Transition state incorectly set after transition"
+            );
+
+            assert.equal(
+                transitionConditionsMetAfter[1],
+                true,
+                "Transition state incorectly set after transition"
+            );
+        });
+
+        it("💥 Token does not transfer after timeout when below min threshould", async () => {
+            assert.equal(
+                true,
+                false,
+                "Check not added in contracts"
+            );
+        });
+
+        it("✅ Token does transfer after timeout when above min threshould", async () => {
+            assert.equal(
+                true,
+                false,
+                "Check not added in contracts"
             );
         });
     });

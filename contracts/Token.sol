@@ -33,12 +33,6 @@ contract Token is ERC20 {
         _;
     }
 
-    address public msgSenderOnTransition;
-
-    function getMsgSenderOnTransition() public view returns(address) {
-        return msgSenderOnTransition;
-    }
-
     constructor(
         address _curveInstance,
         address _transiton,
@@ -67,13 +61,39 @@ contract Token is ERC20 {
     }
 
     function buy(uint256 _tokens) external freeMarket() {
-        _transitionCheck(); 
+        _transitionCheck(true, _tokens); 
         // TODO 1. if your buy will push the limit you should be able to
         // buy up untill the limit (to met the amount so that it transitions)
         // and then it will not use any funds over that
         // and possibly removes exes approval (just to set a good stanard)
         // if(supply+_tokens => transitionCheck == true) {then buy till limit}
         if(transitionConditionsMet) {
+            if(
+                collateralThreshold <= 
+                (this.totalSupply() + _tokens)
+            ) {
+                _tokens = collateralThreshold - this.totalSupply();
+
+                uint256 cost = getBuyCost(_tokens);
+
+                require(
+                    collateralInstance.allowance(
+                        msg.sender, address(this)
+                    ) >= cost,
+                    "User has not approved contract for token cost amount"
+                );
+
+                require(
+                    collateralInstance.transferFrom(
+                        msg.sender,
+                        address(this),
+                        cost
+                    ),
+                    "Transfering of collateral failed"
+                );
+
+                _mint(msg.sender, _tokens);
+            }
             _transition();
         } else {
             uint256 cost = getBuyCost(_tokens);
@@ -99,7 +119,7 @@ contract Token is ERC20 {
     }
 
     function sell(uint256 _tokens) external freeMarket() {
-        _transitionCheck(); 
+        _transitionCheck(false, _tokens); 
         if(transitionConditionsMet) {
             _transition();
         } else {
@@ -170,10 +190,10 @@ contract Token is ERC20 {
         );
     }
 
-    function _transitionCheck() internal {
+    function _transitionCheck(bool _buy, uint _tokenAmount) internal {
         if(
             collateralThreshold <= 
-            this.totalSupply()
+            (this.totalSupply() + _tokenAmount)
         ) {
             transitionConditionsMet = true;
         }
