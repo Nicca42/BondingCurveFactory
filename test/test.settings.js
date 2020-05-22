@@ -23,7 +23,9 @@ var initSettings = {
         ],
         name: "Coolest Project Ever",
         symbol: "CPE",
-        transitionThreshold: ethers.utils.parseUnits("500", 18)
+        transitionThreshold: ethers.utils.parseUnits("500", 18),
+        minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
+        colaleralTimeoutInMonths: 900
     },
     collateralInit: {
         name: "collateral",
@@ -49,7 +51,7 @@ const testSettings = {
         mintedTokenAmount: "166666666666666666716",
         collateralBalance: "4125000000000000003750000000000000000000005000000000000000000000"
     }
-}
+};
 
 module.exports = {
     ethers,

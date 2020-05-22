@@ -51,7 +51,9 @@ describe("💪 Token Tests", async () => {
             initSettings.tokenInit.name,
             initSettings.tokenInit.symbol,
             collateralInstance.contract.address,
-            initSettings.tokenInit.transitionThreshold
+            initSettings.tokenInit.transitionThreshold,
+            initSettings.tokenInit.minimumCollateralThreshold,
+            initSettings.tokenInit.colaleralTimeoutInMonths
         );
     });
 

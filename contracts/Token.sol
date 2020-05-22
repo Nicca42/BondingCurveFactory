@@ -6,20 +6,27 @@ import "./I_MarketTransition.sol";
 import "./IUniswapV2Router01.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "./BokkyPooBahsDateTimeLibrary.sol";
 
 contract Token is ERC20 {
+    using BokkyPooBahsDateTimeLibrary for uint256;
+    // TODO remove
     uint256 public maxSupply;
+    // Curve set up
     uint256 public a;
     uint256 public b;
     uint256 public c;
+    // Instances for contract interactions
     I_Curve public curveInstance;
     IERC20 public collateralInstance;
     I_MarketTransition public transfterInstance;
-
+    // Transition variables
     bool public transitionConditionsMet;
     bool public transitionCompleated;
     // Threshold collateral amount for open market transition
-    uint256 public collateralThreshold;
+    uint256 public tokenThreshold;
+    uint256 public minimumTokenThreshold;
+    uint256 public thresholdTimeout;
 
     event transfering(uint collateral, uint tokensToMint);
     event transitionToFreeMarket(uint amountA, uint amountB, uint liquidity);
@@ -41,7 +48,9 @@ contract Token is ERC20 {
         string memory _name,
         string memory _sybol,
         address _underlyingCollateral,
-        uint256 _collateralThreshold
+        uint256 _tokenThreshold,
+        uint256 _minimumTokenThreshold,
+        uint256 _thresholdTimeout
     )
         ERC20(
             _name,
@@ -57,7 +66,9 @@ contract Token is ERC20 {
         c = _curveParameters[2];
         collateralInstance = IERC20(_underlyingCollateral);
 
-        collateralThreshold = _collateralThreshold;
+        tokenThreshold = _tokenThreshold;
+        minimumTokenThreshold = _minimumTokenThreshold;
+        thresholdTimeout = now + _thresholdTimeout;
     }
 
     function buy(uint256 _tokens) external freeMarket() {
@@ -69,53 +80,41 @@ contract Token is ERC20 {
         // if(supply+_tokens => transitionCheck == true) {then buy till limit}
         if(transitionConditionsMet) {
             if(
-                collateralThreshold <= 
-                (this.totalSupply() + _tokens)
+                this.totalSupply() + _tokens > tokenThreshold
             ) {
-                _tokens = collateralThreshold - this.totalSupply();
+                _tokens = tokenThreshold - this.totalSupply();
 
-                uint256 cost = getBuyCost(_tokens);
-
-                require(
-                    collateralInstance.allowance(
-                        msg.sender, address(this)
-                    ) >= cost,
-                    "User has not approved contract for token cost amount"
-                );
-
-                require(
-                    collateralInstance.transferFrom(
-                        msg.sender,
-                        address(this),
-                        cost
-                    ),
-                    "Transfering of collateral failed"
-                );
-
-                _mint(msg.sender, _tokens);
+                _executeBuy(_tokens);
             }
+            // Transitions market to uniswap 
             _transition();
+
         } else {
-            uint256 cost = getBuyCost(_tokens);
-
-            require(
-                collateralInstance.allowance(
-                    msg.sender, address(this)
-                ) >= cost,
-                "User has not approved contract for token cost amount"
-            );
-
-            require(
-                collateralInstance.transferFrom(
-                    msg.sender,
-                    address(this),
-                    cost
-                ),
-                "Transfering of collateral failed"
-            );
-
-            _mint(msg.sender, _tokens);
+            // Transition threshold not met
+            _executeBuy(_tokens);
         }
+    }
+
+    function _executeBuy(uint _tokens) internal {
+        uint256 cost = getBuyCost(_tokens);
+
+        require(
+            collateralInstance.allowance(
+                msg.sender, address(this)
+            ) >= cost,
+            "User has not approved contract for token cost amount"
+        );
+
+        require(
+            collateralInstance.transferFrom(
+                msg.sender,
+                address(this),
+                cost
+            ),
+            "Transfering of collateral failed"
+        );
+
+        _mint(msg.sender, _tokens);
     }
 
     function sell(uint256 _tokens) external freeMarket() {
@@ -175,14 +174,7 @@ contract Token is ERC20 {
         return address(collateralInstance);
     }
 
-    function getTokenStatus() 
-        external 
-        view 
-        returns(
-            bool,
-            bool
-        )   
-    {
+    function getTokenStatus() external view returns(bool,bool) {
         //TODO also return additional checks
         return (
             transitionConditionsMet,
@@ -190,20 +182,40 @@ contract Token is ERC20 {
         );
     }
 
-    function _transitionCheck(bool _buy, uint _tokenAmount) internal {
-        if(
-            collateralThreshold <= 
-            (this.totalSupply() + _tokenAmount)
-        ) {
-            transitionConditionsMet = true;
-        }
+    function getTransitionThresholds() external view returns(uint256,uint256,uint256) {
+        //TODO also return additional checks
+        return (
+            tokenThreshold,
+            minimumTokenThreshold,
+            thresholdTimeout
+        );
+    }
 
-        //TODO add checks for various other conditions:
-        /**
-          ✅ collateral threshold 
-          ⚙️ collateral timeout
-          ⚙️ minimum collateral threashold 
-          */
+    function getMonthsFutureTimestamp(uint256 _months) public view returns(uint256) {
+        return now.addMonths(_months);
+    }
+
+    function _transitionCheck(bool _buy, uint _tokensToMint) internal {
+        uint newSupply;
+        // Sets new supply according to buy or sell
+        if(_buy) {
+            newSupply = this.totalSupply() + _tokensToMint;
+            // Checks if main threshold has been reached
+            if(newSupply >= tokenThreshold) {
+                transitionConditionsMet = true;
+            } 
+        } else {
+            newSupply = this.totalSupply() - _tokensToMint;
+        }
+        
+        if(now >= thresholdTimeout) {
+            // Time has expired
+            if(newSupply >= minimumTokenThreshold) {
+                transitionConditionsMet = true;
+            } else {
+                // TODO handle expire without meeting min threshold
+            }
+        }
     }
 
     function _transition() internal {
