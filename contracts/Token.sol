@@ -80,7 +80,7 @@ contract Token is ERC20 {
         // if(supply+_tokens => transitionCheck == true) {then buy till limit}
         if(transitionConditionsMet) {
             if(
-                this.totalSupply() + _tokens > tokenThreshold
+                this.totalSupply() + _tokens >= tokenThreshold
             ) {
                 _tokens = tokenThreshold - this.totalSupply();
 
