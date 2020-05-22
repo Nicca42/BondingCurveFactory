@@ -13,12 +13,11 @@ describe("📈 Curve Tests", async () => {
     let insecureDeployer = accounts[0];
     let user = accounts[1];
     let uniswapRouter = accounts[2];
-    //TODO make a mock for uniswap router
     
     let tokenInstance;
     let curveInstance;
     let collateralInstance;
-    let transerInstance;
+    let marketTransfterInstance;
 
     beforeEach('', async () => {
         let deployer = new etherlime.EtherlimeGanacheDeployer(insecureDeployer.secretKey);
@@ -35,7 +34,7 @@ describe("📈 Curve Tests", async () => {
             initSettings.tokenInit.symbol
         );
 
-        transerInstance = await deployer.deploy(
+        marketTransfterInstance = await deployer.deploy(
             MarketTransitionAbi,
             false,
             uniswapRouter.signer.address,
@@ -45,8 +44,7 @@ describe("📈 Curve Tests", async () => {
             TokenAbi,
             false,
             curveInstance.contract.address,
-            transerInstance.contract.address,
-            initSettings.tokenInit.maxSupply,
+            marketTransfterInstance.contract.address,
             initSettings.tokenInit.curveParameters,
             initSettings.tokenInit.name,
             initSettings.tokenInit.symbol,

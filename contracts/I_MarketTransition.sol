@@ -6,4 +6,5 @@ interface I_MarketTransition {
     function getTokensToMint() external returns(uint256 tokensToMint);
     function getRouterAddress() external view returns(address);
     function getTransitionInfo(address _token) external view returns(uint, uint, uint);
+    function getMonthsFutureTimestamp(uint256 _months) external view returns(uint256);
 }

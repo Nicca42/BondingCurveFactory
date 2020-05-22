@@ -15,14 +15,13 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
     let insecureDeployer = accounts[0];
     let user = accounts[1];
     let uniswapFactory = accounts[2];
-    //TODO make a mock for uniswap router
     let tester = accounts[3];
     
     let deployer;
     let tokenInstance;
     let curveInstance;
     let collateralInstance;
-    let transferInstance;
+    let marketTransfterInstance;
     let routerInstance;
     let wethInstance;
 
@@ -55,8 +54,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             wethInstance.contract.address
         )
 
-        // TODO rename to market transition (MT)
-        transferInstance = await deployer.deploy(
+        marketTransfterInstance = await deployer.deploy(
             MarketTransitionAbi,
             false,
             routerInstance.contract.address,
@@ -66,8 +64,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             TokenAbi,
             false,
             curveInstance.contract.address,
-            transferInstance.contract.address,
-            initSettings.tokenInit.maxSupply,
+            marketTransfterInstance.contract.address,
             initSettings.tokenInit.curveParameters,
             initSettings.tokenInit.name,
             initSettings.tokenInit.symbol,
@@ -109,7 +106,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             let tokenContractBalance = await collateralInstance.balanceOf(
                 tokenInstance.contract.address
             );
-            let transferInformation = await transferInstance.getTransitionInfo(
+            let transferInformation = await marketTransfterInstance.getTransitionInfo(
                 tokenInstance.contract.address
             );
     
@@ -161,21 +158,21 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 )
             );
 
-            let transferInformationAfter = await transferInstance.getTransitionInfo(
+            let transferInformationAfter = await marketTransfterInstance.getTransitionInfo(
                 tokenInstance.contract.address
             );
             let mtCollateralBalance = await collateralInstance.balanceOf(
-                transferInstance.contract.address
+                marketTransfterInstance.contract.address
             );
             let mtTokenBalance = await tokenInstance.balanceOf(
-                transferInstance.contract.address
+                marketTransfterInstance.contract.address
             );
             let mtCollateral = await collateralInstance.allowance(
-                transferInstance.contract.address,
+                marketTransfterInstance.contract.address,
                 routerInstance.contract.address
             );
             let mtToken = await tokenInstance.allowance(
-                transferInstance.contract.address,
+                marketTransfterInstance.contract.address,
                 routerInstance.contract.address
             );
             let routerAfterCollateral = await collateralInstance.balanceOf(
@@ -260,7 +257,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             let tokenContractBalance = await collateralInstance.balanceOf(
                 tokenInstance.contract.address
             );
-            let transferInformation = await transferInstance.getTransitionInfo(
+            let transferInformation = await marketTransfterInstance.getTransitionInfo(
                 tokenInstance.contract.address
             );
     
@@ -368,21 +365,21 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 "User was able to buy more than threshold"
             );
 
-            let transferInformationAfter = await transferInstance.getTransitionInfo(
+            let transferInformationAfter = await marketTransfterInstance.getTransitionInfo(
                 tokenInstance.contract.address
             );
             let mtCollateralBalance = await collateralInstance.balanceOf(
-                transferInstance.contract.address
+                marketTransfterInstance.contract.address
             );
             let mtTokenBalance = await tokenInstance.balanceOf(
-                transferInstance.contract.address
+                marketTransfterInstance.contract.address
             );
             let mtCollateral = await collateralInstance.allowance(
-                transferInstance.contract.address,
+                marketTransfterInstance.contract.address,
                 routerInstance.contract.address
             );
             let mtToken = await tokenInstance.allowance(
-                transferInstance.contract.address,
+                marketTransfterInstance.contract.address,
                 routerInstance.contract.address
             );
             let routerAfterCollateral = await collateralInstance.balanceOf(
@@ -467,7 +464,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             let tokenContractBalance = await collateralInstance.balanceOf(
                 tokenInstance.contract.address
             );
-            let transferInformation = await transferInstance.getTransitionInfo(
+            let transferInformation = await marketTransfterInstance.getTransitionInfo(
                 tokenInstance.contract.address
             );
     
@@ -515,6 +512,12 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 transitionConditionsMet[1],
                 "Transition state incorrect before buy"
             );
+
+            assert.equal(
+                transitionConditionsMet[0],
+                false,
+                "Token incorrectly transitioned"
+            );
         });
 
         it("✅ Token does transfer after timeout when above min threshould", async () => {
@@ -524,7 +527,7 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
             let tokenContractBalance = await collateralInstance.balanceOf(
                 tokenInstance.contract.address
             );
-            let transferInformation = await transferInstance.getTransitionInfo(
+            let transferInformation = await marketTransfterInstance.getTransitionInfo(
                 tokenInstance.contract.address
             );
     

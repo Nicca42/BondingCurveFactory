@@ -62,22 +62,41 @@
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_months",
+          "type": "uint256"
+        }
+      ],
+      "name": "getMonthsFutureTimestamp",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.6.6;\n\ninterface I_MarketTransition {\n\n    function transition() external;\n    function getTokensToMint() external returns(uint256 tokensToMint);\n    function getRouterAddress() external view returns(address);\n    function getTransitionInfo(address _token) external view returns(uint, uint, uint);\n}",
+  "source": "pragma solidity 0.6.6;\n\ninterface I_MarketTransition {\n\n    function transition() external;\n    function getTokensToMint() external returns(uint256 tokensToMint);\n    function getRouterAddress() external view returns(address);\n    function getTransitionInfo(address _token) external view returns(uint, uint, uint);\n    function getMonthsFutureTimestamp(uint256 _months) external view returns(uint256);\n}",
   "sourcePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
   "ast": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        2227
+        2234
       ]
     },
-    "id": 2228,
+    "id": 2235,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -97,9 +116,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2227,
+        "id": 2234,
         "linearizedBaseContracts": [
-          2227
+          2234
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -127,7 +146,7 @@
               "parameters": [],
               "src": "90:0:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "60:31:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -185,7 +204,7 @@
               ],
               "src": "139:22:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "96:66:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -244,7 +263,7 @@
               ],
               "src": "216:9:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "167:59:7",
             "stateMutability": "view",
             "virtual": false,
@@ -388,27 +407,114 @@
               ],
               "src": "295:18:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "231:83:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "b3d69b78",
+            "id": 2233,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMonthsFutureTimestamp",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2229,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2228,
+                  "mutability": "mutable",
+                  "name": "_months",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 2233,
+                  "src": "353:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2227,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "353:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "352:17:7"
+            },
+            "returnParameters": {
+              "id": 2232,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2231,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 2233,
+                  "src": "392:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2230,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "392:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "391:9:7"
+            },
+            "scope": 2234,
+            "src": "319:82:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2228,
-        "src": "24:292:7"
+        "scope": 2235,
+        "src": "24:379:7"
       }
     ],
-    "src": "0:316:7"
+    "src": "0:403:7"
   },
   "legacyAST": {
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_MarketTransition.sol",
     "exportedSymbols": {
       "I_MarketTransition": [
-        2227
+        2234
       ]
     },
-    "id": 2228,
+    "id": 2235,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -428,9 +534,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2227,
+        "id": 2234,
         "linearizedBaseContracts": [
-          2227
+          2234
         ],
         "name": "I_MarketTransition",
         "nodeType": "ContractDefinition",
@@ -458,7 +564,7 @@
               "parameters": [],
               "src": "90:0:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "60:31:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -516,7 +622,7 @@
               ],
               "src": "139:22:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "96:66:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -575,7 +681,7 @@
               ],
               "src": "216:9:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "167:59:7",
             "stateMutability": "view",
             "virtual": false,
@@ -719,18 +825,105 @@
               ],
               "src": "295:18:7"
             },
-            "scope": 2227,
+            "scope": 2234,
             "src": "231:83:7",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "b3d69b78",
+            "id": 2233,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMonthsFutureTimestamp",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2229,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2228,
+                  "mutability": "mutable",
+                  "name": "_months",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 2233,
+                  "src": "353:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2227,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "353:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "352:17:7"
+            },
+            "returnParameters": {
+              "id": 2232,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2231,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 2233,
+                  "src": "392:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2230,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "392:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "391:9:7"
+            },
+            "scope": 2234,
+            "src": "319:82:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2228,
-        "src": "24:292:7"
+        "scope": 2235,
+        "src": "24:379:7"
       }
     ],
-    "src": "0:316:7"
+    "src": "0:403:7"
   },
   "compiler": {
     "name": "solc",
@@ -740,5 +933,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-22T10:27:15.393Z"
+  "updatedAt": "2020-05-22T10:44:35.282Z"
 }

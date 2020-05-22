@@ -4,9 +4,11 @@ import "./IUniswapV2Router01.sol";
 import "./I_Token.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-
+import "./BokkyPooBahsDateTimeLibrary.sol";
 
 contract MarketTransition is ERC20 {
+    using BokkyPooBahsDateTimeLibrary for uint256;
+    
     IUniswapV2Router01 public routerInstance;
     bool public check;
 
@@ -27,10 +29,6 @@ contract MarketTransition is ERC20 {
     }
 
     function transition() public {
-        // TODO MAYBE Address passed in so that this can be implemented 
-        // as a delegate call in future improvment 
-
-        // TODO add require for permissioning on this function
         I_Token tokenInstance = I_Token(msg.sender);
         IERC20 collateralInstance = IERC20(tokenInstance.getCollateralInstance());
         // // This gets the price of the next token in collateral
@@ -100,5 +98,9 @@ contract MarketTransition is ERC20 {
             transitionInfo[_token][1],
             transitionInfo[_token][2]
         );
+    }
+
+    function getMonthsFutureTimestamp(uint256 _months) public view returns(uint256) {
+        return now.addMonths(_months);
     }
 }

@@ -12,10 +12,8 @@ let UniswapRouterAbi = require('../build/UniswapRouter.json');
 const defaultDaiPurchase = ethers.utils.parseUnits("5000000", 18);
 const defaultTokenVolume = ethers.utils.parseUnits("320000", 18);
 
-//TODO Remove the max supply on the token
 var initSettings = {
     tokenInit: {
-        maxSupply: ethers.utils.parseUnits("500", 18),
         curveParameters: [
             ethers.utils.parseUnits("1", 2),
             ethers.utils.parseUnits("3", 4),

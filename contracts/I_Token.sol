@@ -22,4 +22,5 @@ interface I_Token is IERC20 {
             bool,
             bool
         );
+    function getTransitionThresholds() external view returns(uint256,uint256,uint256);
 }

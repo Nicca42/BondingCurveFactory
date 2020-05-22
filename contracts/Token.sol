@@ -6,12 +6,9 @@ import "./I_MarketTransition.sol";
 import "./IUniswapV2Router01.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-import "./BokkyPooBahsDateTimeLibrary.sol";
+
 
 contract Token is ERC20 {
-    using BokkyPooBahsDateTimeLibrary for uint256;
-    // TODO remove
-    uint256 public maxSupply;
     // Curve set up
     uint256 public a;
     uint256 public b;
@@ -19,7 +16,7 @@ contract Token is ERC20 {
     // Instances for contract interactions
     I_Curve public curveInstance;
     IERC20 public collateralInstance;
-    I_MarketTransition public transfterInstance;
+    I_MarketTransition public marketTransfterInstance;
     // Transition variables
     bool public transitionConditionsMet;
     bool public transitionCompleated;
@@ -43,7 +40,6 @@ contract Token is ERC20 {
     constructor(
         address _curveInstance,
         address _transiton,
-        uint256 _maxSupply,
         uint256[3] memory _curveParameters,
         string memory _name,
         string memory _sybol,
@@ -59,8 +55,7 @@ contract Token is ERC20 {
         public 
     {
         curveInstance = I_Curve(_curveInstance);
-        transfterInstance = I_MarketTransition(_transiton);
-        maxSupply = _maxSupply;
+        marketTransfterInstance = I_MarketTransition(_transiton);
         a = _curveParameters[0];
         b = _curveParameters[1];
         c = _curveParameters[2];
@@ -90,28 +85,6 @@ contract Token is ERC20 {
         }
     }
 
-    function _executeBuy(uint _tokens) internal {
-        uint256 cost = getBuyCost(_tokens);
-
-        require(
-            collateralInstance.allowance(
-                msg.sender, address(this)
-            ) >= cost,
-            "User has not approved contract for token cost amount"
-        );
-
-        require(
-            collateralInstance.transferFrom(
-                msg.sender,
-                address(this),
-                cost
-            ),
-            "Transfering of collateral failed"
-        );
-
-        _mint(msg.sender, _tokens);
-    }
-
     function sell(uint256 _tokens) external freeMarket() {
         _transitionCheck(false, _tokens); 
         if(transitionConditionsMet) {
@@ -138,7 +111,7 @@ contract Token is ERC20 {
 
     function setTransition() external {
         require(
-            msg.sender == address(transfterInstance),
+            msg.sender == address(marketTransfterInstance),
             "Only transitioning contract may mark transition compleate"
         );
 
@@ -169,8 +142,7 @@ contract Token is ERC20 {
         return address(collateralInstance);
     }
 
-    function getTokenStatus() external view returns(bool,bool) {
-        //TODO also return additional checks
+    function getTokenStatus() external view returns(bool, bool) {
         return (
             transitionConditionsMet,
             transitionCompleated
@@ -178,7 +150,6 @@ contract Token is ERC20 {
     }
 
     function getTransitionThresholds() external view returns(uint256,uint256,uint256) {
-        //TODO also return additional checks
         return (
             tokenThreshold,
             minimumTokenThreshold,
@@ -186,8 +157,26 @@ contract Token is ERC20 {
         );
     }
 
-    function getMonthsFutureTimestamp(uint256 _months) public view returns(uint256) {
-        return now.addMonths(_months);
+    function _executeBuy(uint _tokens) internal {
+        uint256 cost = getBuyCost(_tokens);
+
+        require(
+            collateralInstance.allowance(
+                msg.sender, address(this)
+            ) >= cost,
+            "User has not approved contract for token cost amount"
+        );
+
+        require(
+            collateralInstance.transferFrom(
+                msg.sender,
+                address(this),
+                cost
+            ),
+            "Transfering of collateral failed"
+        );
+
+        _mint(msg.sender, _tokens);
     }
 
     function _transitionCheck(bool _buy, uint _tokensToMint) internal {
@@ -207,9 +196,7 @@ contract Token is ERC20 {
             // Time has expired
             if(newSupply >= minimumTokenThreshold) {
                 transitionConditionsMet = true;
-            } else {
-                // TODO handle expire without meeting min threshold
-            }
+            } 
         }
     }
 
@@ -219,20 +206,18 @@ contract Token is ERC20 {
             "Token has not met requirements for free market transition"
         );
 
-        address router = transfterInstance.getRouterAddress();
-        uint256 tokensToMint = transfterInstance.getTokensToMint();
-        _mint(address(transfterInstance), tokensToMint);
+        address router = marketTransfterInstance.getRouterAddress();
+        uint256 tokensToMint = marketTransfterInstance.getTokensToMint();
+        _mint(address(marketTransfterInstance), tokensToMint);
         // Approves 
         require(
             collateralInstance.transfer(
-                address(transfterInstance),
+                address(marketTransfterInstance),
                 collateralInstance.balanceOf(address(this))
             ),
             "Transfer of collateral failed"
         );
 
-        //TODO make mt
-        transfterInstance.transition();
+        marketTransfterInstance.transition();
     }
-    //TODO update interface with all functions
 }
