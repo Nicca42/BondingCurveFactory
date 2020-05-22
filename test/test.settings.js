@@ -52,6 +52,21 @@ const testSettings = {
     }
 };
 
+const examples = {
+    a: {
+        curveParameters: [
+            ethers.utils.parseUnits("0", 18),
+            ethers.utils.parseUnits("3", 2),
+            ethers.utils.parseUnits("1", 1)
+        ],
+        name: "Chilled Linear",
+        symbol: "CL",
+        transitionThreshold: ethers.utils.parseUnits("500", 18),
+        minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
+        colaleralTimeoutInMonths: 900
+    }
+};
+
 module.exports = {
     ethers,
     etherlime,
@@ -63,5 +78,6 @@ module.exports = {
     MarketTransitionAbi,
     UniswapRouterAbi,
     initSettings,
-    testSettings
+    testSettings,
+    examples
 }

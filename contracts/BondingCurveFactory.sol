@@ -77,7 +77,7 @@ contract BondingCurveFactory {
       *         curve instance in order to determine the prices of the token. 
       *         For more information please see the curve contract docs. 
       * @param  _name: The name of the token.
-      * @param  _sybol: The symbol for the token.
+      * @param  _symbol: The symbol for the token.
       * @param  _underlyingCollateral: The addresss of the underlying collateral
       *         for the tokens. I.e the currency for the price of the token. 
       *         Recomended to use a stable coin such as DAI to ensure a stable

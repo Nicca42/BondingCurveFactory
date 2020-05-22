@@ -50,14 +50,14 @@
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol",
     "exportedSymbols": {
       "I_Curve": [
-        2377
+        2383
       ]
     },
-    "id": 2378,
+    "id": 2384,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2362,
+        "id": 2368,
         "literals": [
           "solidity",
           "0.6",
@@ -73,9 +73,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2377,
+        "id": 2383,
         "linearizedBaseContracts": [
-          2377
+          2383
         ],
         "name": "I_Curve",
         "nodeType": "ContractDefinition",
@@ -84,7 +84,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "08d4db14",
-            "id": 2369,
+            "id": 2375,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -92,17 +92,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 2365,
+              "id": 2371,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2364,
+                  "id": 2370,
                   "mutability": "mutable",
                   "name": "_tokens",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2369,
+                  "scope": 2375,
                   "src": "78:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -111,7 +111,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2363,
+                    "id": 2369,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "78:7:6",
@@ -127,17 +127,17 @@
               "src": "68:31:6"
             },
             "returnParameters": {
-              "id": 2368,
+              "id": 2374,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2367,
+                  "id": 2373,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2369,
+                  "scope": 2375,
                   "src": "146:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -146,7 +146,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2366,
+                    "id": 2372,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "146:7:6",
@@ -161,7 +161,7 @@
               ],
               "src": "145:9:6"
             },
-            "scope": 2377,
+            "scope": 2383,
             "src": "48:107:6",
             "stateMutability": "view",
             "virtual": false,
@@ -171,7 +171,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "768713f5",
-            "id": 2376,
+            "id": 2382,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -179,17 +179,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 2372,
+              "id": 2378,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2371,
+                  "id": 2377,
                   "mutability": "mutable",
                   "name": "_tokens",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2376,
+                  "scope": 2382,
                   "src": "197:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -198,7 +198,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2370,
+                    "id": 2376,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "197:7:6",
@@ -214,17 +214,17 @@
               "src": "187:31:6"
             },
             "returnParameters": {
-              "id": 2375,
+              "id": 2381,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2374,
+                  "id": 2380,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2376,
+                  "scope": 2382,
                   "src": "265:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -233,7 +233,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2373,
+                    "id": 2379,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "265:7:6",
@@ -248,14 +248,14 @@
               ],
               "src": "264:9:6"
             },
-            "scope": 2377,
+            "scope": 2383,
             "src": "165:109:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2378,
+        "scope": 2384,
         "src": "24:252:6"
       }
     ],
@@ -265,14 +265,14 @@
     "absolutePath": "/Users/veronicac/Desktop/projects/linumlabs/BondingCurveFactory/contracts/I_Curve.sol",
     "exportedSymbols": {
       "I_Curve": [
-        2377
+        2383
       ]
     },
-    "id": 2378,
+    "id": 2384,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2362,
+        "id": 2368,
         "literals": [
           "solidity",
           "0.6",
@@ -288,9 +288,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2377,
+        "id": 2383,
         "linearizedBaseContracts": [
-          2377
+          2383
         ],
         "name": "I_Curve",
         "nodeType": "ContractDefinition",
@@ -299,7 +299,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "08d4db14",
-            "id": 2369,
+            "id": 2375,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -307,17 +307,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 2365,
+              "id": 2371,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2364,
+                  "id": 2370,
                   "mutability": "mutable",
                   "name": "_tokens",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2369,
+                  "scope": 2375,
                   "src": "78:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -326,7 +326,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2363,
+                    "id": 2369,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "78:7:6",
@@ -342,17 +342,17 @@
               "src": "68:31:6"
             },
             "returnParameters": {
-              "id": 2368,
+              "id": 2374,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2367,
+                  "id": 2373,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2369,
+                  "scope": 2375,
                   "src": "146:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -361,7 +361,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2366,
+                    "id": 2372,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "146:7:6",
@@ -376,7 +376,7 @@
               ],
               "src": "145:9:6"
             },
-            "scope": 2377,
+            "scope": 2383,
             "src": "48:107:6",
             "stateMutability": "view",
             "virtual": false,
@@ -386,7 +386,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "768713f5",
-            "id": 2376,
+            "id": 2382,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -394,17 +394,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 2372,
+              "id": 2378,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2371,
+                  "id": 2377,
                   "mutability": "mutable",
                   "name": "_tokens",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2376,
+                  "scope": 2382,
                   "src": "197:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -413,7 +413,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2370,
+                    "id": 2376,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "197:7:6",
@@ -429,17 +429,17 @@
               "src": "187:31:6"
             },
             "returnParameters": {
-              "id": 2375,
+              "id": 2381,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2374,
+                  "id": 2380,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2376,
+                  "scope": 2382,
                   "src": "265:7:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -448,7 +448,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2373,
+                    "id": 2379,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "265:7:6",
@@ -463,14 +463,14 @@
               ],
               "src": "264:9:6"
             },
-            "scope": 2377,
+            "scope": 2383,
             "src": "165:109:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2378,
+        "scope": 2384,
         "src": "24:252:6"
       }
     ],
@@ -484,5 +484,5 @@
   },
   "networks": {},
   "schemaVersion": "2.3.3",
-  "updatedAt": "2020-05-22T13:54:50.483Z"
+  "updatedAt": "2020-05-22T14:34:44.184Z"
 }
