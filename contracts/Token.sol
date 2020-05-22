@@ -32,10 +32,6 @@ contract Token is ERC20 {
     uint256 public minimumTokenThreshold;
     uint256 public thresholdTimeout;
 
-    event transfering(uint collateral, uint tokensToMint);
-    event transitionToFreeMarket(uint amountA, uint amountB, uint liquidity);
-    event wtf(uint tokens, uint collateral, address sender);
-
     modifier freeMarket() {
         require(
             !transitionCompleated,
