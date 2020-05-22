@@ -8,10 +8,7 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
 /**
-  * @author Veronica Coutts 
-  *         @vonnie610 (twitter) 
-  *         @VeronicaLC (GitLab) 
-  *         @nicca42 (GitHub)
+  * @author Veronica Coutts @vonnie610 (twitter) @VeronicaLC (GitLab) 
   * @title  Token
   * @notice This token contract enables an IBCO (Initial Bonding Curve Offering)
   *         as a mechanism to launch a token into the open market without having
@@ -48,7 +45,7 @@ contract Token is ERC20 {
     }
 
     /**
-      * @param  _curveInstance: The address of the curve implementation. 
+      * @param  _curve: The address of the curve implementation. 
       * @param  _transiton: The address of the transition implementation.
       * @param  _curveParameters: The curve "settings" that will be used in the 
       *         curve instance in order to determine the prices of the token. 
