@@ -73,11 +73,7 @@ contract Token is ERC20 {
 
     function buy(uint256 _tokens) external freeMarket() {
         _transitionCheck(true, _tokens); 
-        // TODO 1. if your buy will push the limit you should be able to
-        // buy up untill the limit (to met the amount so that it transitions)
-        // and then it will not use any funds over that
-        // and possibly removes exes approval (just to set a good stanard)
-        // if(supply+_tokens => transitionCheck == true) {then buy till limit}
+        // The token can transition
         if(transitionConditionsMet) {
             if(
                 this.totalSupply() + _tokens >= tokenThreshold
@@ -88,7 +84,6 @@ contract Token is ERC20 {
             }
             // Transitions market to uniswap 
             _transition();
-
         } else {
             // Transition threshold not met
             _executeBuy(_tokens);

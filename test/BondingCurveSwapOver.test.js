@@ -495,12 +495,8 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
                 "Transition information prematurly set"
             );
 
-            let transitionInfo = await tokenInstance.getTransitionThresholds();
-            console.log(transitionInfo)
-
             // Time travel 
-            let seconds = 600000;
-            await utils.timeTravel(deployer.provider, seconds);
+            await utils.timeTravel(deployer.provider, initSettings.tokenInit.colaleralTimeoutInMonths);
             
             await collateralInstance.from(user).buy(buyPrice);
             await collateralInstance.from(user).approve(
@@ -522,10 +518,107 @@ describe("🆓 Transitioning Token To Free Market Tests", async () => {
         });
 
         it("✅ Token does transfer after timeout when above min threshould", async () => {
+            let buyPrice = await tokenInstance.getBuyCost(
+                initSettings.tokenInit.minimumCollateralThreshold
+            );
+            let tokenContractBalance = await collateralInstance.balanceOf(
+                tokenInstance.contract.address
+            );
+            let transferInformation = await transferInstance.getTransitionInfo(
+                tokenInstance.contract.address
+            );
+    
             assert.equal(
-                true,
+                tokenContractBalance.toString(),
+                0,
+                "Token contract did not start with 0 balance"
+            );
+
+            assert.equal(
+                transferInformation[0].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformation[1].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            assert.equal(
+                transferInformation[2].toString(),
+                0,
+                "Transition information prematurly set"
+            );
+
+            let transitionConditionsMet = await tokenInstance.getTokenStatus();
+
+            assert.equal(
+                transitionConditionsMet[0],
+                transitionConditionsMet[1],
+                "Transition state incorrect before buy"
+            );
+
+            assert.equal(
+                transitionConditionsMet[0],
                 false,
-                "Check not added in contracts"
+                "Token incorectly tansitioned"
+            );
+
+            await collateralInstance.from(user).buy(buyPrice);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                buyPrice
+            );
+            await tokenInstance.from(user).buy(
+                initSettings.tokenInit.minimumCollateralThreshold
+            );
+
+            transitionConditionsMet = await tokenInstance.getTokenStatus();
+
+            assert.equal(
+                transitionConditionsMet[0],
+                transitionConditionsMet[1],
+                "Transition state incorrect before buy"
+            );
+
+            assert.equal(
+                transitionConditionsMet[0],
+                false,
+                "Token incorectly tansitioned"
+            );
+
+            // Time travel 
+            await utils.timeTravel(
+                deployer.provider, 
+                initSettings.tokenInit.colaleralTimeoutInMonths
+            );
+
+            buyPrice = await tokenInstance.getBuyCost(
+                testSettings.buy.mintAmount
+            );
+            await collateralInstance.from(user).buy(buyPrice);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                buyPrice
+            );
+            await tokenInstance.from(user).buy(
+                testSettings.buy.mintAmount
+            );
+
+            transitionConditionsMet = await tokenInstance.getTokenStatus();
+
+            assert.equal(
+                transitionConditionsMet[0],
+                transitionConditionsMet[1],
+                "Transition state incorrect after buy"
+            );
+
+            assert.equal(
+                transitionConditionsMet[0],
+                true,
+                "Token has not tansitioned"
             );
         });
     });
