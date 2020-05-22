@@ -5,6 +5,14 @@ import "./I_Token.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import "./BokkyPooBahsDateTimeLibrary.sol";
 
+/**
+  * @author Veronica Coutts @vonnie610 (twitter) @VeronicaLC (GitLab) 
+  * @title  Market Transition
+  * @notice This curve contract enables an IBCO (Initial Bonding Curve Offering)
+  *         as a mechanism to launch a token into the open market without having
+  *         to raise the funds in a traditional manner.
+  *         This product is a beta. Use at your own risk.
+  */
 contract MarketTransition {
     using BokkyPooBahsDateTimeLibrary for uint256;
     // Creates an instance of the uniswap router
