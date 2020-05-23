@@ -92,7 +92,7 @@ describe("🛠 Examples", async () => {
             console.log("Token transition threshold:\n" + examples.a.transitionThreshold.toString())
 
             let collateralAtThreshold = await tokenInstance.getBuyCost(
-                1
+                examples.a.transitionThreshold
             );
             console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
 
@@ -103,6 +103,98 @@ describe("🛠 Examples", async () => {
 
             collateralAtThreshold = await tokenInstance.getBuyCost(
                 examples.a.minimumCollateralThreshold
+            );
+            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+        });
+    });
+
+    describe("🎢 Exponential", async () => {
+        it("🤔 Results & set up", async () => {
+            tokenInstance = await deployer.deploy(
+                TokenAbi,
+                false,
+                curveInstance.contract.address,
+                marketTransfterInstance.contract.address,
+                examples.b.curveParameters,
+                examples.b.name,
+                examples.b.symbol,
+                collateralInstance.contract.address,
+                examples.b.transitionThreshold,
+                examples.b.minimumCollateralThreshold,
+                examples.b.colaleralTimeoutInMonths
+            );
+
+            console.log(
+                "Curve parameters:\n" + 
+                examples.b.curveParameters[0].toString()       
+            );
+            console.log(
+                examples.b.curveParameters[1].toString()       
+            );
+            console.log(
+                examples.b.curveParameters[2].toString()       
+            );
+
+            console.log("Token transition threshold:\n" + examples.b.transitionThreshold.toString())
+
+            let collateralAtThreshold = await tokenInstance.getBuyCost(
+                examples.b.transitionThreshold
+            );
+            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+
+            console.log(
+                "Minimum token threshold:\n" +
+                examples.b.minimumCollateralThreshold
+            );
+
+            collateralAtThreshold = await tokenInstance.getBuyCost(
+                examples.b.minimumCollateralThreshold
+            );
+            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+        });
+    });
+
+    describe("🛋 Flat line", async () => {
+        it("🤔 Results & set up", async () => {
+            tokenInstance = await deployer.deploy(
+                TokenAbi,
+                false,
+                curveInstance.contract.address,
+                marketTransfterInstance.contract.address,
+                examples.c.curveParameters,
+                examples.c.name,
+                examples.c.symbol,
+                collateralInstance.contract.address,
+                examples.c.transitionThreshold,
+                examples.c.minimumCollateralThreshold,
+                examples.c.colaleralTimeoutInMonths
+            );
+
+            console.log(
+                "Curve parameters:\n" + 
+                examples.c.curveParameters[0].toString()       
+            );
+            console.log(
+                examples.c.curveParameters[1].toString()       
+            );
+            console.log(
+                examples.c.curveParameters[2].toString()       
+            );
+
+            console.log("Token transition threshold:\n" + examples.c.transitionThreshold.toString())
+
+            let collateralAtThreshold = await tokenInstance.getBuyCost(
+                examples.c.transitionThreshold
+            );
+            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+
+            console.log(
+                "Minimum token threshold:\n" +
+                examples.c.minimumCollateralThreshold
+            );
+
+            collateralAtThreshold = await tokenInstance.getBuyCost(
+                examples.c.minimumCollateralThreshold
             );
             console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
         });

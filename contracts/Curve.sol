@@ -2,6 +2,7 @@ pragma solidity 0.6.6;
 
 import "./I_Curve.sol";
 import "./I_Token.sol";
+import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 //TODO update to use safe maths
 
@@ -14,6 +15,7 @@ import "./I_Token.sol";
   *         This product is a beta. Use at your own risk.
   */
 contract Curve is I_Curve {
+  	using SafeMath for uint256;
     /**
       * This curve uses the following formula:
       * a/3(x_1^3 - x_0^3) + b/2(x_1^2 - x_0^2) + c(x_1 - x_0)
@@ -35,18 +37,23 @@ contract Curve is I_Curve {
         returns(uint256)
     {
         uint256 supply = I_Token(msg.sender).totalSupply();
-        uint256 newSupply = supply + _tokens;
+        uint256 newSupply = supply.add(_tokens);
 
         uint256 a;
         uint256 b;
         uint256 c;
         (a, b, c) = I_Token(msg.sender).getCurve();
         
-        uint256 price = (a/(3))*(newSupply**3 - supply**3) 
-                        + (b/2)*(newSupply**2 - supply**2) 
-                        + c*(newSupply - supply);
+        uint256 price = (
+		a.div(3)).mul(
+			(newSupply**3).sub(supply**3)
+		) + (b.div(2)).mul(
+			(newSupply**2).sub(supply**2)
+		) + c.mul(
+			newSupply.sub(supply)
+		);
 
-        return price/1e18;
+        return price.div(1e18);
     }
 
     /**
