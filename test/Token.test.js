@@ -61,7 +61,7 @@ describe("💪 Token Tests", async () => {
     
             assert.equal(
                 buyPrice.toString(),
-                testSettings.buy.mintedTokenCost,
+                testSettings.buy.mintedTokenCostAjusted,
                 "Unexpected amount of minted tokens"
             );
         });
@@ -91,7 +91,7 @@ describe("💪 Token Tests", async () => {
     
             assert.equal(
                 tokenContractBalanceAfter.toString(),
-                testSettings.buy.mintedTokenCost,
+                testSettings.buy.mintedTokenCostAjusted,
                 "Token contract did not start with 0 balance"
             );
             assert.equal(
@@ -126,7 +126,7 @@ describe("💪 Token Tests", async () => {
     
             assert.equal(
                 tokenContractBalanceAfter.toString(),
-                testSettings.buy.mintedTokenCost,
+                testSettings.buy.mintedTokenCostAjusted,
                 "Token contract did not start with 0 balance"
             );
     
@@ -250,7 +250,7 @@ describe("💪 Token Tests", async () => {
                 0,
                 "Token contract did not start with 0 balance"
             );
-    
+            
             await collateralInstance.from(user).buy(buyPrice);
             await collateralInstance.from(user).approve(
                 tokenInstance.contract.address,
@@ -266,7 +266,7 @@ describe("💪 Token Tests", async () => {
     
             assert.equal(
                 tokenContractBalanceAfter.toString(),
-                testSettings.buy.mintedTokenCost,
+                testSettings.buy.mintedTokenCostAjusted,
                 "Token contract did not start with 0 balance"
             );
     

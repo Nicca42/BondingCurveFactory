@@ -3,6 +3,8 @@ pragma solidity 0.6.6;
 import "./I_Curve.sol";
 import "./I_Token.sol";
 
+//TODO update to use safe maths
+
 /**
   * @author Veronica Coutts @vonnie610 (twitter) @VeronicaLC (GitLab) 
   * @title  Curve
@@ -40,11 +42,11 @@ contract Curve is I_Curve {
         uint256 c;
         (a, b, c) = I_Token(msg.sender).getCurve();
         
-        uint256 price = (a/3)*(newSupply**3 - supply**3) 
+        uint256 price = (a/(3))*(newSupply**3 - supply**3) 
                         + (b/2)*(newSupply**2 - supply**2) 
                         + c*(newSupply - supply);
 
-        return price;
+        return price/1e18;
     }
 
     /**
@@ -71,6 +73,6 @@ contract Curve is I_Curve {
                         + (b/2)*(supply**2 - newSupply**2) 
                         + c*(supply - newSupply);
 
-        return price;
+        return price/1e18;
     }
 }

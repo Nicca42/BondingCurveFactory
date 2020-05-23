@@ -92,7 +92,7 @@ describe("🛠 Examples", async () => {
             console.log("Token transition threshold:\n" + examples.a.transitionThreshold.toString())
 
             let collateralAtThreshold = await tokenInstance.getBuyCost(
-                examples.a.transitionThreshold
+                1
             );
             console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
 
@@ -105,7 +105,6 @@ describe("🛠 Examples", async () => {
                 examples.a.minimumCollateralThreshold
             );
             console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
-
         });
     });
 });
