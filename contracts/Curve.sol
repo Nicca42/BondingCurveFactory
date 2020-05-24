@@ -85,4 +85,32 @@ contract Curve is I_Curve {
 
         return price/1e18;
     }
+
+	function getEndPrice(
+		uint256 _a,
+		uint256 _b,
+		uint256 _c,
+		uint256 _threshold
+	) 
+		public
+		pure	
+		returns(uint256, uint256)
+	{
+		uint256 supply = 0;
+        uint256 newSupply = _threshold;
+
+		uint aPrice = 0;
+
+		if(_a != 0) {
+			aPrice = ((_a.div(3)).mul((newSupply**3).sub(supply**3))).div(1e18);
+		}
+        
+        uint256 price = aPrice + (_b.div(2)).mul(
+			(newSupply**2).sub(supply**2)
+		) + _c.mul(
+			newSupply.sub(supply)
+		);
+
+        return price.div(1e18);
+	}
 }

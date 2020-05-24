@@ -397,7 +397,8 @@
       <div class="summarysecition">
         <div class="titlesection">
           <h1 class="heading-4">4. Summary</h1>
-          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to be available when you move over to a Uniswap pool.</p>
+          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to
+            be available when you move over to a Uniswap pool.</p>
           <div class="buttonwrapper">
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
           background-color:#494949;
@@ -406,22 +407,22 @@
           padding-right: 20px;
           padding-top: 10px;
           padding-bottom: 10px" onclick="resetInfo()">
-  Reset ALL Data
-  </button></div>
+                Reset ALL Data
+              </button></div>
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
           background-color:#FF500B;
           padding-left: 20px;
           padding-right: 20px;
           padding-top: 10px;
-          padding-bottom: 10px" onclick="allInfo()">
-  Show Summary
-  </button></div>
+          padding-bottom: 10px" @click="showSummary()">
+                Show Summary
+              </button></div>
           </div>
         </div>
         <div class="summarycontents address">
           <div class="scriptinfowrapperaddress">
             <div class="itemwrapper">
-              <div id="tokenInfoCO" class="textblock address">0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359</div>
+              <div id="tokenInfoCO" class="textblock address">{{collateralToken}}</div>
               <h4>Token Collateral Address</h4>
             </div>
           </div>
@@ -429,25 +430,25 @@
         <div class="summarycontents">
           <div class="scriptinfowrapper _01">
             <div class="itemwrapper">
-              <div id="tokenInfoSY" class="textblock big">CLT</div>
-              <div id="tokenInfoNA" class="textblock medium">Coolest Token</div>
+              <div id="tokenInfoSY" class="textblock big">{{tokenResults.synb}}</div>
+              <div id="tokenInfoNA" class="textblock medium">{{tokenResults.name}}</div>
             </div>
           </div>
           <div class="scriptinfowrapper _03">
             <div class="itemwrapper">
-              <div id="tokenInfoTT" class="textblock medium-number">000 . 000 000 000 000 000 000</div>
+              <div id="tokenInfoTT" class="textblock medium-number">{{tokenResults.maxToken}}</div>
               <h4>Token Threshold</h4>
             </div>
           </div>
           <div class="scriptinfowrapper _05b">
             <div class="itemwrapper">
-              <div id="tokenInfoMTT" class="textblock medium-number">000 . 000 000 000 000 000 000</div>
+              <div id="tokenInfoMTT" class="textblock medium-number">{{tokenResults.minToken}}</div>
               <h4>Minimum Token <br>Threshold</h4>
             </div>
           </div>
           <div class="scriptinfowrapper _06">
             <div class="itemwrapper">
-              <div id="tokenInfoTO" class="textblock medium-number">000</div>
+              <div id="tokenInfoTO" class="textblock medium-number">{{tokenResults.timeout}}</div>
               <h4>Collateral Time Out<br>(months)</h4>
             </div>
           </div>
@@ -455,21 +456,21 @@
         <div class="summarycontents">
           <div class="scriptinfowrapper _07">
             <div class="itemwrapper">
-              <div id="curveInfoA" class="textblock medium-number">000 000 000 000 000 000</div>
+              <div id="curveInfoA" class="textblock medium-number">{{tokenResults.curveA}}</div>
               <h4>curve Parameter</h4>
               <div class="textblock small">a</div>
             </div>
           </div>
           <div class="scriptinfowrapper _08">
             <div class="itemwrapper">
-              <div id="curveInfoB" class="textblock medium-number">000 000 000 000 000 000</div>
+              <div id="curveInfoB" class="textblock medium-number">{{tokenResults.curveB}}</div>
               <h4>curve Parameter</h4>
               <div class="textblock small">B</div>
             </div>
           </div>
           <div class="scriptinfowrapper _08">
             <div class="itemwrapper">
-              <div id="curveInfoC" class="textblock medium-number">000 000 000 000 000 000</div>
+              <div id="curveInfoC" class="textblock medium-number">{{tokenResults.curveC}}</div>
               <h4>curve Parameter</h4>
               <div class="textblock small">C</div>
             </div>
@@ -479,13 +480,14 @@
       <div class="resultssecition">
         <div class="titlesection">
           <h1 class="heading-4">5. Full Results</h1>
-          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to be available when you move over to a Uniswap pool <span class="emojitextsmall">🦄</span></p>
+          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to
+            be available when you move over to a Uniswap pool <span class="emojitextsmall">🦄</span></p>
         </div>
         <div class="summarycontents">
           <div class="scriptinfowrapper _09">
             <div class="textblock small">MAX</div>
             <div class="itemwrapper">
-              <div id="tokenMaxResult" class="textblock medium-number">00 000 000 . 000 000 000 000 00o 000</div>
+              <div id="tokenMaxResult" class="textblock medium-number">{{tokenResults.maxCollateral}}</div>
               <h4>how much collateral there will be at the token threshold</h4>
             </div>
           </div>
@@ -493,7 +495,7 @@
           <div class="scriptinfowrapper _10">
             <div class="textblock small">Min</div>
             <div class="itemwrapper">
-              <div id="tokenMinResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
+              <div id="tokenMinResult" class="textblock medium-number">{{tokenResults.minCollateral}}</div>
               <h4>how much collateral there will be at the min token threshold</h4>
             </div>
           </div>
@@ -501,25 +503,25 @@
         <div class="summarycontents">
           <div class="scriptinfowrapper _11">
             <div class="itemwrapper">
-              <div id="tokenNumberMaxResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
+              <div id="tokenNumberMaxResult" class="textblock medium-number">{{tokenResults.maxToken}}</div>
               <h4>MAX number of tokens</h4>
             </div>
           </div>
           <div class="scriptinfowrapper _11">
             <div class="itemwrapper">
-              <div id="tokenPriceMaxResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
+              <div id="tokenPriceMaxResult" class="textblock medium-number">{{tokenResults.maxTokenStartPrice}}</div>
               <h4>MAX Token Start Price</h4>
             </div>
           </div>
           <div class="scriptinfowrapper _11">
             <div class="itemwrapper">
-              <div id="tokenNumberMaxResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
+              <div id="tokenNumberMaxResult" class="textblock medium-number">{{tokenResults.minToken}}</div>
               <h4>Min Number of Tokens</h4>
             </div>
           </div>
           <div class="scriptinfowrapper _11">
             <div class="itemwrapper">
-              <div id="tokenPriceMinResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
+              <div id="tokenPriceMinResult" class="textblock medium-number">{{tokenResults.minTokenStartPrice}}</div>
               <h4>Min Token Start Price</h4>
             </div>
           </div>
@@ -528,8 +530,11 @@
       <div id="Generate" class="generatesection">
         <div class="titlesection">
           <h1 class="heading-4">6. Generate</h1>
-          <p><strong>Are you ready to create your IBCO? </strong><br><br>Selecting I am ready below will generate your transaction.</p>
-          <h2 class="heading-5"><span class="orangetext">Warning: </span><br>This will generate your IBCO contract. Your token address will be given to you, and from there you are on your own, good luck!<br><span class="emojitext big">🚀</span></h2>
+          <p><strong>Are you ready to create your IBCO? </strong><br><br>Selecting I am ready below will generate your
+            transaction.</p>
+          <h2 class="heading-5"><span class="orangetext">Warning: </span><br>This will generate your IBCO contract. Your
+            token address will be given to you, and from there you are on your own, good luck!<br><span
+              class="emojitext big">🚀</span></h2>
           <div class="buttonwrapper">
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
           background-color:#494949;
@@ -538,16 +543,16 @@
           padding-right: 20px;
           padding-top: 10px;
           padding-bottom: 10px" onclick="resetInfo()">
-  Reset ALL Data
-  </button></div>
+                Reset ALL Data
+              </button></div>
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
           background-color:#FF500B;
           padding-left: 20px;
           padding-right: 20px;
           padding-top: 10px;
           padding-bottom: 10px" @click="deployMarket()">
-  Yes I am Ready!
-  </button></div>
+                Yes I am Ready!
+              </button></div>
           </div>
         </div>
       </div>
@@ -557,7 +562,10 @@
       <div v-if="createdTokenAddress != null" id="Generate" class="productsection">
         <div class="titlesection">
           <h1 class="heading-4">7. Get New Token Address</h1>
-          <p>Click to see it on Etherscan</p><a id="newTokenAddress" :href="`https://rinkeby.etherscan.io/address/${createdTokenAddress}`" target="_blank" class="newaddresslink">{{createdTokenAddress}}</a></div>
+          <p>Click to see it on Etherscan</p><a id="newTokenAddress"
+            :href="`https://rinkeby.etherscan.io/address/${createdTokenAddress}`" target="_blank"
+            class="newaddresslink">{{createdTokenAddress}}</a>
+        </div>
       </div>
     </main>
     <div class="footersection">
@@ -680,7 +688,9 @@
           signer: null,
           account: null,
           bondingCurveFactory: null,
-          bondingCurveFactyoryAddress: "0x021F4a6e1ae933c47Da87e6E60E975EC63736Eac",
+          bondingCurveFactyoryAddress: "0x3466B1A77e4f8903167C5BCD2d6422F1C9d986a7",
+          curve: null,
+          curveAddress: "0x0bC582f84dB8B7679b21F14178137b52F298d8DE",
           collateralToken: "0x0eB3671cFeAdb7A43FDE7a82C096367A2A5BFbBD",
           createdTokenAddress: null,
           txPending: false,
@@ -689,6 +699,20 @@
             tokenNameInput: null,
             tokenSymbolInput: null,
             tokenThresholdInput: null,
+          },
+          tokenResults: {
+            name: "",
+            synb: "",
+            maxToken: "000 . 000 000 000 000 000 000",
+            minToken: "000 . 000 000 000 000 000 000",
+            maxCollateral: "000 . 000 000 000 000 000 000",
+            minCollateral: "000 . 000 000 000 000 000 000",
+            maxTokenStartPrice: "000 . 000 000 000 000 000 000",
+            minTokenStartPrice: "000 . 000 000 000 000 000 000",
+            curveA: "000 000 000 000 000 000",
+            curveB: "000 000 000 000 000 000",
+            curveC: "000 000 000 000 000 000",
+            timeout: "000",
           },
           bondingCurveFactoryABI: [
             {
@@ -908,6 +932,80 @@
               "stateMutability": "view",
               "type": "function"
             }
+          ],
+          curveABI: [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_tokens",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getBuyPrice",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_tokens",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getSellAmount",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_a",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_b",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_c",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_threshold",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getEndPrice",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "pure",
+              "type": "function"
+            }
           ]
         };
       },
@@ -918,7 +1016,6 @@
             this.signer = this.ethers.getSigner()
             window.ethereum.enable();
             this.connected = true;
-            console.log("ethers connected", ethers)
 
             this.initApp()
           } else {
@@ -928,68 +1025,73 @@
           }
         },
         async initApp() {
-          console.log("inti")
-
           this.account = await this.signer.getAddress()
-          console.log("this.addcount", this.account)
-
-          const balance = await this.ethers.getBalance(this.account)
-          console.log("Balance: " + ethers.utils.formatEther(balance));
-
-          console.log("this.bondingCurveFactory", ethers.getDefaultProvider())
-
 
           this.bondingCurveFactory = new ethers.Contract(this.bondingCurveFactyoryAddress,
             this.bondingCurveFactoryABI,
             this.signer);
 
           const owner = await this.bondingCurveFactory.owner()
-          console.log("owner", owner)
         },
-        async deployMarket() {
-          console.log("DEPLOY BITCH")
-          console.log("tokenSettings", this.tokenSettings)
 
-          const params = {
-            curveParameters: [
-              ethers.utils.parseUnits("0", 18),
-              ethers.utils.parseUnits("6", 2),
-              ethers.utils.parseUnits("1", 1)
-            ],
-            name: "Chilled Linear",
-            symbol: "CL",
-            transitionThreshold: ethers.utils.parseUnits("500", 18),
-            minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
-            colaleralTimeoutInMonths: 900
-          }
-          
+        async deployMarket() {
           const results = await this.bondingCurveFactory.createMarket(
             [
               this.tokenSettings.curveParamAInput,
               this.tokenSettings.curveParamBInput,
               this.tokenSettings.curveParamCInput
-            ], 
-            this.tokenSettings.tokenNameInput, 
-            this.tokenSettings.tokenSymbolInput, 
-            this.collateralToken, 
+            ],
+            this.tokenSettings.tokenNameInput,
+            this.tokenSettings.tokenSymbolInput,
+            this.collateralToken,
             ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18),
             ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18),
             this.tokenSettings.tokenTimeOutInput
-          )// TODO need to pass the months through the markettransitioner to get months (or just update the factory to do that)
+          )
+
           this.txPending = true;
-          console.log("results", results)
 
           let eventFilter = this.bondingCurveFactory.on("marketCreated", (caller, newToken, name, event) => {
-            console.log("caller", caller)
-            console.log("newToken", newToken)
             this.createdTokenAddress = newToken;
             this.txComplete = true;
             this.txPending = false;
           });
         },
-        async verifyInput() {
+
+        async showSummary() {
+          this.tokenResults.name = this.tokenSettings.tokenNameInput;
+          this.tokenResults.synb = this.tokenSettings.tokenSymbolInput;
+          this.tokenResults.maxToken = ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18);
+          this.tokenResults.minToken = ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18);
+          this.tokenResults.curveA = this.tokenSettings.curveParamAInput;
+          this.tokenResults.curveB = this.tokenSettings.curveParamBInput;
+          this.tokenResults.curveC = this.tokenSettings.curveParamCInput;
+          this.tokenResults.timeout = this.tokenSettings.tokenTimeOutInput;
           
-        }
+          this.curve = new ethers.Contract(this.curveAddress,
+            this.curveABI,
+            this.signer
+          );
+          
+          this.tokenResults.maxCollateral = await this.curve.getEndPrice(
+            this.tokenSettings.curveParamAInput,
+            this.tokenSettings.curveParamBInput,
+            this.tokenSettings.curveParamCInput,
+            ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18),
+          );
+            
+          this.tokenResults.minCollateral = await this.curve.getEndPrice(
+            this.tokenSettings.curveParamAInput,
+            this.tokenSettings.curveParamBInput,
+            this.tokenSettings.curveParamCInput,
+            ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18),
+          );
+
+            // this.tokenResults.maxTokenStartPrice = this.tokenSettings.tokenNameInput;
+            // this.tokenResults.minTokenStartPrice = this.tokenSettings.tokenNameInput;
+            // console.log(collateralAtMax.toString())
+        },
+
       },
 
       async mounted() { },
