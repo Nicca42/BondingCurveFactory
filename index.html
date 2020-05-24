@@ -551,10 +551,13 @@
           </div>
         </div>
       </div>
+      <div v-if="txPending">
+        <img src="./images/load.gif">
+      </div>
       <div v-if="createdTokenAddress != null" id="Generate" class="productsection">
         <div class="titlesection">
           <h1 class="heading-4">7. Get New Token Address</h1>
-          <p>Click to see it on Etherscan</p><a id="newTokenAddress" href="#" target="_blank" class="newaddresslink">{{createdTokenAddress}}</a></div>
+          <p>Click to see it on Etherscan</p><a id="newTokenAddress" :href="`https://rinkeby.etherscan.io/address/${createdTokenAddress}`" target="_blank" class="newaddresslink">{{createdTokenAddress}}</a></div>
       </div>
     </main>
     <div class="footersection">
@@ -680,6 +683,8 @@
           bondingCurveFactyoryAddress: "0x021F4a6e1ae933c47Da87e6E60E975EC63736Eac",
           collateralToken: "0x0eB3671cFeAdb7A43FDE7a82C096367A2A5BFbBD",
           createdTokenAddress: null,
+          txPending: false,
+          txComplete: false,
           tokenSettings: {
             tokenNameInput: null,
             tokenSymbolInput: null,
@@ -957,7 +962,7 @@
             minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
             colaleralTimeoutInMonths: 900
           }
-
+          
           const results = await this.bondingCurveFactory.createMarket(
             [
               this.tokenSettings.curveParamAInput,
@@ -971,14 +976,19 @@
             ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18),
             this.tokenSettings.tokenTimeOutInput
           )// TODO need to pass the months through the markettransitioner to get months (or just update the factory to do that)
-
+          this.txPending = true;
           console.log("results", results)
 
           let eventFilter = this.bondingCurveFactory.on("marketCreated", (caller, newToken, name, event) => {
             console.log("caller", caller)
             console.log("newToken", newToken)
             this.createdTokenAddress = newToken;
+            this.txComplete = true;
+            this.txPending = false;
           });
+        },
+        async verifyInput() {
+          
         }
       },
 

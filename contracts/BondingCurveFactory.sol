@@ -4,6 +4,7 @@ import "./Token.sol";
 import "./Curve.sol";
 import "./MarketTransition.sol";
 import "./IUniswapV2Router01.sol";
+import "./BokkyPooBahsDateTimeLibrary.sol";
 
 /**
   * @author Veronica Coutts @vonnie610 (twitter) @VeronicaLC (GitLab) 
@@ -14,6 +15,8 @@ import "./IUniswapV2Router01.sol";
   *         This product is a beta. Use at your own risk.
   */
 contract BondingCurveFactory {
+    using BokkyPooBahsDateTimeLibrary for uint256;
+
     IUniswapV2Router01 public uniswapRouter;
     Curve public activeCurve;
     MarketTransition public activeMarketTransition;
@@ -110,7 +113,7 @@ contract BondingCurveFactory {
             _underlyingCollateral,
             _tokenThreshold,
             _minimumTokenThreshold,
-            _thresholdTimeout
+            now.addMonths(_thresholdTimeout)
         );
 
         deployedMarkets[msg.sender].push(address(newToken));
