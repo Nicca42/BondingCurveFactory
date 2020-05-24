@@ -549,7 +549,7 @@
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 10px;
-        padding-bottom: 10px" onclick="Generate()">
+        padding-bottom: 10px" @click="deployMarket()">
                 Yes I am Ready!
               </button></div>
           </div>
@@ -697,6 +697,7 @@
           account: null,
           bondingCurveFactory: null,
           bondingCurveFactyoryAddress: "0x021F4a6e1ae933c47Da87e6E60E975EC63736Eac",
+          collateralToken: "0x0eB3671cFeAdb7A43FDE7a82C096367A2A5BFbBD",
           bondingCurveFactoryABI: [
             {
               "inputs": [
@@ -951,6 +952,34 @@
 
           const owner = await this.bondingCurveFactory.owner()
           console.log("owner", owner)
+        },
+        async deployMarket() {
+          console.log("DEPLOY BITCH")
+          const params = {
+            curveParameters: [
+              ethers.utils.parseUnits("0", 18),
+              ethers.utils.parseUnits("6", 2),
+              ethers.utils.parseUnits("1", 1)
+            ],
+            name: "Chilled Linear",
+            symbol: "CL",
+            transitionThreshold: ethers.utils.parseUnits("500", 18),
+            minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
+            colaleralTimeoutInMonths: 900
+          }
+          const results = await this.bondingCurveFactory.createMarket([
+            ethers.utils.parseUnits("0", 18),
+            ethers.utils.parseUnits("6", 2),
+            ethers.utils.parseUnits("1", 1)
+          ], "Chilled Linear", "CL", this.collateralToken, ethers.utils.parseUnits("500", 18),
+            ethers.utils.parseUnits("250", 18),
+            900)
+          console.log("results", results)
+
+          let eventFilter = this.bondingCurveFactory.on("marketCreated", (caller, newToken, name, event) => {
+            console.log("caller", caller)
+            console.log("newToken", newToken)
+          })
         }
       },
 
