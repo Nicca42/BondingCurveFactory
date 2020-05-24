@@ -63,7 +63,7 @@
         </div>
       </header>
       <header id="About" class="aboutwrapper">
-        <div class="aboutportion">
+        <div connected class="aboutportion">
           <div class="stepcontainer w-container">
             <div class="rich-text-block w-richtext">
               <h1>How it works</h1>
@@ -144,7 +144,7 @@
             </article>
             <article id="TokenCollateral" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Collateral Address</div>
-              <div class="code-embed w-embed"><input style="
+              <div class="code-embed w-embed"><input v-model="collateralToken" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -551,7 +551,7 @@
           </div>
         </div>
       </div>
-      <div id="Generate" class="productsection">
+      <div v-if="createdTokenAddress != null" id="Generate" class="productsection">
         <div class="titlesection">
           <h1 class="heading-4">7. Get New Token Address</h1>
           <p>Click to see it on Etherscan</p><a id="newTokenAddress" href="#" target="_blank" class="newaddresslink">{{createdTokenAddress}}</a></div>
@@ -912,6 +912,7 @@
             this.ethers = new ethers.providers.Web3Provider(window.ethereum)
             this.signer = this.ethers.getSigner()
             window.ethereum.enable();
+            this.connected = true;
             console.log("ethers connected", ethers)
 
             this.initApp()
