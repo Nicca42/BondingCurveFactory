@@ -669,10 +669,10 @@
           signer: null,
           account: null,
           bondingCurveFactory: null,
-          bondingCurveFactyoryAddress: "0x521632Cec558BD67999F875D65853a5A3117e5Ff",
+          bondingCurveFactyoryAddress: "0xC6FBBE7924B3453d71EA68f02c1d2540853cE924",
           curve: null,
-          curveAddress: "0x24d007f0a2Acf0b136dA21E3f2326043783BB150",
-          collateralToken: "0x0eB3671cFeAdb7A43FDE7a82C096367A2A5BFbBD",
+          curveAddress: "0x3d2623C0Cdd2ba942a30FED3C92902091FE0D9c1",
+          collateralToken: "0x95b58a6bff3d14b7db2f5cb5f0ad413dc2940658",
           createdTokenAddress: null,
           txPending: false,
           txComplete: false,
@@ -780,6 +780,74 @@
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "deployedMarkets",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "uniswapRouter",
+              "outputs": [
+                {
+                  "internalType": "contract IUniswapV2Router01",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getFactorySetUp",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256[3]",
                   "name": "_curveParameters",
                   "type": "uint256[3]"
@@ -830,30 +898,6 @@
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "name": "deployedMarkets",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
                   "name": "_user",
                   "type": "address"
                 }
@@ -864,50 +908,6 @@
                   "internalType": "address[]",
                   "name": "",
                   "type": "address[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getFactorySetUp",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "uniswapRouter",
-              "outputs": [
-                {
-                  "internalType": "contract IUniswapV2Router01",
-                  "name": "",
-                  "type": "address"
                 }
               ],
               "stateMutability": "view",
