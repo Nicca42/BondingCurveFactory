@@ -19,7 +19,6 @@ contract BondingCurveFactory {
     MarketTransition public activeMarketTransition;
 
     address public owner;
-    bool public setUp;
     mapping(address => address[]) public deployedMarkets;
 
     event factorySetUp(address curve, address market);
@@ -37,16 +36,6 @@ contract BondingCurveFactory {
     constructor(address _uniswapRouter) public {
         uniswapRouter = IUniswapV2Router01(_uniswapRouter);
         owner = msg.sender;
-    }
-
-    /**
-      * @notice Sets up the needed contracts for the factory. 
-      */
-    function setUpFactory() public onlyOnwer() {
-        require(
-            !setUp,
-            "Factory has already been set up"
-        );
 
         activeCurve = new Curve();
         activeMarketTransition = new MarketTransition(address(uniswapRouter));
@@ -55,8 +44,6 @@ contract BondingCurveFactory {
             address(activeCurve),
             address(activeMarketTransition)
         );
-
-        setUp = true;
     }
 
     /**
@@ -108,6 +95,12 @@ contract BondingCurveFactory {
         public
         returns(address)
     {
+        // TODO add checks for curve variables 
+        /**
+            a & b & C cant all be 0
+            if a == 0 then b != 0 and visa versa 
+            a cant be bigger than ... ?
+          */
         Token newToken = new Token(
             address(activeCurve),
             address(activeMarketTransition),

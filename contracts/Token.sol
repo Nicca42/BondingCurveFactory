@@ -107,6 +107,7 @@ contract Token is ERC20 {
         _transitionCheck(true, _tokens); 
         // The token can transition
         if(transitionConditionsMet) {
+            // TODO check what happens here on min threshold
             if(
                 this.totalSupply() + _tokens >= tokenThreshold
             ) {

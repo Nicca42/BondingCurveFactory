@@ -43,11 +43,14 @@ contract Curve is I_Curve {
         uint256 b;
         uint256 c;
         (a, b, c) = I_Token(msg.sender).getCurve();
+
+		uint aPrice = 0;
+
+		if(a != 0) {
+			aPrice = ((a.div(3)).mul((newSupply**3).sub(supply**3))).div(1e18);
+		}
         
-        uint256 price = (
-		a.div(3)).mul(
-			(newSupply**3).sub(supply**3)
-		) + (b.div(2)).mul(
+        uint256 price = aPrice + (b.div(2)).mul(
 			(newSupply**2).sub(supply**2)
 		) + c.mul(
 			newSupply.sub(supply)

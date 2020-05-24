@@ -69,19 +69,19 @@ const examples = {
     b: {
         curveParameters: [
             ethers.utils.parseUnits("4", 2),
-            ethers.utils.parseUnits("6", 2),
+            ethers.utils.parseUnits("6", 5),
             ethers.utils.parseUnits("1", 1)
         ],
         name: "Exponential",
         symbol: "EXP",
-        transitionThreshold: ethers.utils.parseUnits("500", 18),
+        transitionThreshold: ethers.utils.parseUnits("100000", 18),
         minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
         colaleralTimeoutInMonths: 900
     },
     c: {
         curveParameters: [
             ethers.utils.parseUnits("0", 4),
-            ethers.utils.parseUnits("0", 2),
+            ethers.utils.parseUnits("3", 2),
             ethers.utils.parseUnits("15", 9)
         ],
         name: "Exponential",

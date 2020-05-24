@@ -86,8 +86,14 @@ describe("🛠 Examples", async () => {
                 examples.a.curveParameters[1].toString()       
             );
             console.log(
-                examples.a.curveParameters[2].toString()       
+                examples.a.curveParameters[2].toString()
+                + "\n"       
             );
+
+            let collateralAtMinThreshold = await tokenInstance.getBuyCost(
+                examples.a.minimumCollateralThreshold
+            );
+            console.log("Collateral at min threshold:\n" + collateralAtMinThreshold.toString());
 
             console.log("Token transition threshold:\n" + examples.a.transitionThreshold.toString())
 
@@ -101,10 +107,41 @@ describe("🛠 Examples", async () => {
                 examples.a.minimumCollateralThreshold
             );
 
-            collateralAtThreshold = await tokenInstance.getBuyCost(
+            await collateralInstance.from(user).buy(collateralAtMinThreshold);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                collateralAtMinThreshold
+            );
+    
+            await tokenInstance.from(user).buy(
                 examples.a.minimumCollateralThreshold
             );
-            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+
+            let pricePerAtMin = await tokenInstance.getBuyCost(
+                1
+            );
+
+            console.log("Price per token at min threshold:\n" + pricePerAtMin.toString())
+            // Buying till threshold
+            collateralAtMinThreshold = await tokenInstance.getBuyCost(
+                examples.a.minimumCollateralThreshold
+            );
+
+            await collateralInstance.from(user).buy(collateralAtMinThreshold);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                collateralAtMinThreshold
+            );
+    
+            await tokenInstance.from(user).buy(
+                examples.a.minimumCollateralThreshold
+            );
+
+            pricePerAtMin = await tokenInstance.getBuyCost(
+                1
+            );
+
+            console.log("Price per token at threshold:\n" + pricePerAtMin.toString())
         });
     });
 
@@ -147,10 +184,47 @@ describe("🛠 Examples", async () => {
                 examples.b.minimumCollateralThreshold
             );
 
-            collateralAtThreshold = await tokenInstance.getBuyCost(
+            let collateralAtMinThreshold = await tokenInstance.getBuyCost(
                 examples.b.minimumCollateralThreshold
             );
-            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+
+            console.log("Collateral at min threshold:\n" + collateralAtMinThreshold.toString());
+
+            await collateralInstance.from(user).buy(collateralAtMinThreshold);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                collateralAtMinThreshold
+            );
+    
+            await tokenInstance.from(user).buy(
+                examples.b.minimumCollateralThreshold
+            );
+
+            let pricePerAtMin = await tokenInstance.getBuyCost(
+                1
+            );
+
+            console.log("Price per token at min threshold:\n" + pricePerAtMin.toString())
+            // Buying till threshold
+            collateralAtMinThreshold = await tokenInstance.getBuyCost(
+                examples.b.minimumCollateralThreshold
+            );
+
+            await collateralInstance.from(user).buy(collateralAtMinThreshold);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                collateralAtMinThreshold
+            );
+    
+            await tokenInstance.from(user).buy(
+                examples.b.minimumCollateralThreshold
+            );
+
+            pricePerAtMin = await tokenInstance.getBuyCost(
+                1
+            );
+
+            console.log("Price per token at threshold:\n" + pricePerAtMin.toString())
         });
     });
 
@@ -186,6 +260,7 @@ describe("🛠 Examples", async () => {
             let collateralAtThreshold = await tokenInstance.getBuyCost(
                 examples.c.transitionThreshold
             );
+
             console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
 
             console.log(
@@ -193,10 +268,47 @@ describe("🛠 Examples", async () => {
                 examples.c.minimumCollateralThreshold
             );
 
-            collateralAtThreshold = await tokenInstance.getBuyCost(
+            let collateralAtMinThreshold = await tokenInstance.getBuyCost(
                 examples.c.minimumCollateralThreshold
             );
-            console.log("Collateral at threshold:\n" + collateralAtThreshold.toString());
+
+            console.log("Collateral at min threshold:\n" + collateralAtMinThreshold.toString());
+
+            await collateralInstance.from(user).buy(collateralAtMinThreshold);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                collateralAtMinThreshold
+            );
+    
+            await tokenInstance.from(user).buy(
+                examples.c.minimumCollateralThreshold
+            );
+
+            let pricePerAtMin = await tokenInstance.getBuyCost(
+                1
+            );
+
+            console.log("Price per token at min threshold:\n" + pricePerAtMin.toString())
+            // Buying till threshold
+            collateralAtMinThreshold = await tokenInstance.getBuyCost(
+                examples.c.minimumCollateralThreshold
+            );
+
+            await collateralInstance.from(user).buy(collateralAtMinThreshold);
+            await collateralInstance.from(user).approve(
+                tokenInstance.contract.address,
+                collateralAtMinThreshold
+            );
+    
+            await tokenInstance.from(user).buy(
+                examples.c.minimumCollateralThreshold
+            );
+
+            pricePerAtMin = await tokenInstance.getBuyCost(
+                1
+            );
+
+            console.log("Price per token at threshold:\n" + pricePerAtMin.toString())
         });
     });
 });

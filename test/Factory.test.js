@@ -60,8 +60,6 @@ describe("🏗 Factory tests", async () => {
 
     describe("🏗 Factory set up & deploy tests", async () => {
         it("🎢 Factory set up", async () => {
-            await factoryInstance.from(insecureDeployer).setUpFactory();
-
             let factorySetUp = await factoryInstance.getFactorySetUp();
             
             assert.notEqual(
@@ -72,8 +70,6 @@ describe("🏗 Factory tests", async () => {
         });
 
         it("💰Deploying a market", async () => {
-            await factoryInstance.from(insecureDeployer).setUpFactory();
-
             let factorySetUp = await factoryInstance.getFactorySetUp();
             let deployedMarkets = await factoryInstance.getDeployedMarkets(
                 insecureDeployer.signer.address
