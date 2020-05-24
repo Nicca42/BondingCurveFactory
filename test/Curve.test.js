@@ -66,6 +66,16 @@ describe("📈 Curve Tests", async () => {
     });
 
     it("📉 Get sell token price", async () => {
+        let sellReward = await tokenInstance.getSellAmount(testSettings.buy.mintAmount);
+
+        assert.equal(
+            sellReward.toString(),
+            0,
+            "Unexpected amount of minted tokens"
+        );
+    });
+
+    it("📉🏔 Get sell token price after buy", async () => {
         let buyPrice = await tokenInstance.getBuyCost(testSettings.buy.mintAmount);
 
         await collateralInstance.from(user).buy(buyPrice);
@@ -86,8 +96,11 @@ describe("📈 Curve Tests", async () => {
             "User balance incorrect"
         );
 
+        console.log("here")
+
         let sellReward = await tokenInstance.getSellAmount(testSettings.buy.mintAmount);
 
+        console.log("here")
         assert.equal(
             sellReward.toString(),
             testSettings.buy.mintedTokenCost,

@@ -60,17 +60,17 @@ contract Curve is I_Curve {
         returns(uint256) 
     {
         uint256 supply = I_Token(msg.sender).totalSupply();
-        uint256 newSupply = supply - _tokens;
+        uint256 newSupply = supply.sub(_tokens);
 
         uint256 a;
         uint256 b;
         uint256 c;
         (a, b, c) = I_Token(msg.sender).getCurve();
  
-        return _getPrice(a, b, c, supply, newSupply);
+        return _getPrice(a, b, c, newSupply, supply);
     }
 
-	function getEndPrice(
+	 function getEndPrice(
 		uint256 _a,
 		uint256 _b,
 		uint256 _c,

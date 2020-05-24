@@ -37,8 +37,8 @@ const testSettings = {
         mintAmount: ethers.utils.parseUnits("10", 18),
         moreThanMintAmount: ethers.utils.parseUnits("11", 18),
         lessThanMintAmount: ethers.utils.parseUnits("9", 18),
-        mintedTokenCost: "33000000000000001500000000000000000000100",
-        mintedTokenCostAjusted: "33000000000000001500000000000000000000100"
+        mintedTokenCost: "1533000000000000000000100",
+        mintedTokenCostAjusted: "1533000000000000000000100"
     },
     sell: {
         sellPartial: ethers.utils.parseUnits("1", 18),
@@ -47,9 +47,9 @@ const testSettings = {
         buy: ethers.utils.parseUnits("500", 18),
         justUnderThreshold: ethers.utils.parseUnits("499", 18),
         buyCost: "833250000000000000003750000000000000000005000000000000000000000000",
-        finalBuyCost: "24750000000000000015049500",
-        mintedTokenAmount: "166666666666666666716",
-        collateralBalance: "4125000000000000003750000000000000000000005000"
+        finalBuyCost: "39750000",
+        mintedTokenAmount: "198113207547169811320",
+        collateralBalance: "7875000000000000000000005000"
     }
 };
 

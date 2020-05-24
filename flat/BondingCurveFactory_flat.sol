@@ -1222,6 +1222,31 @@ contract Curve is I_Curve {
 
         return price.div(1e18);
 	}
+
+	/**
+		if(a != 0) {
+			aPrice = (
+					(a.div(3)
+				).mul(
+					(newSupply**3).sub(supply**3)
+					)
+				).div(1e18);
+		}
+        
+        uint256 price = aPrice + (b.div(2)).mul(
+			(newSupply**2).sub(supply**2)
+		) + c.mul(
+			newSupply.sub(supply)
+		);
+
+        return price.div(1e18);
+
+		uint256 price = (a/3)*(newSupply**3 - supply**3) 
+                        + (b/2)*(newSupply**2 - supply**2) 
+                        + c*(newSupply - supply);
+
+        return price;
+	 */
 }
 
 // ----------------------------------------------------------------------------

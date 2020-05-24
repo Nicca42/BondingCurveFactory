@@ -20,6 +20,7 @@
   "scripts": {
     "build": "etherlime compile",
     "test": "etherlime test --output=none --timeout 100000 --gas-report=true",
+    "testone": "etherlime test ./test/Curve.test.js --output=none --timeout 100000 --gas-report=true",
     "start": "etherlime ganache -q --networkId=1337",
     "remixd": "remixd -s ./contracts --remix-ide https://remix.ethereum.org",
     "flat": "etherlime flatten BondingCurveFactory.sol"
