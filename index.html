@@ -688,9 +688,9 @@
           signer: null,
           account: null,
           bondingCurveFactory: null,
-          bondingCurveFactyoryAddress: "0x3466B1A77e4f8903167C5BCD2d6422F1C9d986a7",
+          bondingCurveFactyoryAddress: "0x521632Cec558BD67999F875D65853a5A3117e5Ff",
           curve: null,
-          curveAddress: "0x0bC582f84dB8B7679b21F14178137b52F298d8DE",
+          curveAddress: "0x24d007f0a2Acf0b136dA21E3f2326043783BB150",
           collateralToken: "0x0eB3671cFeAdb7A43FDE7a82C096367A2A5BFbBD",
           createdTokenAddress: null,
           txPending: false,
@@ -1005,6 +1005,40 @@
               ],
               "stateMutability": "pure",
               "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_a",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_b",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_c",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_threshold",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getEndCollateral",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "pure",
+              "type": "function"
             }
           ]
         };
@@ -1067,19 +1101,26 @@
           this.tokenResults.curveB = this.tokenSettings.curveParamBInput;
           this.tokenResults.curveC = this.tokenSettings.curveParamCInput;
           this.tokenResults.timeout = this.tokenSettings.tokenTimeOutInput;
-          
+
           this.curve = new ethers.Contract(this.curveAddress,
             this.curveABI,
             this.signer
           );
-          
-          this.tokenResults.maxCollateral = await this.curve.getEndPrice(
+
+          this.tokenResults.maxCollateral = await this.curve.getEndCollateral(
             this.tokenSettings.curveParamAInput,
             this.tokenSettings.curveParamBInput,
             this.tokenSettings.curveParamCInput,
             ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18),
           );
-            
+
+          this.tokenResults.maxTokenStartPrice = await this.curve.getEndPrice(
+            this.tokenSettings.curveParamAInput,
+            this.tokenSettings.curveParamBInput,
+            this.tokenSettings.curveParamCInput,
+            ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18),
+          );
+
           this.tokenResults.minCollateral = await this.curve.getEndPrice(
             this.tokenSettings.curveParamAInput,
             this.tokenSettings.curveParamBInput,
@@ -1087,11 +1128,13 @@
             ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18),
           );
 
-            // this.tokenResults.maxTokenStartPrice = this.tokenSettings.tokenNameInput;
-            // this.tokenResults.minTokenStartPrice = this.tokenSettings.tokenNameInput;
-            // console.log(collateralAtMax.toString())
+          this.tokenResults.minTokenStartPrice = await this.curve.getEndPrice(
+            this.tokenSettings.curveParamAInput,
+            this.tokenSettings.curveParamBInput,
+            this.tokenSettings.curveParamCInput,
+            ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18),
+          );
         },
-
       },
 
       async mounted() { },

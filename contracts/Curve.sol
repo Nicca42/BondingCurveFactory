@@ -44,19 +44,7 @@ contract Curve is I_Curve {
         uint256 c;
         (a, b, c) = I_Token(msg.sender).getCurve();
 
-		uint aPrice = 0;
-
-		if(a != 0) {
-			aPrice = ((a.div(3)).mul((newSupply**3).sub(supply**3))).div(1e18);
-		}
-        
-        uint256 price = aPrice + (b.div(2)).mul(
-			(newSupply**2).sub(supply**2)
-		) + c.mul(
-			newSupply.sub(supply)
-		);
-
-        return price.div(1e18);
+        return _getPrice(a, b, c, supply, newSupply);
     }
 
     /**
@@ -78,12 +66,8 @@ contract Curve is I_Curve {
         uint256 b;
         uint256 c;
         (a, b, c) = I_Token(msg.sender).getCurve();
-        
-        uint256 price = (a/3)*(supply**3 - newSupply**3) 
-                        + (b/2)*(supply**2 - newSupply**2) 
-                        + c*(supply - newSupply);
-
-        return price/1e18;
+ 
+        return _getPrice(a, b, c, supply, newSupply);
     }
 
 	function getEndPrice(
@@ -94,21 +78,49 @@ contract Curve is I_Curve {
 	) 
 		public
 		pure	
-		returns(uint256, uint256)
+		returns(uint256)
 	{
-		uint256 supply = 0;
-        uint256 newSupply = _threshold;
+		uint256 priceAtEnd = _getPrice(_a, _b, _c, _threshold, _threshold.add(1));
 
+        return priceAtEnd;
+	}
+
+	function getEndCollateral(
+		uint256 _a,
+		uint256 _b,
+		uint256 _c,
+		uint256 _threshold
+	) 
+		public
+		pure	
+		returns(uint256)
+	{
+		uint256 collateralAtEnd = _getPrice(_a, _b, _c, 0, _threshold);
+
+        return collateralAtEnd;
+	}
+
+	function _getPrice(
+		uint256 _a,
+        uint256 _b,
+        uint256 _c,
+		uint256 _from,
+		uint256 _to
+	) 
+		internal 
+		pure 
+		returns(uint256)
+	{
 		uint aPrice = 0;
 
 		if(_a != 0) {
-			aPrice = ((_a.div(3)).mul((newSupply**3).sub(supply**3))).div(1e18);
+			aPrice = ((_a.div(3)).mul((_to**3).sub(_from**3))).div(1e18);
 		}
         
         uint256 price = aPrice + (_b.div(2)).mul(
-			(newSupply**2).sub(supply**2)
+			(_to**2).sub(_from**2)
 		) + _c.mul(
-			newSupply.sub(supply)
+			_to.sub(_from)
 		);
 
         return price.div(1e18);
