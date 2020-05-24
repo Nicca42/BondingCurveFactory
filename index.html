@@ -93,7 +93,7 @@
             <article id="TokenName" class="inputfieldwrapper double">
               <article id="TokenName" class="inputfieldwrapper name">
                 <div class="labeltextblock">Token Name</div>
-                <div class="code-embed name w-embed"><input style="
+                <div class="code-embed name w-embed"><input v-model="tokenSettings.tokenNameInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -118,7 +118,7 @@
               </article>
               <article id="TokenSymbol" class="inputfieldwrapper symbol">
                 <div class="labeltextblock">Symbol</div>
-                <div class="code-embed symbol w-embed"><input style="
+                <div class="code-embed symbol w-embed"><input v-model="tokenSettings.tokenSymbolInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -172,11 +172,11 @@
         <div class="stepcontainer w-container">
           <h1>2. Advanced Token Setup</h1>
           <p>For the magic of Liquorice Gen to work you need to fill in a few more advanced parameters for your Token
-            collateral.</p>
+            collateral. The threshold inputs will be scaled by 1e18 for you.</p>
           <div class="inputfieldswrapper">
             <article id="TokenName" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Token Threshold</div>
-              <div class="code-embed curve w-embed"><input style="
+              <div class="code-embed curve w-embed"><input v-model="tokenSettings.tokenThresholdInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -201,7 +201,7 @@
             </article>
             <article id="TokenCollateral" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Timeout <br></div>
-              <div class="code-embed curve w-embed"><input style="
+              <div class="code-embed curve w-embed"><input v-model="tokenSettings.tokenTimeOutInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -226,7 +226,7 @@
             </article>
             <article id="TokenCollateral" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Minimum Token<br>Threshold</div>
-              <div class="code-embed curve w-embed"><input style="
+              <div class="code-embed curve w-embed"><input v-model="tokenSettings.minTokenThresholdInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -247,7 +247,7 @@
   border-bottom-style: solid;
     border-bottom-color: #232323;
   		border-bottom-width: 1px;
-      " type="text" maxlength="35" id="minCollateralThresholdInput"></div>
+      " type="text" maxlength="35" id="minTokenThresholdInput"></div>
             </article>
           </div>
         </div>
@@ -269,7 +269,7 @@
           <div class="inputfieldswrapper">
             <article id="TokenCollateral" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Curve Input A</div>
-              <div class="code-embed curve w-embed"><input style="
+              <div class="code-embed curve w-embed"><input v-model="tokenSettings.curveParamAInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -294,7 +294,7 @@
             </article>
             <article id="TokenCollateral" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Curve Input B</div>
-              <div class="code-embed curve w-embed"><input style="
+              <div class="code-embed curve w-embed"><input v-model="tokenSettings.curveParamBInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -319,7 +319,7 @@
             </article>
             <article id="TokenCollateral" class="inputfieldwrapper collateral">
               <div class="labeltextblock">Curve Input C</div>
-              <div class="code-embed curve w-embed"><input style="
+              <div class="code-embed curve w-embed"><input v-model="tokenSettings.curveParamCInput" style="
  color:##e2e2e2;
  background-color:#1E1E1E;
   padding-left: 10px;
@@ -397,27 +397,25 @@
       <div class="summarysecition">
         <div class="titlesection">
           <h1 class="heading-4">4. Summary</h1>
-          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to
-            be
-            available when you move over to a Uniswap pool.</p>
+          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to be available when you move over to a Uniswap pool.</p>
           <div class="buttonwrapper">
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
-  			background-color:#494949;
-        min-width: 150px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px" onclick="resetInfo()">
-                Reset ALL Data
-              </button></div>
+          background-color:#494949;
+          min-width: 150px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px" onclick="resetInfo()">
+  Reset ALL Data
+  </button></div>
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
-  			background-color:#FF500B;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px" onclick="allInfo()">
-                Show Summary
-              </button></div>
+          background-color:#FF500B;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px" onclick="allInfo()">
+  Show Summary
+  </button></div>
           </div>
         </div>
         <div class="summarycontents address">
@@ -481,7 +479,7 @@
       <div class="resultssecition">
         <div class="titlesection">
           <h1 class="heading-4">5. Full Results</h1>
-          <p>See full breakdown of your results for both minimum and maximum results outcomes for your data inputs</p>
+          <p>Given the parameters you set, here is how your curve is going to behave, and how much funding is going to be available when you move over to a Uniswap pool <span class="emojitextsmall">🦄</span></p>
         </div>
         <div class="summarycontents">
           <div class="scriptinfowrapper _09">
@@ -530,50 +528,33 @@
       <div id="Generate" class="generatesection">
         <div class="titlesection">
           <h1 class="heading-4">6. Generate</h1>
-          <p>Are you ready?</p>
-          <h2 class="heading-5"><span class="orangetext">Warning: </span><br>this is going to create your awesome
-            bonding
-            curve token.<br><span class="emojitext big">🚀</span></h2>
+          <p><strong>Are you ready to create your IBCO? </strong><br><br>Selecting I am ready below will generate your transaction.</p>
+          <h2 class="heading-5"><span class="orangetext">Warning: </span><br>This will generate your IBCO contract. Your token address will be given to you, and from there you are on your own, good luck!<br><span class="emojitext big">🚀</span></h2>
           <div class="buttonwrapper">
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
-  			background-color:#494949;
-        min-width: 150px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px" onclick="resetInfo()">
-                Reset ALL Data
-              </button></div>
+          background-color:#494949;
+          min-width: 150px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px" onclick="resetInfo()">
+  Reset ALL Data
+  </button></div>
             <div class="buttonembed w-embed"><button type="button" style="color:#FFFFFF;
-  			background-color:#FF500B;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px" @click="deployMarket()">
-                Yes I am Ready!
-              </button></div>
+          background-color:#FF500B;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px" @click="deployMarket()">
+  Yes I am Ready!
+  </button></div>
           </div>
         </div>
       </div>
       <div id="Generate" class="productsection">
         <div class="titlesection">
-          <h1 class="heading-4">7. Get New Token Address</h1>
-          <p>Click to see it on Etherscan</p><a id="newTokenAddress" href="#" target="_blank"
-            class="newaddresslink">0x...................................................................................</a>
-        </div>
-      </div>
-      <div class="resultsbar">
-        <div class="resultscontent">
-          <h3 class="heading-6">Results: MAX</h3>
-          <div class="itemwrapper results">
-            <div id="tokenNumberMaxResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
-            <h4>number of tokens that will be minted onto uniswap <span class="emojitextsmall">🦄</span></h4>
-          </div>
-          <div class="itemwrapper results">
-            <div id="tokenPriceMaxResult" class="textblock medium-number">00 000 000 . 000 000 000 000 000 000</div>
-            <h4>the start price of the tokenon uniswap <span class="emojitextsmall">🦄</span></h4>
-          </div>
-        </div>
+          <h1 class="heading-4">7. Get New Token Address</h1>
+          <p>Click to see it on Etherscan</p><a id="newTokenAddress" href="#" target="_blank" class="newaddresslink">{{createdTokenAddress}}</a></div>
       </div>
     </main>
     <div class="footersection">
@@ -624,7 +605,7 @@
   function tokenAdvancedInfo() {
     var tokenThreshold = document.getElementById("tokenThresholdInput").value;
     var tokenTimeOut = document.getElementById("tokenTimeOutInput").value;
-    var minTokenThreshold = document.getElementById("minCollateralThresholdInput").value;
+    var minTokenThreshold = document.getElementById("minTokenThresholdInput").value;
     document.getElementById("tokenInfoTT").innerHTML = tokenThreshold;
     document.getElementById("tokenInfoTO").innerHTML = tokenTimeOut
     document.getElementById("tokenInfoMTT").innerHTML = minTokenThreshold;
@@ -651,7 +632,7 @@
     document.getElementById("tokenCollateralInput").value = "";
 		document.getElementById("tokenThresholdInput").value = "";
 		document.getElementById("tokenTimeOutInput").value = "";
-		document.getElementById("minCollateralThresholdInput").value = "";
+		document.getElementById("minTokenThresholdInput").value = "";
     document.getElementById("curveParamAInput").value = "";
     document.getElementById("curveParamBInput").value = "";
     document.getElementById("curveParamCInput").value = "";
@@ -698,6 +679,12 @@
           bondingCurveFactory: null,
           bondingCurveFactyoryAddress: "0x021F4a6e1ae933c47Da87e6E60E975EC63736Eac",
           collateralToken: "0x0eB3671cFeAdb7A43FDE7a82C096367A2A5BFbBD",
+          createdTokenAddress: null,
+          tokenSettings: {
+            tokenNameInput: null,
+            tokenSymbolInput: null,
+            tokenThresholdInput: null,
+          },
           bondingCurveFactoryABI: [
             {
               "inputs": [
@@ -955,6 +942,8 @@
         },
         async deployMarket() {
           console.log("DEPLOY BITCH")
+          console.log("tokenSettings", this.tokenSettings)
+
           const params = {
             curveParameters: [
               ethers.utils.parseUnits("0", 18),
@@ -967,19 +956,28 @@
             minimumCollateralThreshold: ethers.utils.parseUnits("250", 18),
             colaleralTimeoutInMonths: 900
           }
-          const results = await this.bondingCurveFactory.createMarket([
-            ethers.utils.parseUnits("0", 18),
-            ethers.utils.parseUnits("6", 2),
-            ethers.utils.parseUnits("1", 1)
-          ], "Chilled Linear", "CL", this.collateralToken, ethers.utils.parseUnits("500", 18),
-            ethers.utils.parseUnits("250", 18),
-            900)
+
+          const results = await this.bondingCurveFactory.createMarket(
+            [
+              this.tokenSettings.curveParamAInput,
+              this.tokenSettings.curveParamBInput,
+              this.tokenSettings.curveParamCInput
+            ], 
+            this.tokenSettings.tokenNameInput, 
+            this.tokenSettings.tokenSymbolInput, 
+            this.collateralToken, 
+            ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18),
+            ethers.utils.parseUnits(this.tokenSettings.minTokenThresholdInput, 18),
+            this.tokenSettings.tokenTimeOutInput
+          )// TODO need to pass the months through the markettransitioner to get months (or just update the factory to do that)
+
           console.log("results", results)
 
           let eventFilter = this.bondingCurveFactory.on("marketCreated", (caller, newToken, name, event) => {
             console.log("caller", caller)
             console.log("newToken", newToken)
-          })
+            this.createdTokenAddress = newToken;
+          });
         }
       },
 
