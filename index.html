@@ -1042,11 +1042,10 @@
         async initApp() {
           this.account = await this.signer.getAddress()
 
-          this.bondingCurveFactory = new ethers.Contract(this.bondingCurveFactyoryAddress,
+          this.bondingCurveFactory = new ethers.Contract(
+            this.bondingCurveFactyoryAddress,
             this.bondingCurveFactoryABI,
             this.signer);
-
-          const owner = await this.bondingCurveFactory.owner()
         },
 
         async deployMarket() {
@@ -1102,7 +1101,7 @@
             ethers.utils.parseUnits(this.tokenSettings.tokenThresholdInput, 18),
           );
 
-          this.tokenResults.minCollateral = await this.curve.getEndPrice(
+          this.tokenResults.minCollateral = await this.curve.getEndCollateral(
             this.tokenSettings.curveParamAInput,
             this.tokenSettings.curveParamBInput,
             this.tokenSettings.curveParamCInput,
