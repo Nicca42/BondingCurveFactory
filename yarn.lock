@@ -4219,9 +4219,9 @@ json-parse-better-errors@^1.0.1:
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
 json-pointer@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/json-pointer/-/json-pointer-0.6.0.tgz#8e500550a6aac5464a473377da57aa6cc22828d7"
-  integrity sha1-jlAFUKaqxUZKRzN32leqbMIoKNc=
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/json-pointer/-/json-pointer-0.6.1.tgz#3c6caa6ac139e2599f5a1659d39852154015054d"
+  integrity sha512-3OvjqKdCBvH41DLpV4iSt6v2XhZXV1bPB4OROuknvUXI7ZQNofieCPkmE26stEJ9zdQuvIxDHCuYhfgxFAAs+Q==
   dependencies:
     foreach "^2.0.4"
 
@@ -5967,7 +5967,7 @@ registry-url@3.1.0, registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
-remixd@0.8.1-alpha.16:
+remixd@0.1.8-alpha.16:
   version "0.1.8-alpha.16"
   resolved "https://registry.yarnpkg.com/remixd/-/remixd-0.1.8-alpha.16.tgz#0bb0f7b88734e11aa600afce0feecbc410689d85"
   integrity sha512-nEvlfZjHXRw2r8bBZicv1Mqg6ELVZ9h+wHPcLJwrSAkkkejR4XAIZ5LgjxZwK/uULZkNp4yXFqFTDc6lwgEz9Q==
